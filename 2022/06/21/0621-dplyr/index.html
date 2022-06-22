@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>0621 dplyr | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="p.98분석 프로세스데이터 전처리를 위한 도구 dplyr데이터 전처리를 위한 도구 data.table처리속도 차이dplyr : 10gb 이내data.table : 50gb 이상배움의 측면dplyr 매우 쉬움data.table 어려움라이브러리 불러오기install.packages(“dplyr”)1library(dplyr)  12## ## 다음의 패키지를 부착">
+<meta property="og:type" content="article">
+<meta property="og:title" content="0621 dplyr">
+<meta property="og:url" content="http://seoseonho.github.io/2022/06/21/0621-dplyr/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="p.98분석 프로세스데이터 전처리를 위한 도구 dplyr데이터 전처리를 위한 도구 data.table처리속도 차이dplyr : 10gb 이내data.table : 50gb 이상배움의 측면dplyr 매우 쉬움data.table 어려움라이브러리 불러오기install.packages(“dplyr”)1library(dplyr)  12## ## 다음의 패키지를 부착">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-06-21T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-06-21T08:13:32.814Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://seoseonho.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-0621-dplyr" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/06/21/0621-dplyr/" class="article-date">
+  <time class="dt-published" datetime="2022-06-21T00:00:00.000Z" itemprop="datePublished">2022-06-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      0621 dplyr
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="p-98"><a href="#p-98" class="headerlink" title="p.98"></a>p.98</h1><h1 id="분석-프로세스"><a href="#분석-프로세스" class="headerlink" title="분석 프로세스"></a>분석 프로세스</h1><h1 id="데이터-전처리를-위한-도구-dplyr"><a href="#데이터-전처리를-위한-도구-dplyr" class="headerlink" title="데이터 전처리를 위한 도구 dplyr"></a>데이터 전처리를 위한 도구 dplyr</h1><h1 id="데이터-전처리를-위한-도구-data-table"><a href="#데이터-전처리를-위한-도구-data-table" class="headerlink" title="데이터 전처리를 위한 도구 data.table"></a>데이터 전처리를 위한 도구 data.table</h1><h2 id="처리속도-차이"><a href="#처리속도-차이" class="headerlink" title="처리속도 차이"></a>처리속도 차이</h2><h1 id="dplyr-10gb-이내"><a href="#dplyr-10gb-이내" class="headerlink" title="dplyr : 10gb 이내"></a>dplyr : 10gb 이내</h1><h1 id="data-table-50gb-이상"><a href="#data-table-50gb-이상" class="headerlink" title="data.table : 50gb 이상"></a>data.table : 50gb 이상</h1><h1 id="배움의-측면"><a href="#배움의-측면" class="headerlink" title="배움의 측면"></a>배움의 측면</h1><h1 id="dplyr-매우-쉬움"><a href="#dplyr-매우-쉬움" class="headerlink" title="dplyr 매우 쉬움"></a>dplyr 매우 쉬움</h1><h1 id="data-table-어려움"><a href="#data-table-어려움" class="headerlink" title="data.table 어려움"></a>data.table 어려움</h1><h1 id="라이브러리-불러오기"><a href="#라이브러리-불러오기" class="headerlink" title="라이브러리 불러오기"></a>라이브러리 불러오기</h1><h1 id="install-packages-“dplyr”"><a href="#install-packages-“dplyr”" class="headerlink" title="install.packages(“dplyr”)"></a>install.packages(“dplyr”)</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">library<span class="punctuation">(</span>dplyr<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## 다음의 패키지를 부착합니다: &#x27;dplyr&#x27;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## The following objects are masked from &#x27;package:stats&#x27;:</span><br><span class="line">## </span><br><span class="line">##     filter, lag</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## The following objects are masked from &#x27;package:base&#x27;:</span><br><span class="line">## </span><br><span class="line">##     intersect, setdiff, setequal, union</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">&lt;-</span> read.csv<span class="punctuation">(</span><span class="string">&quot;mpg1.csv&quot;</span><span class="punctuation">,</span> stringsAsFactors <span class="operator">=</span> <span class="built_in">F</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str<span class="punctuation">(</span>mpg1<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">## &#x27;data.frame&#x27;:	234 obs. of  5 variables:</span><br><span class="line">##  $ manufacturer: chr  &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; ...</span><br><span class="line">##  $ trans       : chr  &quot;auto&quot; &quot;manual&quot; &quot;manual&quot; &quot;auto&quot; ...</span><br><span class="line">##  $ drv         : chr  &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; ...</span><br><span class="line">##  $ cty         : int  18 21 20 21 16 18 18 18 16 20 ...</span><br><span class="line">##  $ hwy         : int  29 29 31 30 26 26 27 26 25 28 ...</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data2 <span class="operator">&lt;-</span> mpg1 <span class="operator">%&gt;%</span></span><br><span class="line">  select<span class="punctuation">(</span>drv<span class="punctuation">,</span> cty<span class="punctuation">,</span> hwy<span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">  filter<span class="punctuation">(</span>drv <span class="operator">==</span> <span class="string">&quot;f&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str<span class="punctuation">(</span>mpg1<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">## &#x27;data.frame&#x27;:	234 obs. of  5 variables:</span><br><span class="line">##  $ manufacturer: chr  &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; ...</span><br><span class="line">##  $ trans       : chr  &quot;auto&quot; &quot;manual&quot; &quot;manual&quot; &quot;auto&quot; ...</span><br><span class="line">##  $ drv         : chr  &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; ...</span><br><span class="line">##  $ cty         : int  18 21 20 21 16 18 18 18 16 20 ...</span><br><span class="line">##  $ hwy         : int  29 29 31 30 26 26 27 26 25 28 ...</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data2 <span class="operator">&lt;-</span> mpg1 <span class="operator">%&gt;%</span></span><br><span class="line">  select<span class="punctuation">(</span>drv<span class="punctuation">,</span> cty<span class="punctuation">,</span> hwy<span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">  filter<span class="punctuation">(</span>drv <span class="operator">==</span> <span class="string">&quot;f&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+<p>  #select : 컬러명 추출<br>  #filter : 행 추출 (조건식)</p>
+<h1 id="group-by"><a href="#group-by" class="headerlink" title="group by :"></a>group by :</h1><h1 id="summarize"><a href="#summarize" class="headerlink" title="summarize() :"></a>summarize() :</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data3 <span class="operator">&lt;-</span> select<span class="punctuation">(</span>mpg1<span class="punctuation">,</span> drv<span class="punctuation">,</span> cty<span class="punctuation">,</span> hwy<span class="punctuation">)</span></span><br><span class="line">data3 <span class="operator">&lt;-</span> filter<span class="punctuation">(</span>data3<span class="punctuation">,</span> drv <span class="operator">==</span> <span class="string">&quot;f&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<p>%&gt;% &lt;- 컨트롤+쉽프트+m</p>
+<h1 id="교재-p99-p120"><a href="#교재-p99-p120" class="headerlink" title="교재 p99 ~ p120"></a>교재 p99 ~ p120</h1><h1 id="파생변수-만들기"><a href="#파생변수-만들기" class="headerlink" title="파생변수 만들기"></a>파생변수 만들기</h1><h1 id="filter-select-rename-mutate"><a href="#filter-select-rename-mutate" class="headerlink" title="filter, select, rename, mutate"></a>filter, select, rename, mutate</h1><p> glimpse(iris)</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">iris <span class="operator">%&gt;%</span> </span><br><span class="line">  <span class="comment"># species, setosa versicolor</span></span><br><span class="line">  filter<span class="punctuation">(</span>Species <span class="operator">!=</span> <span class="string">&quot;virginica&quot;</span><span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">  select<span class="punctuation">(</span>Sepal.Length<span class="punctuation">,</span> Sepal.Width<span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">  filter<span class="punctuation">(</span>Sepal.Length <span class="operator">&gt;</span> <span class="number">5.0</span><span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">  mutate<span class="punctuation">(</span>total <span class="operator">=</span> Sepal.Length <span class="operator">+</span> Sepal.Width<span class="punctuation">)</span> <span class="operator">-&gt;</span>data2</span><br></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">iris <span class="operator">%&gt;%</span> </span><br><span class="line">  <span class="comment"># species, setosa versicolor</span></span><br><span class="line">  filter<span class="punctuation">(</span>Species <span class="operator">!=</span> <span class="string">&quot;Virginica&quot;</span><span class="operator">&amp;</span> Sepal.Length<span class="operator">&gt;</span> <span class="number">5.0</span><span class="punctuation">)</span> <span class="operator">%&gt;%</span>   </span><br><span class="line">  select<span class="punctuation">(</span>Sepal.Length<span class="punctuation">,</span> Sepal.Width<span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">  mutate<span class="punctuation">(</span>total <span class="operator">=</span> Sepal.Length <span class="operator">+</span> Sepal.Width<span class="punctuation">)</span> <span class="operator">-&gt;</span>data3</span><br></pre></td></tr></table></figure>
+<h1 id="p-121-집단별-통계량"><a href="#p-121-집단별-통계량" class="headerlink" title="p.121 집단별 통계량"></a>p.121 집단별 통계량</h1><h1 id="p-122"><a href="#p-122" class="headerlink" title="p.122"></a>p.122</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">%&gt;%</span>  </span><br><span class="line">    group_by<span class="punctuation">(</span>trans<span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">    summarise<span class="punctuation">(</span>avg <span class="operator">=</span> mean<span class="punctuation">(</span>cty<span class="punctuation">)</span>     <span class="comment"># 평균</span></span><br><span class="line">           <span class="punctuation">,</span>total <span class="operator">=</span> <span class="built_in">sum</span><span class="punctuation">(</span>cty<span class="punctuation">)</span>      <span class="comment"># 총합</span></span><br><span class="line">           <span class="punctuation">,</span>med   <span class="operator">=</span> median<span class="punctuation">(</span>cty<span class="punctuation">)</span>  </span><br><span class="line">           <span class="punctuation">,</span>count <span class="operator">=</span> n<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span> <span class="comment"># 중간값</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## # A tibble: 2 × 5</span><br><span class="line">##   trans    avg total   med count</span><br><span class="line">##   &lt;chr&gt;  &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span><br><span class="line">## 1 auto    16.0  2507    16   157</span><br><span class="line">## 2 manual  18.7  1438    18    77</span><br></pre></td></tr></table></figure>
+
+
+
+
+<p> 빈도분석 p.99<br> count (데이터세트, 변수)<br> table (데이터세트 $변수)</p>
+<p>count(mpg1, trans)</p>
+<p>trans n<br>1 auto 157<br>2 manual 77</p>
+<h1 id="class-함수-안에-count-함수를-바로-넣음"><a href="#class-함수-안에-count-함수를-바로-넣음" class="headerlink" title="class() 함수 안에 count () 함수를 바로 넣음"></a>class() 함수 안에 count () 함수를 바로 넣음</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>count<span class="punctuation">(</span>mpg1<span class="punctuation">,</span> trans<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;data.frame&quot;</span><br></pre></td></tr></table></figure>
+
+<p>“data. frame”</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">table<span class="punctuation">(</span>mpg1<span class="operator">$</span>trans<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">##   auto manual </span><br><span class="line">##    157     77</span><br></pre></td></tr></table></figure>
+
+<p> auto manual<br>   157     77 </p>
+<p>p102</p>
+<p>방법1 새 데이터세트 &lt;- 데이터세트 %&gt;% select(열1,열2,열3)</p>
+<p>방법2 새 데이터세트 &lt;- select(데이터세트,열1,열2,열3)</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mpg1_1 <span class="operator">&lt;-</span> mpg1 <span class="operator">%&gt;%</span>  select<span class="punctuation">(</span>manufacturer<span class="punctuation">,</span>trans<span class="punctuation">,</span>cty<span class="punctuation">)</span> </span><br><span class="line"></span><br><span class="line">mpg1_2 <span class="operator">&lt;-</span> select<span class="punctuation">(</span>mpg1<span class="punctuation">,</span>manufacturer<span class="punctuation">,</span> trans<span class="punctuation">,</span> cty<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<p>str(mpg1_1) #str(mpg1_2)의 결과도 같음<br>‘data.frame’ : 234obs. of 3 variables:<br>$maunfacturer: chr “audi” “audi”….<br>$trans       : chr “auto” “manual” “manual””auto”<br>$cty         : int 18 21 20 21 16 18 18 18 16 20</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://seoseonho.github.io/2022/06/21/0621-dplyr/" data-id="cl4nw87850000awv22c752yzn" data-title="0621 dplyr" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/06/21/0620~0621/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          day0621..
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/06/22/0622/">0622통계</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/21/0620~0621/">day0621..</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/21/0621-dplyr/">0621 dplyr</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
