@@ -71,6 +71,126 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-0624" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/06/24/0624/" class="article-date">
+  <time class="dt-published" datetime="2022-06-24T01:00:00.000Z" itemprop="datePublished">2022-06-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/06/24/0624/">0624</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="복습"><a href="#복습" class="headerlink" title="복습"></a>복습</h2><ul>
+<li>통계 검정</li>
+</ul>
+<ul>
+<li>평균 차이 검정 : 수치 데이터 + 범주 데이터 (두 그룹)</li>
+</ul>
+<ul>
+<li>중급 이상 :세 그룹 이상 평균 차이 검정</li>
+</ul>
+<ul>
+<li>비율 차이 검정 : 범주 데이터</li>
+<li>상관 관계 : 수치 데이터</li>
+<li>회귀</li>
+</ul>
+<ul>
+<li>통계 검정 사전 준비<br> +분석을 위한 데이터가 적절한지 검정</li>
+</ul>
+<ul>
+<li>등분산 검정, 수치 데이터가 정규분포를 이루는가 (정규성 검정)</li>
+</ul>
+<ul>
+<li>귀무가설, 대립가설 적절하게 설정<br> +서울의 평균 임금과 부산의 평균 임금의 차이가 있을 것이다</li>
+</ul>
+<ul>
+<li>선행연구 (논문 찾아서 응용)</li>
+</ul>
+<ul>
+<li>테스트</li>
+</ul>
+<ul>
+<li>t.test, chisq.test, cor.test</li>
+<li>p.value</li>
+</ul>
+<ul>
+<li>p.value &gt; 0.05 –&gt; 귀무가설 지지</li>
+<li>p.value &lt; 0.05 –&gt; 대립가설 지지</li>
+</ul>
+<h2 id="회귀의-중요성"><a href="#회귀의-중요성" class="headerlink" title="회귀의 중요성"></a>회귀의 중요성</h2><ul>
+<li>기초통계 : 특정한 결과에 영향을 주는 주 요인이 뭐냐? 이거<br>찾는 것이 회귀</li>
+<li>회귀분석과 종류</li>
+</ul>
+<ul>
+<li>1세대 회귀 방법론 : 다항회귀분석, 다중회귀분석, 포아송 회귀분석, etc</li>
+<li>2세대 회귀 방법론 : 구조 방정식</li>
+</ul>
+<ul>
+<li>귀무가설 &amp; 대립가설 존재</li>
+</ul>
+<ul>
+<li>귀무가설 : x(&#x3D;독립변수)가 y(&#x3D;종속변수)에 영향을 주지 않는다</li>
+<li>대립가설 : x가 y에 영향을 준다</li>
+</ul>
+<ul>
+<li>1m(종속변수 ~ 독립변수, data)</li>
+</ul>
+<ul>
+<li>p.value</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RA <span class="operator">&lt;-</span> lm<span class="punctuation">(</span>data<span class="operator">=</span>mtcars<span class="punctuation">,</span> mpg<span class="operator">~</span> disp<span class="punctuation">)</span></span><br><span class="line">summary<span class="punctuation">(</span>RA<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## Call:</span><br><span class="line">## lm(formula = mpg ~ disp, data = mtcars)</span><br><span class="line">## </span><br><span class="line">## Residuals:</span><br><span class="line">##     Min      1Q  Median      3Q     Max </span><br><span class="line">## -4.8922 -2.2022 -0.9631  1.6272  7.2305 </span><br><span class="line">## </span><br><span class="line">## Coefficients:</span><br><span class="line">##              Estimate Std. Error t value Pr(&gt;|t|)    </span><br><span class="line">## (Intercept) 29.599855   1.229720  24.070  &lt; 2e-16 ***</span><br><span class="line">## disp        -0.041215   0.004712  -8.747 9.38e-10 ***</span><br><span class="line">## ---</span><br><span class="line">## Signif. codes:  0 &#x27;***&#x27; 0.001 &#x27;**&#x27; 0.01 &#x27;*&#x27; 0.05 &#x27;.&#x27; 0.1 &#x27; &#x27; 1</span><br><span class="line">## </span><br><span class="line">## Residual standard error: 3.251 on 30 degrees of freedom</span><br><span class="line">## Multiple R-squared:  0.7183,	Adjusted R-squared:  0.709 </span><br><span class="line">## F-statistic: 76.51 on 1 and 30 DF,  p-value: 9.38e-10</span><br></pre></td></tr></table></figure>
+<ul>
+<li>머신러닝, 인공지능</li>
+</ul>
+<ul>
+<li>주 목적은 예측</li>
+<li>y &#x3D; ax + b</li>
+</ul>
+<p>- </p>
+<pre><code>                  예 시
+</code></pre>
+<p>Coefficients:<br>  Estimate Std. Error t value Pr(&gt;|t|)<br>(Intercept) 29.599855   1.229720  24.070  &lt; 2e-16 ***<br>  disp        -0.041215   0.004712  -8.747 9.38e-10 ***<br>  var1                                     0.10<br>  var2                                     9.38e-10 ***<br>  var3</p>
+<p>  Residual standard error: 3.251 on 30 degrees of freedom<br>  Multiple R-squared:  0.7183,	Adjusted R-squared:  0.709<br>  F-statistic: 76.51 on 1 and 30 DF,  p-value: 9.38e-10</p>
+<p>  anova  (분산분석)<br>  식1 : y &#x3D; disp + var1 + var2 +var3<br>  식2 : y &#x3D; disp + var1 + var2<br>        y &#x3D; disp + var1</p>
+<p>Coefficients:<br>Estimate Std. Error t value Pr(&gt;|t|)<br>(Intercept) 29.599855   1.229720  24.070  &lt; 2e-16 ***<br>disp        -0.041215   0.004712  -8.747 9.38e-10 ***</p>
+<p>y(mpg) &#x3D; 29.599855 -0.041215 x disp</p>
+<p>Residual standard error: 3.251 on 30 degrees of freedom<br>Multiple R-squared:  0.7183,	Adjusted R-squared:  0.709 </p>
+<p>R-squared (결정계수) &#x3D; 설명력 &#x3D; 0 ~ 1</p>
+<ul>
+<li>1로 수렴할수록 설명력이 좋다</li>
+</ul>
+<p>특정한 결과에 영향을 주는 주 요인이 뭐냐? 이걸 찾는 것이 회귀</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://seoseonho.github.io/2022/06/24/0624/" data-id="cl4s6wgpp00007cv288ahe052" data-title="0624" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-0623--2-" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/06/23/0623--2-/" class="article-date">
@@ -974,6 +1094,10 @@
       <ul>
         
           <li>
+            <a href="/2022/06/24/0624/">0624</a>
+          </li>
+        
+          <li>
             <a href="/2022/06/23/0623--2-/">0623통계 (2)</a>
           </li>
         
@@ -987,10 +1111,6 @@
         
           <li>
             <a href="/2022/06/22/0622-2-/">0622(2)</a>
-          </li>
-        
-          <li>
-            <a href="/2022/06/21/0620~0621/">day0621..</a>
           </li>
         
       </ul>
