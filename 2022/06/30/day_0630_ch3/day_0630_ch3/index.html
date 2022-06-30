@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>0630 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="k-최근접 이웃 회귀 지도 학습 알고리즘은 크게 분류와 회귀-지도 학습 : 종속변수 존재 분류 : 도미와 빙어 분류 문제 해결 회귀 : 통계 회귀분석 y &#x3D; ax + b &#x2F; 수치 예측    데이터 불러오기12import numpy as npprint(np.__version__)  1.21.6  1234567891011121314151617">
+<meta property="og:type" content="article">
+<meta property="og:title" content="0630">
+<meta property="og:url" content="http://seoseonho.github.io/2022/06/30/day_0630_ch3/day_0630_ch3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="k-최근접 이웃 회귀 지도 학습 알고리즘은 크게 분류와 회귀-지도 학습 : 종속변수 존재 분류 : 도미와 빙어 분류 문제 해결 회귀 : 통계 회귀분석 y &#x3D; ax + b &#x2F; 수치 예측    데이터 불러오기12import numpy as npprint(np.__version__)  1.21.6  1234567891011121314151617">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://seoseonho.github.io/output_4_0.png">
+<meta property="article:published_time" content="2022-06-30T01:00:00.000Z">
+<meta property="article:modified_time" content="2022-06-30T07:59:22.783Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://seoseonho.github.io/output_4_0.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://seoseonho.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-day_0630_ch3/day_0630_ch3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/06/30/day_0630_ch3/day_0630_ch3/" class="article-date">
+  <time class="dt-published" datetime="2022-06-30T01:00:00.000Z" itemprop="datePublished">2022-06-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      0630
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="k-최근접-이웃-회귀"><a href="#k-최근접-이웃-회귀" class="headerlink" title="k-최근접 이웃 회귀"></a>k-최근접 이웃 회귀</h2><ul>
+<li>지도 학습 알고리즘은 크게 분류와 회귀<br>-지도 학습 : 종속변수 존재<ul>
+<li>분류 : 도미와 빙어 분류 문제 해결</li>
+<li>회귀 : 통계 회귀분석 y &#x3D; ax + b &#x2F; 수치 예측</li>
+</ul>
+</li>
+</ul>
+<h2 id="데이터-불러오기"><a href="#데이터-불러오기" class="headerlink" title="데이터 불러오기"></a>데이터 불러오기</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="built_in">print</span>(np.__version__)</span><br></pre></td></tr></table></figure>
+
+<pre><code>1.21.6
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">perch_length = np.array(</span><br><span class="line">    [<span class="number">8.4</span>, <span class="number">13.7</span>, <span class="number">15.0</span>, <span class="number">16.2</span>, <span class="number">17.4</span>, <span class="number">18.0</span>, <span class="number">18.7</span>, <span class="number">19.0</span>, <span class="number">19.6</span>, <span class="number">20.0</span>, </span><br><span class="line">     <span class="number">21.0</span>, <span class="number">21.0</span>, <span class="number">21.0</span>, <span class="number">21.3</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.5</span>, </span><br><span class="line">     <span class="number">22.5</span>, <span class="number">22.7</span>, <span class="number">23.0</span>, <span class="number">23.5</span>, <span class="number">24.0</span>, <span class="number">24.0</span>, <span class="number">24.6</span>, <span class="number">25.0</span>, <span class="number">25.6</span>, <span class="number">26.5</span>, </span><br><span class="line">     <span class="number">27.3</span>, <span class="number">27.5</span>, <span class="number">27.5</span>, <span class="number">27.5</span>, <span class="number">28.0</span>, <span class="number">28.7</span>, <span class="number">30.0</span>, <span class="number">32.8</span>, <span class="number">34.5</span>, <span class="number">35.0</span>, </span><br><span class="line">     <span class="number">36.5</span>, <span class="number">36.0</span>, <span class="number">37.0</span>, <span class="number">37.0</span>, <span class="number">39.0</span>, <span class="number">39.0</span>, <span class="number">39.0</span>, <span class="number">40.0</span>, <span class="number">40.0</span>, <span class="number">40.0</span>, </span><br><span class="line">     <span class="number">40.0</span>, <span class="number">42.0</span>, <span class="number">43.0</span>, <span class="number">43.0</span>, <span class="number">43.5</span>, <span class="number">44.0</span>]</span><br><span class="line">     )</span><br><span class="line">perch_weight = np.array(</span><br><span class="line">    [<span class="number">5.9</span>, <span class="number">32.0</span>, <span class="number">40.0</span>, <span class="number">51.5</span>, <span class="number">70.0</span>, <span class="number">100.0</span>, <span class="number">78.0</span>, <span class="number">80.0</span>, <span class="number">85.0</span>, <span class="number">85.0</span>, </span><br><span class="line">     <span class="number">110.0</span>, <span class="number">115.0</span>, <span class="number">125.0</span>, <span class="number">130.0</span>, <span class="number">120.0</span>, <span class="number">120.0</span>, <span class="number">130.0</span>, <span class="number">135.0</span>, <span class="number">110.0</span>, </span><br><span class="line">     <span class="number">130.0</span>, <span class="number">150.0</span>, <span class="number">145.0</span>, <span class="number">150.0</span>, <span class="number">170.0</span>, <span class="number">225.0</span>, <span class="number">145.0</span>, <span class="number">188.0</span>, <span class="number">180.0</span>, </span><br><span class="line">     <span class="number">197.0</span>, <span class="number">218.0</span>, <span class="number">300.0</span>, <span class="number">260.0</span>, <span class="number">265.0</span>, <span class="number">250.0</span>, <span class="number">250.0</span>, <span class="number">300.0</span>, <span class="number">320.0</span>, </span><br><span class="line">     <span class="number">514.0</span>, <span class="number">556.0</span>, <span class="number">840.0</span>, <span class="number">685.0</span>, <span class="number">700.0</span>, <span class="number">700.0</span>, <span class="number">690.0</span>, <span class="number">900.0</span>, <span class="number">650.0</span>, </span><br><span class="line">     <span class="number">820.0</span>, <span class="number">850.0</span>, <span class="number">900.0</span>, <span class="number">1015.0</span>, <span class="number">820.0</span>, <span class="number">1100.0</span>, <span class="number">1000.0</span>, <span class="number">1100.0</span>, </span><br><span class="line">     <span class="number">1000.0</span>, <span class="number">1000.0</span>]</span><br><span class="line">     )</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots() <span class="comment"># 객체지향의 시작</span></span><br><span class="line">ax.scatter(perch_length, perch_weight)</span><br><span class="line">ax.set_xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/output_4_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">train_input, test_input, train_target, test_target = train_test_split(</span><br><span class="line">    perch_length, perch_weight, random_state=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line">train_input.shape, test_input.shape, train_target.shape, test_target.shape</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>((42,), (14,), (42,), (14,))
+</code></pre>
+<ul>
+<li>1차원 배열.. –&gt; 2차원 배열</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">train_input = train_input.reshape(-<span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line">test_input = test_input. reshape(-<span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(train_input.shape, test_input.shape)</span><br><span class="line"><span class="built_in">print</span>(train_input.ndim)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(42, 1) (14, 1)
+2
+</code></pre>
+<h2 id="결정계수"><a href="#결정계수" class="headerlink" title="결정계수"></a>결정계수</h2><ul>
+<li>정확한 지표<ul>
+<li>100g !&#x3D;</li>
+</ul>
+</li>
+<li>0 ~ 1 사이의 지표</li>
+<li>1에 가까울수록, 예측 모형이 잘 맞춘다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsRegressor</span><br><span class="line">knr = KNeighborsRegressor()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 모형 학습</span></span><br><span class="line">knr.fit(train_input, train_target)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 테스트 세트의 점수를 확인한다.</span></span><br><span class="line"><span class="built_in">print</span>(knr.score(test_input, test_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.992809406101064
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_absolute_error</span><br><span class="line"></span><br><span class="line"><span class="comment"># 예측 데이터</span></span><br><span class="line">test_prediction = knr.predict(test_input)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 테스트 세트에 대한 평균 절댓값 오차를</span></span><br><span class="line">mae = mean_absolute_error(test_target, test_prediction)</span><br><span class="line"><span class="built_in">print</span>(mae)</span><br></pre></td></tr></table></figure>
+
+<pre><code>19.157142857142862
+</code></pre>
+<ul>
+<li>예측이 평균적으로 19g 정도 다르다.<ul>
+<li>확실한 건 오차가 존재한다.</li>
+<li>19g 정도가 의마하는 게 뭐냐?</li>
+</ul>
+<ul>
+<li>개선 : 17g</li>
+<li>개선 : 15g</li>
+<li>개선 : 0이</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(knr.score(train_input, train_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9698823289099254
+</code></pre>
+<h2 id="과대적합-vs-과소적합"><a href="#과대적합-vs-과소적합" class="headerlink" title="과대적합 vs 과소적합"></a>과대적합 vs 과소적합</h2><ul>
+<li>매우매우 힘듬</li>
+<li>과대적합 : 훈련세트 점수 좋음, 테스트 점수 (매우) 안 좋음</li>
+<li>과소적합 : 테스트 세트의 점수가 매우 좋음</li>
+<li>결론 : 제대로 모형이 훈련이 안된 겁니다.<ul>
+<li>모형 서비스에 탑재 시킬 수 없음.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;훈련 평가:&quot;</span>, knr.score(train_input, train_target))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;테스트 평가:&quot;</span>, knr.score(test_input, test_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>훈련 평가: 0.9698823289099254
+테스트 평가: 0.992809406101064
+</code></pre>
+<ul>
+<li>모형 개선</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 이웃의 개수를 3으로 재 지정</span></span><br><span class="line">knr.n_neighbors = <span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 모형 다시 훈련</span></span><br><span class="line">knr.fit(train_input, train_target)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;훈련 평가:&quot;</span>, knr.score(train_input, train_target))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;테스트 평가:&quot;</span>, knr.score(test_input, test_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>훈련 평가: 0.96164569026043
+테스트 평가: 0.9737908255822255
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://seoseonho.github.io/2022/06/30/day_0630_ch3/day_0630_ch3/" data-id="cl50qlhwz0000b0v2cnro41m8" data-title="0630" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/06/29/day29_ml/day29_ml/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">0629</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/06/30/day_0630_ch3/day_0630_ch3/">0630</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/day29_ml/day29_ml/">0629</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/day0629_pandas/">0629</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/28/day_0627/">0627</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/28/day0628/">0628</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

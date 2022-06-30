@@ -71,6 +71,131 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-day_0630_ch3/day_0630_ch3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/06/30/day_0630_ch3/day_0630_ch3/" class="article-date">
+  <time class="dt-published" datetime="2022-06-30T01:00:00.000Z" itemprop="datePublished">2022-06-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/06/30/day_0630_ch3/day_0630_ch3/">0630</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="k-최근접-이웃-회귀"><a href="#k-최근접-이웃-회귀" class="headerlink" title="k-최근접 이웃 회귀"></a>k-최근접 이웃 회귀</h2><ul>
+<li>지도 학습 알고리즘은 크게 분류와 회귀<br>-지도 학습 : 종속변수 존재<ul>
+<li>분류 : 도미와 빙어 분류 문제 해결</li>
+<li>회귀 : 통계 회귀분석 y &#x3D; ax + b &#x2F; 수치 예측</li>
+</ul>
+</li>
+</ul>
+<h2 id="데이터-불러오기"><a href="#데이터-불러오기" class="headerlink" title="데이터 불러오기"></a>데이터 불러오기</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="built_in">print</span>(np.__version__)</span><br></pre></td></tr></table></figure>
+
+<pre><code>1.21.6
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">perch_length = np.array(</span><br><span class="line">    [<span class="number">8.4</span>, <span class="number">13.7</span>, <span class="number">15.0</span>, <span class="number">16.2</span>, <span class="number">17.4</span>, <span class="number">18.0</span>, <span class="number">18.7</span>, <span class="number">19.0</span>, <span class="number">19.6</span>, <span class="number">20.0</span>, </span><br><span class="line">     <span class="number">21.0</span>, <span class="number">21.0</span>, <span class="number">21.0</span>, <span class="number">21.3</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.5</span>, </span><br><span class="line">     <span class="number">22.5</span>, <span class="number">22.7</span>, <span class="number">23.0</span>, <span class="number">23.5</span>, <span class="number">24.0</span>, <span class="number">24.0</span>, <span class="number">24.6</span>, <span class="number">25.0</span>, <span class="number">25.6</span>, <span class="number">26.5</span>, </span><br><span class="line">     <span class="number">27.3</span>, <span class="number">27.5</span>, <span class="number">27.5</span>, <span class="number">27.5</span>, <span class="number">28.0</span>, <span class="number">28.7</span>, <span class="number">30.0</span>, <span class="number">32.8</span>, <span class="number">34.5</span>, <span class="number">35.0</span>, </span><br><span class="line">     <span class="number">36.5</span>, <span class="number">36.0</span>, <span class="number">37.0</span>, <span class="number">37.0</span>, <span class="number">39.0</span>, <span class="number">39.0</span>, <span class="number">39.0</span>, <span class="number">40.0</span>, <span class="number">40.0</span>, <span class="number">40.0</span>, </span><br><span class="line">     <span class="number">40.0</span>, <span class="number">42.0</span>, <span class="number">43.0</span>, <span class="number">43.0</span>, <span class="number">43.5</span>, <span class="number">44.0</span>]</span><br><span class="line">     )</span><br><span class="line">perch_weight = np.array(</span><br><span class="line">    [<span class="number">5.9</span>, <span class="number">32.0</span>, <span class="number">40.0</span>, <span class="number">51.5</span>, <span class="number">70.0</span>, <span class="number">100.0</span>, <span class="number">78.0</span>, <span class="number">80.0</span>, <span class="number">85.0</span>, <span class="number">85.0</span>, </span><br><span class="line">     <span class="number">110.0</span>, <span class="number">115.0</span>, <span class="number">125.0</span>, <span class="number">130.0</span>, <span class="number">120.0</span>, <span class="number">120.0</span>, <span class="number">130.0</span>, <span class="number">135.0</span>, <span class="number">110.0</span>, </span><br><span class="line">     <span class="number">130.0</span>, <span class="number">150.0</span>, <span class="number">145.0</span>, <span class="number">150.0</span>, <span class="number">170.0</span>, <span class="number">225.0</span>, <span class="number">145.0</span>, <span class="number">188.0</span>, <span class="number">180.0</span>, </span><br><span class="line">     <span class="number">197.0</span>, <span class="number">218.0</span>, <span class="number">300.0</span>, <span class="number">260.0</span>, <span class="number">265.0</span>, <span class="number">250.0</span>, <span class="number">250.0</span>, <span class="number">300.0</span>, <span class="number">320.0</span>, </span><br><span class="line">     <span class="number">514.0</span>, <span class="number">556.0</span>, <span class="number">840.0</span>, <span class="number">685.0</span>, <span class="number">700.0</span>, <span class="number">700.0</span>, <span class="number">690.0</span>, <span class="number">900.0</span>, <span class="number">650.0</span>, </span><br><span class="line">     <span class="number">820.0</span>, <span class="number">850.0</span>, <span class="number">900.0</span>, <span class="number">1015.0</span>, <span class="number">820.0</span>, <span class="number">1100.0</span>, <span class="number">1000.0</span>, <span class="number">1100.0</span>, </span><br><span class="line">     <span class="number">1000.0</span>, <span class="number">1000.0</span>]</span><br><span class="line">     )</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots() <span class="comment"># 객체지향의 시작</span></span><br><span class="line">ax.scatter(perch_length, perch_weight)</span><br><span class="line">ax.set_xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/output_4_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">train_input, test_input, train_target, test_target = train_test_split(</span><br><span class="line">    perch_length, perch_weight, random_state=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line">train_input.shape, test_input.shape, train_target.shape, test_target.shape</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>((42,), (14,), (42,), (14,))
+</code></pre>
+<ul>
+<li>1차원 배열.. –&gt; 2차원 배열</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">train_input = train_input.reshape(-<span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line">test_input = test_input. reshape(-<span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(train_input.shape, test_input.shape)</span><br><span class="line"><span class="built_in">print</span>(train_input.ndim)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(42, 1) (14, 1)
+2
+</code></pre>
+<h2 id="결정계수"><a href="#결정계수" class="headerlink" title="결정계수"></a>결정계수</h2><ul>
+<li>정확한 지표<ul>
+<li>100g !&#x3D;</li>
+</ul>
+</li>
+<li>0 ~ 1 사이의 지표</li>
+<li>1에 가까울수록, 예측 모형이 잘 맞춘다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsRegressor</span><br><span class="line">knr = KNeighborsRegressor()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 모형 학습</span></span><br><span class="line">knr.fit(train_input, train_target)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 테스트 세트의 점수를 확인한다.</span></span><br><span class="line"><span class="built_in">print</span>(knr.score(test_input, test_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.992809406101064
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_absolute_error</span><br><span class="line"></span><br><span class="line"><span class="comment"># 예측 데이터</span></span><br><span class="line">test_prediction = knr.predict(test_input)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 테스트 세트에 대한 평균 절댓값 오차를</span></span><br><span class="line">mae = mean_absolute_error(test_target, test_prediction)</span><br><span class="line"><span class="built_in">print</span>(mae)</span><br></pre></td></tr></table></figure>
+
+<pre><code>19.157142857142862
+</code></pre>
+<ul>
+<li>예측이 평균적으로 19g 정도 다르다.<ul>
+<li>확실한 건 오차가 존재한다.</li>
+<li>19g 정도가 의마하는 게 뭐냐?</li>
+</ul>
+<ul>
+<li>개선 : 17g</li>
+<li>개선 : 15g</li>
+<li>개선 : 0이</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(knr.score(train_input, train_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9698823289099254
+</code></pre>
+<h2 id="과대적합-vs-과소적합"><a href="#과대적합-vs-과소적합" class="headerlink" title="과대적합 vs 과소적합"></a>과대적합 vs 과소적합</h2><ul>
+<li>매우매우 힘듬</li>
+<li>과대적합 : 훈련세트 점수 좋음, 테스트 점수 (매우) 안 좋음</li>
+<li>과소적합 : 테스트 세트의 점수가 매우 좋음</li>
+<li>결론 : 제대로 모형이 훈련이 안된 겁니다.<ul>
+<li>모형 서비스에 탑재 시킬 수 없음.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;훈련 평가:&quot;</span>, knr.score(train_input, train_target))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;테스트 평가:&quot;</span>, knr.score(test_input, test_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>훈련 평가: 0.9698823289099254
+테스트 평가: 0.992809406101064
+</code></pre>
+<ul>
+<li>모형 개선</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 이웃의 개수를 3으로 재 지정</span></span><br><span class="line">knr.n_neighbors = <span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 모형 다시 훈련</span></span><br><span class="line">knr.fit(train_input, train_target)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;훈련 평가:&quot;</span>, knr.score(train_input, train_target))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;테스트 평가:&quot;</span>, knr.score(test_input, test_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>훈련 평가: 0.96164569026043
+테스트 평가: 0.9737908255822255
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://seoseonho.github.io/2022/06/30/day_0630_ch3/day_0630_ch3/" data-id="cl50qlhwz0000b0v2cnro41m8" data-title="0630" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-day29_ml/day29_ml" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/06/29/day29_ml/day29_ml/" class="article-date">
@@ -3558,210 +3683,6 @@ memory usage: 1.9+ KB
 
 
   
-    <article id="post-0620~0621" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/06/21/0620~0621/" class="article-date">
-  <time class="dt-published" datetime="2022-06-21T00:00:00.000Z" itemprop="datePublished">2022-06-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/06/21/0620~0621/">day0621..</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="벡터"><a href="#벡터" class="headerlink" title="벡터"></a>벡터</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">num_vector <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span> <span class="number">2</span><span class="punctuation">,</span> <span class="number">3</span><span class="punctuation">)</span></span><br><span class="line">num_vector2 <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">5</span><span class="punctuation">,</span> <span class="number">6</span><span class="punctuation">,</span> <span class="number">7</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">num_vector<span class="punctuation">[</span><span class="number">1</span><span class="punctuation">]</span> <span class="operator">+</span> num_vector2<span class="punctuation">[</span><span class="number">3</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 8</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="3장-37페이지"><a href="#3장-37페이지" class="headerlink" title="3장 37페이지"></a>3장 37페이지</h2><ul>
-<li>R은 워누러<br>변수 숫자</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a <span class="operator">&lt;-</span> 1</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 1</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a <span class="operator">&lt;-</span> 2</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 2</span><br></pre></td></tr></table></figure>
-<h1 id="문자열-벡터"><a href="#문자열-벡터" class="headerlink" title="문자열 벡터"></a>문자열 벡터</h1><ul>
-<li>문자 넣을 때는 큰 따음표(“”) 넣고 입력</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">char_vactor <span class="operator">&lt;-</span> <span class="built_in">c</span> <span class="punctuation">(</span><span class="string">&quot;hi&quot;</span><span class="punctuation">,</span> <span class="string">&quot;hello&quot;</span><span class="punctuation">)</span></span><br><span class="line">char_vactor</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;hi&quot;    &quot;hello&quot;</span><br></pre></td></tr></table></figure>
-
-
-<p>char_verctor[2] # 숫자 1, 2 인덱스<br>class(char_vector) # 벡터의 유형을 알 수 있다.</p>
-<h1 id="남이-만든-함수를-쓰려면-입력-조건-45페이지"><a href="#남이-만든-함수를-쓰려면-입력-조건-45페이지" class="headerlink" title="남이 만든 함수를 쓰려면 , 입력 조건 45페이지"></a>남이 만든 함수를 쓰려면 , 입력 조건 45페이지</h1><h1 id=""><a href="#" class="headerlink" title=""></a></h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span> <span class="number">2</span><span class="punctuation">,</span> <span class="string">&quot;hello&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>a<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;character&quot;</span><br></pre></td></tr></table></figure>
-
-
-
-
-<p>b &lt;- c(true, false, “true”)<br>class(b)</p>
-<p>c &lt;- c</p>
-<h2 id="범주형-벡터"><a href="#범주형-벡터" class="headerlink" title="범주형 벡터"></a>범주형 벡터</h2><h1 id="명목형-자료형-Factor"><a href="#명목형-자료형-Factor" class="headerlink" title="명목형 자료형 Factor"></a>명목형 자료형 Factor</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">locaiton_vector <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;서울&quot;</span><span class="punctuation">,</span> <span class="string">&quot;인천&quot;</span><span class="punctuation">,</span> <span class="string">&quot;부산&quot;</span><span class="punctuation">)</span></span><br><span class="line">factor_location_vector <span class="operator">&lt;-</span> factor<span class="punctuation">(</span>locaiton_vector<span class="punctuation">)</span></span><br><span class="line">factor_location_vector</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## [1] 서울 인천 부산</span><br><span class="line">## Levels: 부산 서울 인천</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>factor_location_vector<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;factor&quot;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">help<span class="punctuation">(</span>factor<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## httpd 도움말 서버를 시작합니다 ... 완료</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="순서형-자료형-Factor"><a href="#순서형-자료형-Factor" class="headerlink" title="순서형 자료형 Factor"></a>순서형 자료형 Factor</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">temperature_factor <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;기온높음&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                        <span class="string">&quot;기온보통&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                        <span class="string">&quot;기온낮음&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                        <span class="string">&quot;기온높음&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                        <span class="string">&quot;기온보통&quot;</span><span class="punctuation">,</span> </span><br><span class="line">                        <span class="string">&quot;기온보통&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>temperature_factor</p>
-<p>factor_temperature_factor &lt;- factor(temperature_factor,<br>                                    ordered &#x3D; TRUE,<br>                                    levels  &#x3D; c(“기온보통”,<br>                                                “기온낮음”,<br>                                                “기온높음”))</p>
-<p>factor_temperature_factor<br>class(factor_temperature_factor)<br>class(factor_location_vector)</p>
-<h2 id="데이터-프레임"><a href="#데이터-프레임" class="headerlink" title="데이터 프레임"></a>데이터 프레임</h2><h1 id="액셀-데이터"><a href="#액셀-데이터" class="headerlink" title="- 액셀 데이터"></a>- 액셀 데이터</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">no <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">1</span><span class="punctuation">,</span> <span class="number">2</span><span class="punctuation">,</span> <span class="number">3</span><span class="punctuation">,</span> <span class="number">4</span><span class="punctuation">,</span> <span class="number">5</span><span class="punctuation">)</span></span><br><span class="line">sex <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;male&quot;</span><span class="punctuation">,</span><span class="string">&quot;female&quot;</span><span class="punctuation">,</span> <span class="string">&quot;male&quot;</span><span class="punctuation">,</span> <span class="string">&quot;male&quot;</span><span class="punctuation">,</span> <span class="string">&quot;female&quot;</span><span class="punctuation">)</span></span><br><span class="line">korean <span class="operator">=</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">87</span><span class="punctuation">,</span> <span class="number">92</span><span class="punctuation">,</span> <span class="number">95</span><span class="punctuation">,</span> <span class="number">81</span><span class="punctuation">,</span> <span class="number">87</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>exam &#x3D; data.frame(no, sex, korean)<br>exam</p>
-<p>exam$no[1]<br>exam$sex[1]<br>exam$korean[1]</p>
-<h1 id="데이터-타입"><a href="#데이터-타입" class="headerlink" title="데이터 타입"></a>데이터 타입</h1><p>class(exam$sex)</p>
-<p>exam$no<br>class(exam$no)</p>
-<p>class(exam$korean)</p>
-<p>str(exam)</p>
-<h1 id="데이터-내보내기-amp-불러오기"><a href="#데이터-내보내기-amp-불러오기" class="headerlink" title="데이터 내보내기 &amp; 불러오기"></a>데이터 내보내기 &amp; 불러오기</h1><h1 id="경로"><a href="#경로" class="headerlink" title="경로"></a>경로</h1><p>getwd()&lt;-현재경로 보기</p>
-<p>write.csv(x &#x3D; exam, file &#x3D; “temp.csv”)</p>
-<p>?write.csv</p>
-<p>#데이터 불러오기</p>
-<p>temp &#x3D; read.csv(“dataset&#x2F;temp.csv”)</p>
-<h1 id="p-51"><a href="#p-51" class="headerlink" title="p.51"></a>p.51</h1><h1 id="R에서-예제파일-exam-csv를-객체-exam으로-입력"><a href="#R에서-예제파일-exam-csv를-객체-exam으로-입력" class="headerlink" title="R에서 예제파일 exam.csv를 객체 exam으로 입력"></a>R에서 예제파일 exam.csv를 객체 exam으로 입력</h1><p>해서 설명함.</p>
-<p>temp &#x3D; read.csv(“data&#x2F;temp.csv”)</p>
-<p>getwd()</p>
-<p>getwd() # 현재 경로를 표시해주는 함수</p>
-<p>exam &#x3D; read.csv(“exam.csv”)&#96;</p>
-<p>install.packages(“ggplot2”)</p>
-<p>library(ggplot2)<br>economics &lt;- ggplot2::economics</p>
-<h1 id="여기서-잠깐-p-66"><a href="#여기서-잠깐-p-66" class="headerlink" title="여기서 잠깐 (p.66)"></a>여기서 잠깐 (p.66)</h1><p>#실무 패키지</p>
-<p>install.packages(“data.table”)<br>library(data.table)<br>fread(“Student.csv”)</p>
-<h1 id="공식문서-확인"><a href="#공식문서-확인" class="headerlink" title="공식문서 확인"></a>공식문서 확인</h1><h1 id="엑셀-파일-불러오기"><a href="#엑셀-파일-불러오기" class="headerlink" title="엑셀 파일 불러오기"></a>엑셀 파일 불러오기</h1><p>install.packages(“readxl”)<br>library(readxl)<br>read_excel(“Student_xl.xlsx”)</p>
-<h1 id="p-68-설명"><a href="#p-68-설명" class="headerlink" title="p.68 설명"></a>p.68 설명</h1><p>read.csv(“student1.csv”)<br>read.csv(“student1.csv”, skip &#x3D; 1)</p>
-<h1 id="엑셀-파일에-있는-복수의-시트에서-특정-시트-불러오기"><a href="#엑셀-파일에-있는-복수의-시트에서-특정-시트-불러오기" class="headerlink" title="엑셀 파일에 있는 복수의 시트에서 특정 시트 불러오기"></a>엑셀 파일에 있는 복수의 시트에서 특정 시트 불러오기</h1><p>read_excel(“student1_xl.xlsx”, sheet &#x3D; 2)</p>
-<p>#p .69 txt 파일 불러오기<br>#p .73 spss 파일 불러오기</p>
-<p>install.packages(“foreign”)<br>library(foreign)<br>student &lt;- read.spss(“student.sav”)<br>class(student)<br>as.data.frame(student)  #형변환</p>
-<h1 id="5-6교시"><a href="#5-6교시" class="headerlink" title="5, 6교시"></a>5, 6교시</h1><h1 id="데이터-불러오기"><a href="#데이터-불러오기" class="headerlink" title="데이터 불러오기"></a>데이터 불러오기</h1><h1 id="경로를-잘-잡는-것이-매우중요"><a href="#경로를-잘-잡는-것이-매우중요" class="headerlink" title="경로를 잘 잡는 것이 매우중요"></a>경로를 잘 잡는 것이 매우중요</h1><h1 id="데이터-불러오기-1"><a href="#데이터-불러오기-1" class="headerlink" title="데이터 불러오기"></a>데이터 불러오기</h1><h1 id="경로-설정이-매우-중요"><a href="#경로-설정이-매우-중요" class="headerlink" title="경로 설정이 매우 중요"></a>경로 설정이 매우 중요</h1><p>#setwd(“c:&#x2F;“)<br>#csv 파일 &#x2F; 엑셀파일</p>
-<h1 id="p-91페이지-mpg1-csv-파일-불러오기"><a href="#p-91페이지-mpg1-csv-파일-불러오기" class="headerlink" title="p.91페이지 mpg1.csv 파일 불러오기"></a>p.91페이지 mpg1.csv 파일 불러오기</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">&lt;-</span> read.csv<span class="punctuation">(</span><span class="string">&quot;mpg1.csv&quot;</span><span class="punctuation">,</span> stringsAsFactors <span class="operator">=</span> <span class="built_in">F</span><span class="punctuation">)</span></span><br><span class="line">str<span class="punctuation">(</span>mpg1<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">## &#x27;data.frame&#x27;:	234 obs. of  5 variables:</span><br><span class="line">##  $ manufacturer: chr  &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; ...</span><br><span class="line">##  $ trans       : chr  &quot;auto&quot; &quot;manual&quot; &quot;manual&quot; &quot;auto&quot; ...</span><br><span class="line">##  $ drv         : chr  &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; ...</span><br><span class="line">##  $ cty         : int  18 21 20 21 16 18 18 18 16 20 ...</span><br><span class="line">##  $ hwy         : int  29 29 31 30 26 26 27 26 25 28 ...</span><br></pre></td></tr></table></figure>
-
-<h1 id="평-균"><a href="#평-균" class="headerlink" title="평 균"></a>평 균</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mean<span class="punctuation">(</span>mtcars<span class="operator">$</span>mpg<span class="punctuation">)</span> <span class="comment">#평균</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 20.09062</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var<span class="punctuation">(</span>mtcars<span class="operator">$</span>mpg<span class="punctuation">)</span> <span class="comment"># 분산</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 36.3241</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sd<span class="punctuation">(</span>mtcars<span class="operator">$</span>mpg<span class="punctuation">)</span> <span class="comment"># 표준편차</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 6.026948</span><br></pre></td></tr></table></figure>
-
-<h1 id="수리통계-–-gt-증명"><a href="#수리통계-–-gt-증명" class="headerlink" title="수리통계 –&gt; 증명"></a>수리통계 –&gt; 증명</h1><h1 id="일반인-x2F-비전공자-–-gt-활용-x2F-의미"><a href="#일반인-x2F-비전공자-–-gt-활용-x2F-의미" class="headerlink" title="일반인 &#x2F; 비전공자 –&gt; 활용 &#x2F; 의미"></a>일반인 &#x2F; 비전공자 –&gt; 활용 &#x2F; 의미</h1><p>sd(mtcars$mpg) # 6.026948</p>
-<h1 id="사분위수-p-88"><a href="#사분위수-p-88" class="headerlink" title="사분위수 p.88"></a>사분위수 p.88</h1><h1 id="전체-수를-4등분한-수"><a href="#전체-수를-4등분한-수" class="headerlink" title="전체 수를 4등분한 수"></a>전체 수를 4등분한 수</h1><h1 id="IQR-1사분위수와-3사분위수-사이의-거리"><a href="#IQR-1사분위수와-3사분위수-사이의-거리" class="headerlink" title="IQR : 1사분위수와 3사분위수 사이의 거리"></a>IQR : 1사분위수와 3사분위수 사이의 거리</h1><h1 id="소득분위"><a href="#소득분위" class="headerlink" title="소득분위"></a>소득분위</h1><h1 id="통계분석-x2F-머신러닝-—-gt-이상치-제거-할-때-활용"><a href="#통계분석-x2F-머신러닝-—-gt-이상치-제거-할-때-활용" class="headerlink" title="통계분석 &#x2F; 머신러닝  —&gt; 이상치 제거 할 때 활용"></a>통계분석 &#x2F; 머신러닝  —&gt; 이상치 제거 할 때 활용</h1><p>quantile()</p>
-<h1 id="통계-요약-구하기"><a href="#통계-요약-구하기" class="headerlink" title="통계 요약 구하기"></a>통계 요약 구하기</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">summary<span class="punctuation">(</span>iris<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">##   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   </span><br><span class="line">##  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  </span><br><span class="line">##  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  </span><br><span class="line">##  Median :5.800   Median :3.000   Median :4.350   Median :1.300  </span><br><span class="line">##  Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  </span><br><span class="line">##  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  </span><br><span class="line">##  Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  </span><br><span class="line">##        Species  </span><br><span class="line">##  setosa    :50  </span><br><span class="line">##  versicolor:50  </span><br><span class="line">##  virginica :50  </span><br><span class="line">##                 </span><br><span class="line">##                 </span><br><span class="line">## </span><br></pre></td></tr></table></figure>
-
-<h1 id="중간값-100명-50번째-키순에-해당하는-값"><a href="#중간값-100명-50번째-키순에-해당하는-값" class="headerlink" title="중간값 : 100명, 50번째 키순에 해당하는 값"></a>중간값 : 100명, 50번째 키순에 해당하는 값</h1><h1 id="평균-전체-키의-합-x2F-100"><a href="#평균-전체-키의-합-x2F-100" class="headerlink" title="평균   : 전체 키의 합 &#x2F; 100"></a>평균   : 전체 키의 합 &#x2F; 100</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">summary<span class="punctuation">(</span>iris<span class="operator">$</span>Sepal.Length<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span><br><span class="line">##   4.300   5.100   5.800   5.843   6.400   7.900</span><br></pre></td></tr></table></figure>
-
-<h1 id="빈도-분석-p-91"><a href="#빈도-분석-p-91" class="headerlink" title="빈도 분석 p.91"></a>빈도 분석 p.91</h1><h1 id="범주별-빈도-–-gt-문자"><a href="#범주별-빈도-–-gt-문자" class="headerlink" title="범주별  빈도 –&gt; 문자"></a>범주별  빈도 –&gt; 문자</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str<span class="punctuation">(</span>mpg1<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">## &#x27;data.frame&#x27;:	234 obs. of  5 variables:</span><br><span class="line">##  $ manufacturer: chr  &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; ...</span><br><span class="line">##  $ trans       : chr  &quot;auto&quot; &quot;manual&quot; &quot;manual&quot; &quot;auto&quot; ...</span><br><span class="line">##  $ drv         : chr  &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; ...</span><br><span class="line">##  $ cty         : int  18 21 20 21 16 18 18 18 16 20 ...</span><br><span class="line">##  $ hwy         : int  29 29 31 30 26 26 27 26 25 28 ...</span><br></pre></td></tr></table></figure>
-
-<h1 id="-1"><a href="#-1" class="headerlink" title=""></a></h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">table<span class="punctuation">(</span>mpg1<span class="operator">$</span>trans<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">##   auto manual </span><br><span class="line">##    157     77</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">table<span class="punctuation">(</span>mpg1<span class="operator">$</span>manufacturer<span class="punctuation">)</span> </span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">##       audi  chevrolet      dodge       ford      honda    hyundai       jeep </span><br><span class="line">##         18         19         37         25          9         14          8 </span><br><span class="line">## land rover    lincoln    mercury     nissan    pontiac     subaru     toyota </span><br><span class="line">##          4          3          4         13          5         14         34 </span><br><span class="line">## volkswagen </span><br><span class="line">##         27</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">table<span class="punctuation">(</span>mpg1<span class="operator">$</span>trans<span class="punctuation">,</span> mpg1<span class="operator">$</span>manufacturer<span class="punctuation">)</span> </span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">##         </span><br><span class="line">##          audi chevrolet dodge ford honda hyundai jeep land rover lincoln</span><br><span class="line">##   auto     11        16    30   17     4       7    8          4       3</span><br><span class="line">##   manual    7         3     7    8     5       7    0          0       0</span><br><span class="line">##         </span><br><span class="line">##          mercury nissan pontiac subaru toyota volkswagen</span><br><span class="line">##   auto         4      8       5      7     20         13</span><br><span class="line">##   manual       0      5       0      7     14         14</span><br></pre></td></tr></table></figure>
-
-<h1 id="빈도의-비율-구하기-p-92"><a href="#빈도의-비율-구하기-p-92" class="headerlink" title="빈도의 비율 구하기 p.92"></a>빈도의 비율 구하기 p.92</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a <span class="operator">&lt;-</span> table<span class="punctuation">(</span>mpg1<span class="operator">$</span>trans<span class="punctuation">)</span></span><br><span class="line">prop.table<span class="punctuation">(</span>a<span class="punctuation">)</span> </span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">##      auto    manual </span><br><span class="line">## 0.6709402 0.3290598</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b <span class="operator">&lt;-</span>table<span class="punctuation">(</span>mpg1<span class="operator">$</span>trans<span class="punctuation">,</span> mpg1<span class="operator">$</span>drv<span class="punctuation">)</span></span><br><span class="line">prop.table<span class="punctuation">(</span>b<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">##         </span><br><span class="line">##                   4          f          r</span><br><span class="line">##   auto   0.32051282 0.27777778 0.07264957</span><br><span class="line">##   manual 0.11965812 0.17521368 0.03418803</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prop.table<span class="punctuation">(</span>table<span class="punctuation">(</span>mpg1<span class="operator">$</span>manufacturer<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">##       audi  chevrolet      dodge       ford      honda    hyundai       jeep </span><br><span class="line">## 0.07692308 0.08119658 0.15811966 0.10683761 0.03846154 0.05982906 0.03418803 </span><br><span class="line">## land rover    lincoln    mercury     nissan    pontiac     subaru     toyota </span><br><span class="line">## 0.01709402 0.01282051 0.01709402 0.05555556 0.02136752 0.05982906 0.14529915 </span><br><span class="line">## volkswagen </span><br><span class="line">## 0.11538462</span><br></pre></td></tr></table></figure>
-
-<h1 id="행과-열의-비율-형식-맞추기-p-93"><a href="#행과-열의-비율-형식-맞추기-p-93" class="headerlink" title="행과 열의 비율 형식 맞추기 p.93"></a>행과 열의 비율 형식 맞추기 p.93</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">?</span>prop.table</span><br><span class="line"></span><br><span class="line">prop.table<span class="punctuation">(</span>b<span class="punctuation">,</span> margin <span class="operator">=</span> <span class="number">1</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">##         </span><br><span class="line">##                  4         f         r</span><br><span class="line">##   auto   0.4777070 0.4140127 0.1082803</span><br><span class="line">##   manual 0.3636364 0.5324675 0.1038961</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prop.table<span class="punctuation">(</span>b<span class="punctuation">,</span> margin <span class="operator">=</span> <span class="number">2</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">##         </span><br><span class="line">##                  4         f         r</span><br><span class="line">##   auto   0.7281553 0.6132075 0.6800000</span><br><span class="line">##   manual 0.2718447 0.3867925 0.3200000</span><br></pre></td></tr></table></figure>
-
-<h1 id="소숫점-아래-자리-지정-p-95"><a href="#소숫점-아래-자리-지정-p-95" class="headerlink" title="소숫점 아래 자리 지정 p.95"></a>소숫점 아래 자리 지정 p.95</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">round</span><span class="punctuation">(</span><span class="number">0.32523141</span><span class="punctuation">,</span> <span class="number">4</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] 0.3252</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a <span class="operator">=</span> table<span class="punctuation">(</span>mpg1<span class="operator">$</span>trans<span class="punctuation">)</span></span><br><span class="line">b <span class="operator">=</span> prop.table<span class="punctuation">(</span>a<span class="punctuation">)</span></span><br><span class="line">b</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">##      auto    manual </span><br><span class="line">## 0.6709402 0.3290598</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">round</span><span class="punctuation">(</span>b<span class="punctuation">,</span> <span class="number">2</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">##   auto manual </span><br><span class="line">##   0.67   0.33</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">round</span><span class="punctuation">(</span>prop.table<span class="punctuation">(</span>table<span class="punctuation">(</span>mpg1<span class="operator">$</span>trans<span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">,</span> <span class="number">2</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">##   auto manual </span><br><span class="line">##   0.67   0.33</span><br></pre></td></tr></table></figure>
-
-<h1 id="시각화-이미지"><a href="#시각화-이미지" class="headerlink" title="시각화 이미지"></a>시각화 이미지</h1><h1 id="ggp1ot2-패키지-활용"><a href="#ggp1ot2-패키지-활용" class="headerlink" title="ggp1ot2 패키지 활용"></a>ggp1ot2 패키지 활용</h1><h1 id="gt-패키지-활용-–-gt-고급-과정"><a href="#gt-패키지-활용-–-gt-고급-과정" class="headerlink" title="gt 패키지 활용 –&gt; 고급 과정"></a>gt 패키지 활용 –&gt; 고급 과정</h1>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://seoseonho.github.io/2022/06/21/0620~0621/" data-id="cl4nw1rjq0000mgv23awx9dbf" data-title="day0621.." class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -3798,6 +3719,10 @@ memory usage: 1.9+ KB
       <ul>
         
           <li>
+            <a href="/2022/06/30/day_0630_ch3/day_0630_ch3/">0630</a>
+          </li>
+        
+          <li>
             <a href="/2022/06/29/day29_ml/day29_ml/">0629</a>
           </li>
         
@@ -3811,10 +3736,6 @@ memory usage: 1.9+ KB
         
           <li>
             <a href="/2022/06/28/day0628/">0628</a>
-          </li>
-        
-          <li>
-            <a href="/2022/06/24/0624/">0624</a>
           </li>
         
       </ul>
