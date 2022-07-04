@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>0701 ch04 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="로지스틱 회귀 선형 회귀에서 출발 이진 분류 문제 해결 클래스 확률 예측 딥러닝에서도 사용됨  교재 177 X가 사각형일 확률 30% X가 삼각형일 확률 50% X가 원일 확률 20%  데이터 불러오기 Species (종속변수&#x3D;Y) 독립변수 : Weight, Length, Diagonal, Height, Width  1234import pandas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="0701 ch04">
+<meta property="og:url" content="http://seoseonho.github.io/2022/07/01/day0701_ch04/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="로지스틱 회귀 선형 회귀에서 출발 이진 분류 문제 해결 클래스 확률 예측 딥러닝에서도 사용됨  교재 177 X가 사각형일 확률 30% X가 삼각형일 확률 50% X가 원일 확률 20%  데이터 불러오기 Species (종속변수&#x3D;Y) 독립변수 : Weight, Length, Diagonal, Height, Width  1234import pandas">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-07-01T01:00:00.000Z">
+<meta property="article:modified_time" content="2022-07-04T08:02:47.533Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://seoseonho.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-day0701_ch04" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/07/01/day0701_ch04/" class="article-date">
+  <time class="dt-published" datetime="2022-07-01T01:00:00.000Z" itemprop="datePublished">2022-07-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      0701 ch04
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="로지스틱-회귀"><a href="#로지스틱-회귀" class="headerlink" title="로지스틱 회귀"></a>로지스틱 회귀</h2><ul>
+<li>선형 회귀에서 출발</li>
+<li>이진 분류 문제 해결</li>
+<li>클래스 확률 예측</li>
+<li>딥러닝에서도 사용됨</li>
+</ul>
+<h2 id="교재-177"><a href="#교재-177" class="headerlink" title="교재 177"></a>교재 177</h2><ul>
+<li>X가 사각형일 확률 30%</li>
+<li>X가 삼각형일 확률 50%</li>
+<li>X가 원일 확률 20%</li>
+</ul>
+<h2 id="데이터-불러오기"><a href="#데이터-불러오기" class="headerlink" title="데이터 불러오기"></a>데이터 불러오기</h2><ul>
+<li>Species (종속변수&#x3D;Y)</li>
+<li>독립변수 : Weight, Length, Diagonal, Height, Width</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">fish = pd.read_csv(<span class="string">&#x27;https://bit.ly/fish_csv_data&#x27;</span>)</span><br><span class="line">fish.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+  <div id="df-39eafab1-354e-4cb1-8c48-b145e555a2a3">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Species</th>
+      <th>Weight</th>
+      <th>Length</th>
+      <th>Diagonal</th>
+      <th>Height</th>
+      <th>Width</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bream</td>
+      <td>242.0</td>
+      <td>25.4</td>
+      <td>30.0</td>
+      <td>11.5200</td>
+      <td>4.0200</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Bream</td>
+      <td>290.0</td>
+      <td>26.3</td>
+      <td>31.2</td>
+      <td>12.4800</td>
+      <td>4.3056</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Bream</td>
+      <td>340.0</td>
+      <td>26.5</td>
+      <td>31.1</td>
+      <td>12.3778</td>
+      <td>4.6961</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Bream</td>
+      <td>363.0</td>
+      <td>29.0</td>
+      <td>33.5</td>
+      <td>12.7300</td>
+      <td>4.4555</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Bream</td>
+      <td>430.0</td>
+      <td>29.0</td>
+      <td>34.0</td>
+      <td>12.4440</td>
+      <td>5.1340</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-39eafab1-354e-4cb1-8c48-b145e555a2a3')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+<p>  &lt;svg xmlns&#x3D;”<a target="_blank" rel="noopener" href="http://www.w3.org/2000/svg&quot;">http://www.w3.org/2000/svg&quot;</a> height&#x3D;”24px”viewBox&#x3D;”0 0 24 24”<br>       width&#x3D;”24px”&gt;<br>    <path d="M0 0h24v24H0V0z" fill="none"/><br>    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/><br>  </svg><br>      </button></p>
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+<pre><code>  &lt;script&gt;
+    const buttonEl =
+      document.querySelector(&#39;#df-39eafab1-354e-4cb1-8c48-b145e555a2a3 button.colab-df-convert&#39;);
+    buttonEl.style.display =
+      google.colab.kernel.accessAllowed ? &#39;block&#39; : &#39;none&#39;;
+
+    async function convertToInteractive(key) &#123;
+      const element = document.querySelector(&#39;#df-39eafab1-354e-4cb1-8c48-b145e555a2a3&#39;);
+      const dataTable =
+        await google.colab.kernel.invokeFunction(&#39;convertToInteractive&#39;,
+                                                 [key], &#123;&#125;);
+      if (!dataTable) return;
+
+      const docLinkHtml = &#39;Like what you see? Visit the &#39; +
+        &#39;&lt;a target=&quot;_blank&quot; href=https://colab.research.google.com/notebooks/data_table.ipynb&gt;data table notebook&lt;/a&gt;&#39;
+        + &#39; to learn more about interactive tables.&#39;;
+      element.innerHTML = &#39;&#39;;
+      dataTable[&#39;output_type&#39;] = &#39;display_data&#39;;
+      await google.colab.output.renderOutput(dataTable, element);
+      const docLink = document.createElement(&#39;div&#39;);
+      docLink.innerHTML = docLinkHtml;
+      element.appendChild(docLink);
+    &#125;
+  &lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+
+
+
+
+<h2 id="데이터-탐색"><a href="#데이터-탐색" class="headerlink" title="데이터 탐색"></a>데이터 탐색</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 종속변수</span></span><br><span class="line"><span class="built_in">print</span>(pd.unique(fish[<span class="string">&#x27;Species&#x27;</span>]))</span><br><span class="line"><span class="built_in">print</span>(fish[<span class="string">&#x27;Species&#x27;</span>].value_counts())</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&#39;Bream&#39; &#39;Roach&#39; &#39;Whitefish&#39; &#39;Parkki&#39; &#39;Perch&#39; &#39;Pike&#39; &#39;Smelt&#39;]
+Perch        56
+Bream        35
+Roach        20
+Pike         17
+Smelt        14
+Parkki       11
+Whitefish     6
+Name: Species, dtype: int64
+</code></pre>
+<h2 id="데이터-가공"><a href="#데이터-가공" class="headerlink" title="데이터 가공"></a>데이터 가공</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pandas 데이터 프레임에서 numpy 배열로 변환</span></span><br><span class="line">fish_input = fish[[<span class="string">&#x27;Weight&#x27;</span>, <span class="string">&#x27;Length&#x27;</span>, <span class="string">&#x27;Diagonal&#x27;</span>, <span class="string">&#x27;Height&#x27;</span>, <span class="string">&#x27;Width&#x27;</span>]].to_numpy()</span><br><span class="line">fish_input.shape</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>(159, 5)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(fish_input[:<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>[[242.      25.4     30.      11.52     4.02  ]
+ [290.      26.3     31.2     12.48     4.3056]
+ [340.      26.5     31.1     12.3778   4.6961]
+ [363.      29.      33.5     12.73     4.4555]
+ [430.      29.      34.      12.444    5.134 ]]
+</code></pre>
+<ul>
+<li>타깃 데이터, 종속변수, Y</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fish_target = fish[<span class="string">&#x27;Species&#x27;</span>].to_numpy()</span><br><span class="line"><span class="built_in">print</span>(fish_target.shape)</span><br><span class="line"><span class="built_in">print</span>(fish_target[:<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>(159,)
+[&#39;Bream&#39; &#39;Bream&#39; &#39;Bream&#39; &#39;Bream&#39; &#39;Bream&#39;]
+</code></pre>
+<h2 id="데이터-분리"><a href="#데이터-분리" class="headerlink" title="데이터 분리"></a>데이터 분리</h2><ul>
+<li>훈련데이터 테스트 데이터 분리</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split </span><br><span class="line"></span><br><span class="line"><span class="comment"># 임의 샘플링</span></span><br><span class="line">train_input, test_input, train_target, test_target = train_test_split(</span><br><span class="line">    fish_input, fish_target, random_state=<span class="number">42</span> </span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">train_input.shape, test_input.shape, train_target.shape, test_target.shape</span><br><span class="line"></span><br><span class="line"><span class="comment"># 층화 샘플링 </span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>((119, 5), (40, 5), (119,), (40,))
+</code></pre>
+<h2 id="표준화-전처리"><a href="#표준화-전처리" class="headerlink" title="표준화 전처리"></a>표준화 전처리</h2><ul>
+<li>여기에서도 훈련 세트의 통계 값으로 테스트 세트를 변환해야 한다는 점을 잊지 마세요..!</li>
+<li>데이터 가공<ul>
+<li>숫자 결측치가 존재, 평균값으로 대체</li>
+<li>원본 데이터 평균 대치 (X) </li>
+<li>훈련 데이터와 테스트 데이터 분리</li>
+</ul>
+</li>
+<li>데이터 누수(Data Leakage)<ul>
+<li>훈련데이터 평균값 70을 대치 (O)</li>
+<li>테스트데이터 평균값 75을 대치 (X)</li>
+<li>모든 데이터 평균값 72.5을 대치 (X)</li>
+</ul>
+</li>
+</ul>
+<p>교재 97p. </p>
+<ul>
+<li>기준을 맞춰라 –&gt; 데이터 표준화 (표준점수)</li>
+<li>수동으로 mean, std</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 100p </span></span><br><span class="line"><span class="comment"># train_scaled = (train_input - mean) / std </span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler </span><br><span class="line">ss = StandardScaler()</span><br><span class="line">ss.fit(train_input)</span><br><span class="line"><span class="comment"># ss.fit(test_input) (X)</span></span><br><span class="line"></span><br><span class="line">train_scaled = ss.transform(train_input)</span><br><span class="line">test_scaled = ss.transform(test_input)</span><br></pre></td></tr></table></figure>
+
+<h2 id="모형-만들기"><a href="#모형-만들기" class="headerlink" title="모형 만들기"></a>모형 만들기</h2><ul>
+<li>K-최근접 이웃</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier </span><br><span class="line">kn = KNeighborsClassifier(n_neighbors = <span class="number">3</span>)</span><br><span class="line">kn.fit(train_scaled, train_target)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(kn.score(train_scaled, train_target))</span><br><span class="line"><span class="built_in">print</span>(kn.score(test_scaled, test_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.8907563025210085
+0.85
+</code></pre>
+<ul>
+<li>타깃값 확인</li>
+<li>알파벳 순으로 정렬</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(kn.classes_)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&#39;Bream&#39; &#39;Parkki&#39; &#39;Perch&#39; &#39;Pike&#39; &#39;Roach&#39; &#39;Smelt&#39; &#39;Whitefish&#39;]
+</code></pre>
+<ul>
+<li>다중분류</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(kn.predict(test_scaled[:<span class="number">5</span>]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&#39;Perch&#39; &#39;Smelt&#39; &#39;Pike&#39; &#39;Perch&#39; &#39;Perch&#39;]
+</code></pre>
+<ul>
+<li>5개 샘플에 대한 예측은 어떤 확률이냐?</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line">proba = kn.predict_proba(test_scaled[:<span class="number">5</span>])</span><br><span class="line"><span class="built_in">print</span>(kn.classes_)</span><br><span class="line"><span class="built_in">print</span>(np.<span class="built_in">round</span>(proba, decimals=<span class="number">4</span>))</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&#39;Bream&#39; &#39;Parkki&#39; &#39;Perch&#39; &#39;Pike&#39; &#39;Roach&#39; &#39;Smelt&#39; &#39;Whitefish&#39;]
+[[0.     0.     1.     0.     0.     0.     0.    ]
+ [0.     0.     0.     0.     0.     1.     0.    ]
+ [0.     0.     0.     1.     0.     0.     0.    ]
+ [0.     0.     0.6667 0.     0.3333 0.     0.    ]
+ [0.     0.     0.6667 0.     0.3333 0.     0.    ]]
+</code></pre>
+<ul>
+<li>첫번째 클래스 Perch<ul>
+<li>100% 확률로 perch로 예측</li>
+</ul>
+</li>
+<li>네번째 클래스 Perch<ul>
+<li>66.7% 확률로 Perch로 예측</li>
+<li>33.3% 확률로 Roach로 예측</li>
+</ul>
+</li>
+</ul>
+<h2 id="회귀-식"><a href="#회귀-식" class="headerlink" title="회귀 식"></a>회귀 식</h2><ul>
+<li>y &#x3D; ax + b</li>
+<li>양변에 로그를 취함</li>
+<li></li>
+</ul>
+<h2 id="로지스틱-회귀로-이진-분류-수행"><a href="#로지스틱-회귀로-이진-분류-수행" class="headerlink" title="로지스틱 회귀로 이진 분류 수행"></a>로지스틱 회귀로 이진 분류 수행</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">char_arr = np.array([<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;D&#x27;</span>, <span class="string">&#x27;E&#x27;</span>]) <span class="comment"># train_scaled </span></span><br><span class="line"><span class="comment"># [True, False, True, False, False] --&gt; bream_smelt_indexes</span></span><br><span class="line"><span class="built_in">print</span>(char_arr[[<span class="literal">True</span>, <span class="literal">False</span>, <span class="literal">True</span>, <span class="literal">False</span>, <span class="literal">False</span>]])</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&#39;A&#39; &#39;C&#39;]
+</code></pre>
+<ul>
+<li>도미와 빙어의 행만 골라냄</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bream_smelt_indexes = (train_target == <span class="string">&#x27;Bream&#x27;</span>) | (train_target == <span class="string">&#x27;Smelt&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(bream_smelt_indexes)</span><br><span class="line">train_bream_smelt = train_scaled[bream_smelt_indexes]</span><br><span class="line">target_bream_smelt = train_target[bream_smelt_indexes]</span><br><span class="line"></span><br><span class="line">train_scaled.shape, train_bream_smelt.shape</span><br></pre></td></tr></table></figure>
+
+<pre><code>[ True False  True False False False False  True False False False  True
+ False False False  True  True False False  True False  True False False
+ False  True False False  True False False False False  True False False
+  True  True False False False False False  True False False False False
+ False  True False  True False False  True False False False  True False
+ False False False False False  True False  True False False False False
+ False False False False False  True False  True False False  True  True
+ False False False  True False False False False False  True False False
+ False  True False  True False False  True  True False False False False
+ False False False False  True  True False False  True False False]
+
+
+
+
+
+((119, 5), (33, 5))
+</code></pre>
+<h2 id="모델-만들기"><a href="#모델-만들기" class="headerlink" title="모델 만들기"></a>모델 만들기</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line">lr = LogisticRegression()</span><br><span class="line">lr.fit(train_bream_smelt, target_bream_smelt)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>LogisticRegression()
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 클래스를 예측</span></span><br><span class="line"><span class="built_in">print</span>(lr.predict(train_bream_smelt[:<span class="number">5</span>]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&#39;Bream&#39; &#39;Smelt&#39; &#39;Bream&#39; &#39;Bream&#39; &#39;Bream&#39;]
+</code></pre>
+<ul>
+<li>확률 값 구하기</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lr.predict_proba(train_bream_smelt[:<span class="number">5</span>]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>[[0.99759855 0.00240145]
+ [0.02735183 0.97264817]
+ [0.99486072 0.00513928]
+ [0.98584202 0.01415798]
+ [0.99767269 0.00232731]]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lr.classes_)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&#39;Bream&#39; &#39;Smelt&#39;]
+</code></pre>
+<ul>
+<li>분류기준 : threshold 임계값 설정</li>
+</ul>
+<p>계수와 절편</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lr.coef_, lr.intercept_)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[[-0.4037798  -0.57620209 -0.66280298 -1.01290277 -0.73168947]] [-2.16155132]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">decisions = lr.decision_function(train_bream_smelt[:<span class="number">5</span>])</span><br><span class="line"><span class="built_in">print</span>(decisions)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[-6.02927744  3.57123907 -5.26568906 -4.24321775 -6.0607117 ]
+</code></pre>
+<ul>
+<li>z값을 확률값으로 변환</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.special <span class="keyword">import</span> expit</span><br><span class="line"><span class="built_in">print</span>(expit(decisions))</span><br></pre></td></tr></table></figure>
+
+<pre><code>[0.00240145 0.97264817 0.00513928 0.01415798 0.00232731]
+</code></pre>
+<h2 id="다중-분류-수행하기"><a href="#다중-분류-수행하기" class="headerlink" title="다중 분류 수행하기"></a>다중 분류 수행하기</h2><ul>
+<li>이진 분류의 확장판</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 하이퍼 파라미터 세팅</span></span><br><span class="line"><span class="comment"># 모형을 튜닝 </span></span><br><span class="line"><span class="comment"># 순정 쓰세요..! </span></span><br><span class="line"><span class="comment"># 모형 결과의 과대적합 또는 과소적합을 방지 하기 위한 것</span></span><br><span class="line">lr = LogisticRegression(C = <span class="number">20</span>, max_iter = <span class="number">1000</span>)</span><br><span class="line">lr.fit(train_scaled, train_target) </span><br><span class="line"><span class="built_in">print</span>(lr.score(train_scaled, train_target))</span><br><span class="line"><span class="built_in">print</span>(lr.score(test_scaled, test_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9327731092436975
+0.925
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lr.predict(test_scaled[:<span class="number">5</span>]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&#39;Perch&#39; &#39;Smelt&#39; &#39;Pike&#39; &#39;Roach&#39; &#39;Perch&#39;]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">proba = lr.predict_proba(test_scaled[:<span class="number">5</span>])</span><br><span class="line"><span class="built_in">print</span>(np.<span class="built_in">round</span>(proba, decimals = <span class="number">3</span>))</span><br><span class="line"><span class="built_in">print</span>(lr.classes_)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[[0.    0.014 0.841 0.    0.136 0.007 0.003]
+ [0.    0.003 0.044 0.    0.007 0.946 0.   ]
+ [0.    0.    0.034 0.935 0.015 0.016 0.   ]
+ [0.011 0.034 0.306 0.007 0.567 0.    0.076]
+ [0.    0.    0.904 0.002 0.089 0.002 0.001]]
+[&#39;Bream&#39; &#39;Parkki&#39; &#39;Perch&#39; &#39;Pike&#39; &#39;Roach&#39; &#39;Smelt&#39; &#39;Whitefish&#39;]
+</code></pre>
+<ul>
+<li>다중 분류일 경우 선형 방정식은 어떤 모습일까? <ul>
+<li>분류 7개, 컬럼 값 5개</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lr.coef_.shape, lr.intercept_.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(7, 5) (7,)
+</code></pre>
+<h2 id="평가지표"><a href="#평가지표" class="headerlink" title="평가지표"></a>평가지표</h2><h3 id="회귀-평가지표"><a href="#회귀-평가지표" class="headerlink" title="회귀 평가지표"></a>회귀 평가지표</h3><ul>
+<li><p>결정계수 (교재 121p)</p>
+<ul>
+<li>1- (타깃-예측)^2의 합 &#x2F; (타깃-평균)^2합</li>
+</ul>
+</li>
+<li><p>MAE, MSE, RMSE</p>
+<ul>
+<li>(실제 - 예측) &#x3D; 오차</li>
+<li>MAE(Mean Absolute Error) : 오차의 절댓값의 평균</li>
+<li>MSE(Mean Squared Error) : 오차 제곱의 평균 </li>
+<li>RMSE(Root Mean Squared Error) : MSE에 제곱근을 취한 값</li>
+</ul>
+</li>
+<li><p>좋은 모델이란</p>
+<ul>
+<li>결정계수 : 1에 수렴하면 좋은 모델</li>
+<li>MAE, MSE, RMSE : 0에 수렴하면 좋은 모델</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_absolute_error, mean_squared_error, r2_score </span><br><span class="line"></span><br><span class="line">true = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">8</span>]) <span class="comment"># 실제값</span></span><br><span class="line">preds = np.array([<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">8</span>]) <span class="comment"># 예측값</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 절대값 오차의 평균</span></span><br><span class="line">mae = mean_absolute_error(true, preds)</span><br><span class="line"><span class="built_in">print</span>(mae)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 제곱 오차의 평균</span></span><br><span class="line">mse = mean_squared_error(true, preds)</span><br><span class="line"><span class="built_in">print</span>(mse)</span><br><span class="line"></span><br><span class="line"><span class="comment"># mse 제곱근 </span></span><br><span class="line">rmse = np.sqrt(mse)</span><br><span class="line"><span class="built_in">print</span>(rmse)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 결정계수</span></span><br><span class="line">r2 = r2_score(true, preds)</span><br><span class="line"><span class="built_in">print</span>(r2)</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.5384615384615384
+0.6923076923076923
+0.8320502943378437
+0.8617021276595744
+</code></pre>
+<h3 id="분류-평가지표"><a href="#분류-평가지표" class="headerlink" title="분류 평가지표"></a>분류 평가지표</h3><ul>
+<li><p>오차 행렬</p>
+</li>
+<li><p>실제 값</p>
+<ul>
+<li>[빙어, 도미, 도미, 빙어, 도미]</li>
+</ul>
+</li>
+<li><p>예측 값</p>
+<ul>
+<li>[빙어, 빙어, 도미, 빙어, 빙어]</li>
+</ul>
+</li>
+<li><p>TP, TN, FP, FN</p>
+<ul>
+<li>TP &#x3D; 5, TN &#x3D; 5, FP &#x3D; 3, FN &#x3D; 7</li>
+<li>정확도 : (TP + TN) &#x2F; (TP + TN + FP + FN) </li>
+<li>정밀도(Precision) : 양성이라고 예측한 값 (TP + FP) 중 실제 양성인 값의 비율</li>
+<li>재현율 : 실제 양성 값 중 양성으로 예측한 값(TP)의 비율</li>
+</ul>
+</li>
+<li><p>코로나 검사</p>
+<ul>
+<li>양성(1) : 음성(99)</li>
+<li>머신러닝 모형 : 98% &#x2F; 정밀도 99</li>
+<li>인간 음성진단 : 99% &#x2F; 정밀도 95</li>
+</ul>
+</li>
+<li><p>검사자가 실제는 양성, 진단은 음성으로 내림</p>
+<ul>
+<li>로그손실</li>
+<li>ROC Curve (&#x3D; AUC)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix</span><br><span class="line"></span><br><span class="line">true = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">preds = [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">confusion_matrix(true, preds)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[2, 1],
+       [2, 0]])
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://seoseonho.github.io/2022/07/01/day0701_ch04/" data-id="cl56ghq2h0001e0v2hrhw46kk" data-title="0701 ch04" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/07/01/day0701_ch03/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          0701 ch03
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/06/30/day_0630_ch3/day_0630_ch3/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">0630 ch03</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/07/04/day0704_1700ipynb/">0704 </a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/01/day0701_ch03/">0701 ch03</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/01/day0701_ch04/">0701 ch04</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/30/day_0630_ch3/day_0630_ch3/">0630 ch03</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/30/day0630_ch02/">0630 ch2 </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
