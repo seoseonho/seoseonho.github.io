@@ -71,6 +71,1762 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-day0706 (1)/day0706 (1)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/07/06/day0706%20(1)/day0706%20(1)/" class="article-date">
+  <time class="dt-published" datetime="2022-07-06T01:00:00.000Z" itemprop="datePublished">2022-07-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/07/06/day0706%20(1)/day0706%20(1)/">0706, python</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="데이터-분석-머신러닝-딥러닝-프로세스"><a href="#데이터-분석-머신러닝-딥러닝-프로세스" class="headerlink" title="데이터 분석 (머신러닝, 딥러닝) 프로세스"></a>데이터 분석 (머신러닝, 딥러닝) 프로세스</h2><ul>
+<li>데이터 불러오기</li>
+</ul>
+<ul>
+<li>csv, 오라클, MYSQL, PostgreSQL, 클라우드 DB연동</li>
+</ul>
+<ul>
+<li>탐색적 자료 분석<br> +데이터 전처리 및 가공</li>
+<li>잠정적인 컬럼의 갯수를 지정해야 함</li>
+<li>머신러닝 모델 (&#x3D; 통계 모델링, t.test, 분산분석, 교차분석)</li>
+<li>머신러닝 모델의 경우 배포 (현재는 다루지 않음 x)</li>
+</ul>
+<ul>
+<li>jsp-스프링 웹개발 시, 배우게 됨</li>
+</ul>
+<ul>
+<li>통계 모델링 경우, p-value 값 기준으로, 귀무가설 및 대립가설 검정</li>
+</ul>
+<p>-(공통) 결과 보고서를 작성해야함</p>
+<ul>
+<li>PPT 만들어야 함.</li>
+</ul>
+<h2 id="그래프-복습"><a href="#그래프-복습" class="headerlink" title="그래프 복습"></a>그래프 복습</h2><ul>
+<li>수치형 데이터 시각화</li>
+<li>범주형 데이터 시각화</li>
+<li>데이터 관계 시각화</li>
+<li>maplotlib 라이브러리 방법(복잡)</li>
+<li>seaborn 라이브러리 방법 (단순)<ul>
+<li>복잡한 그래프 그리기! –&gt; matpltoltib</li>
+<li>1줄 그래프 –&gt; seaborn</li>
+</ul>
+</li>
+</ul>
+<h3 id="수치형-데이터-시각화"><a href="#수치형-데이터-시각화" class="headerlink" title="수치형 데이터 시각화"></a>수치형 데이터 시각화</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line">titanic = sns.load_dataset(<span class="string">&#x27;titanic&#x27;</span>)</span><br><span class="line">titanic.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+  <div id="df-4b1ab9b6-eb9c-474a-9b51-612995968fd0">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>survived</th>
+      <th>pclass</th>
+      <th>sex</th>
+      <th>age</th>
+      <th>sibsp</th>
+      <th>parch</th>
+      <th>fare</th>
+      <th>embarked</th>
+      <th>class</th>
+      <th>who</th>
+      <th>adult_male</th>
+      <th>deck</th>
+      <th>embark_town</th>
+      <th>alive</th>
+      <th>alone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>7.2500</td>
+      <td>S</td>
+      <td>Third</td>
+      <td>man</td>
+      <td>True</td>
+      <td>NaN</td>
+      <td>Southampton</td>
+      <td>no</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>38.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>71.2833</td>
+      <td>C</td>
+      <td>First</td>
+      <td>woman</td>
+      <td>False</td>
+      <td>C</td>
+      <td>Cherbourg</td>
+      <td>yes</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>3</td>
+      <td>female</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7.9250</td>
+      <td>S</td>
+      <td>Third</td>
+      <td>woman</td>
+      <td>False</td>
+      <td>NaN</td>
+      <td>Southampton</td>
+      <td>yes</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>35.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>53.1000</td>
+      <td>S</td>
+      <td>First</td>
+      <td>woman</td>
+      <td>False</td>
+      <td>C</td>
+      <td>Southampton</td>
+      <td>yes</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>35.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>8.0500</td>
+      <td>S</td>
+      <td>Third</td>
+      <td>man</td>
+      <td>True</td>
+      <td>NaN</td>
+      <td>Southampton</td>
+      <td>no</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-4b1ab9b6-eb9c-474a-9b51-612995968fd0')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+<p>  &lt;svg xmlns&#x3D;”<a target="_blank" rel="noopener" href="http://www.w3.org/2000/svg&quot;">http://www.w3.org/2000/svg&quot;</a> height&#x3D;”24px”viewBox&#x3D;”0 0 24 24”<br>       width&#x3D;”24px”&gt;<br>    <path d="M0 0h24v24H0V0z" fill="none"/><br>    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/><br>  </svg><br>      </button></p>
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+<pre><code>  &lt;script&gt;
+    const buttonEl =
+      document.querySelector(&#39;#df-4b1ab9b6-eb9c-474a-9b51-612995968fd0 button.colab-df-convert&#39;);
+    buttonEl.style.display =
+      google.colab.kernel.accessAllowed ? &#39;block&#39; : &#39;none&#39;;
+
+    async function convertToInteractive(key) &#123;
+      const element = document.querySelector(&#39;#df-4b1ab9b6-eb9c-474a-9b51-612995968fd0&#39;);
+      const dataTable =
+        await google.colab.kernel.invokeFunction(&#39;convertToInteractive&#39;,
+                                                 [key], &#123;&#125;);
+      if (!dataTable) return;
+
+      const docLinkHtml = &#39;Like what you see? Visit the &#39; +
+        &#39;&lt;a target=&quot;_blank&quot; href=https://colab.research.google.com/notebooks/data_table.ipynb&gt;data table notebook&lt;/a&gt;&#39;
+        + &#39; to learn more about interactive tables.&#39;;
+      element.innerHTML = &#39;&#39;;
+      dataTable[&#39;output_type&#39;] = &#39;display_data&#39;;
+      await google.colab.output.renderOutput(dataTable, element);
+      const docLink = document.createElement(&#39;div&#39;);
+      docLink.innerHTML = docLinkHtml;
+      element.appendChild(docLink);
+    &#125;
+  &lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 히스토그램</span></span><br><span class="line">sns.histplot(data = titanic, x = <span class="string">&#x27;age&#x27;</span>, bins = <span class="number">10</span>, hue= <span class="string">&#x27;alive&#x27;</span>, multiple = <span class="string">&#x27;stack&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb1fb33f490&gt;
+</code></pre>
+<p><img src="/output_4_1.png" alt="png"></p>
+<ul>
+<li>위 그래프를 보아하니 주저리주저리</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 커널밀도추정 함수 그래프</span></span><br><span class="line"><span class="comment"># 연속형 데이터 1개만 쓸 때 사용</span></span><br><span class="line">sns.kdeplot(data = titanic, x = <span class="string">&#x27;age&#x27;</span>, hue = <span class="string">&#x27;alive&#x27;</span>, multiple = <span class="string">&#x27;stack&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb1ef624210&gt;
+</code></pre>
+<p><img src="/output_6_1.png" alt="png"></p>
+<h2 id="분포도"><a href="#분포도" class="headerlink" title="분포도"></a>분포도</h2><ul>
+<li>수치형 데이터 한개 컬럼의 분포를 나타내는 그래프</li>
+<li>정규분포인가?</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.displot(data = titanic, x = <span class="string">&#x27;age&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fb1efbf4f50&gt;
+</code></pre>
+<p><img src="/output_8_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.displot(data = titanic, x = <span class="string">&#x27;age&#x27;</span>, kde = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x7fb1ef7188d0&gt;
+</code></pre>
+<p><img src="/output_9_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 막대 그래프</span></span><br><span class="line">sns.barplot(x = <span class="string">&#x27;class&#x27;</span>, y = <span class="string">&#x27;fare&#x27;</span>, data = titanic)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb1ef47f890&gt;
+</code></pre>
+<p><img src="/output_10_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 포인트 플롯</span></span><br><span class="line">sns.pointplot(x = <span class="string">&#x27;class&#x27;</span>, y=<span class="string">&#x27;fare&#x27;</span>, data = titanic)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb1ef462350&gt;
+</code></pre>
+<p><img src="/output_11_1.png" alt="png"></p>
+<ul>
+<li>박스플롯</li>
+<li>제 1사분위 : 전체 데이터 중 하위 25%</li>
+<li>사분위 범위 수(IQR) : 제 3사분위 - 제 1사분위</li>
+<li>최댓값 : 제3사분위 + (1.5 * IQ)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># boxplot</span></span><br><span class="line">sns.boxplot(x= <span class="string">&#x27;class&#x27;</span>, y =<span class="string">&#x27;age&#x27;</span>, data = titanic)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb1ef3cb6d0&gt;
+</code></pre>
+<p><img src="/output_13_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 바이올린 플롯</span></span><br><span class="line">sns.violinplot(x = <span class="string">&#x27;class&#x27;</span>, y = <span class="string">&#x27;age&#x27;</span>, hue = <span class="string">&#x27;sex&#x27;</span>, data = titanic, split = <span class="literal">True</span>);</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/output_14_0.png" alt="png"></p>
+<h1 id="카운트-플롯"><a href="#카운트-플롯" class="headerlink" title="카운트 플롯"></a>카운트 플롯</h1><ul>
+<li>범주형 데이터의 갯수 확인 할 때 사용</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.countplot(x = <span class="string">&#x27;alive&#x27;</span>, data = titanic)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb1ef28b6d0&gt;
+</code></pre>
+<p><img src="/output_16_1.png" alt="png"></p>
+<h2 id="데이터-관계-시각화"><a href="#데이터-관계-시각화" class="headerlink" title="데이터 관계 시각화"></a>데이터 관계 시각화</h2><ul>
+<li>여러 데이터 사이의 관계도 파악 위한 그래프</li>
+</ul>
+<h2 id="히트맵"><a href="#히트맵" class="headerlink" title="히트맵"></a>히트맵</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">flights = sns.load_dataset(<span class="string">&#x27;flights&#x27;</span>)</span><br><span class="line">flights.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+  <div id="df-fcbaf69d-708e-4295-a3e7-f7167ecab6a4">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>passengers</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1949</td>
+      <td>Jan</td>
+      <td>112</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1949</td>
+      <td>Feb</td>
+      <td>118</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1949</td>
+      <td>Mar</td>
+      <td>132</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1949</td>
+      <td>Apr</td>
+      <td>129</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1949</td>
+      <td>May</td>
+      <td>121</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-fcbaf69d-708e-4295-a3e7-f7167ecab6a4')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+<p>  &lt;svg xmlns&#x3D;”<a target="_blank" rel="noopener" href="http://www.w3.org/2000/svg&quot;">http://www.w3.org/2000/svg&quot;</a> height&#x3D;”24px”viewBox&#x3D;”0 0 24 24”<br>       width&#x3D;”24px”&gt;<br>    <path d="M0 0h24v24H0V0z" fill="none"/><br>    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/><br>  </svg><br>      </button></p>
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+<pre><code>  &lt;script&gt;
+    const buttonEl =
+      document.querySelector(&#39;#df-fcbaf69d-708e-4295-a3e7-f7167ecab6a4 button.colab-df-convert&#39;);
+    buttonEl.style.display =
+      google.colab.kernel.accessAllowed ? &#39;block&#39; : &#39;none&#39;;
+
+    async function convertToInteractive(key) &#123;
+      const element = document.querySelector(&#39;#df-fcbaf69d-708e-4295-a3e7-f7167ecab6a4&#39;);
+      const dataTable =
+        await google.colab.kernel.invokeFunction(&#39;convertToInteractive&#39;,
+                                                 [key], &#123;&#125;);
+      if (!dataTable) return;
+
+      const docLinkHtml = &#39;Like what you see? Visit the &#39; +
+        &#39;&lt;a target=&quot;_blank&quot; href=https://colab.research.google.com/notebooks/data_table.ipynb&gt;data table notebook&lt;/a&gt;&#39;
+        + &#39; to learn more about interactive tables.&#39;;
+      element.innerHTML = &#39;&#39;;
+      dataTable[&#39;output_type&#39;] = &#39;display_data&#39;;
+      await google.colab.output.renderOutput(dataTable, element);
+      const docLink = document.createElement(&#39;div&#39;);
+      docLink.innerHTML = docLinkHtml;
+      element.appendChild(docLink);
+    &#125;
+  &lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+
+
+
+
+<ul>
+<li>각 연도별, 월별 승객수 구하기</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">&#x27;foo&#x27;</span>: [<span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;one&#x27;</span>, <span class="string">&#x27;two&#x27;</span>, <span class="string">&#x27;two&#x27;</span>,</span><br><span class="line">                           <span class="string">&#x27;two&#x27;</span>],</span><br><span class="line">                   <span class="string">&#x27;bar&#x27;</span>: [<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>],</span><br><span class="line">                   <span class="string">&#x27;baz&#x27;</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>],</span><br><span class="line">                   <span class="string">&#x27;zoo&#x27;</span>: [<span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;y&#x27;</span>, <span class="string">&#x27;z&#x27;</span>, <span class="string">&#x27;q&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, <span class="string">&#x27;t&#x27;</span>]&#125;)</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+  <div id="df-496b8490-ac6c-4edc-aba6-91e9749e0e37">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>foo</th>
+      <th>bar</th>
+      <th>baz</th>
+      <th>zoo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>one</td>
+      <td>A</td>
+      <td>1</td>
+      <td>x</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>one</td>
+      <td>B</td>
+      <td>2</td>
+      <td>y</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>one</td>
+      <td>C</td>
+      <td>3</td>
+      <td>z</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>two</td>
+      <td>A</td>
+      <td>4</td>
+      <td>q</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>two</td>
+      <td>B</td>
+      <td>5</td>
+      <td>w</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>two</td>
+      <td>C</td>
+      <td>6</td>
+      <td>t</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-496b8490-ac6c-4edc-aba6-91e9749e0e37')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+<p>  &lt;svg xmlns&#x3D;”<a target="_blank" rel="noopener" href="http://www.w3.org/2000/svg&quot;">http://www.w3.org/2000/svg&quot;</a> height&#x3D;”24px”viewBox&#x3D;”0 0 24 24”<br>       width&#x3D;”24px”&gt;<br>    <path d="M0 0h24v24H0V0z" fill="none"/><br>    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/><br>  </svg><br>      </button></p>
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+<pre><code>  &lt;script&gt;
+    const buttonEl =
+      document.querySelector(&#39;#df-496b8490-ac6c-4edc-aba6-91e9749e0e37 button.colab-df-convert&#39;);
+    buttonEl.style.display =
+      google.colab.kernel.accessAllowed ? &#39;block&#39; : &#39;none&#39;;
+
+    async function convertToInteractive(key) &#123;
+      const element = document.querySelector(&#39;#df-496b8490-ac6c-4edc-aba6-91e9749e0e37&#39;);
+      const dataTable =
+        await google.colab.kernel.invokeFunction(&#39;convertToInteractive&#39;,
+                                                 [key], &#123;&#125;);
+      if (!dataTable) return;
+
+      const docLinkHtml = &#39;Like what you see? Visit the &#39; +
+        &#39;&lt;a target=&quot;_blank&quot; href=https://colab.research.google.com/notebooks/data_table.ipynb&gt;data table notebook&lt;/a&gt;&#39;
+        + &#39; to learn more about interactive tables.&#39;;
+      element.innerHTML = &#39;&#39;;
+      dataTable[&#39;output_type&#39;] = &#39;display_data&#39;;
+      await google.colab.output.renderOutput(dataTable, element);
+      const docLink = document.createElement(&#39;div&#39;);
+      docLink.innerHTML = docLinkHtml;
+      element.appendChild(docLink);
+    &#125;
+  &lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.pivot(index = <span class="string">&#x27;foo&#x27;</span>, columns = <span class="string">&#x27;bar&#x27;</span>, values = <span class="string">&#x27;baz&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+  <div id="df-e9770d57-2afd-496b-9a48-858f155d218c">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>bar</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+    <tr>
+      <th>foo</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>one</th>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-e9770d57-2afd-496b-9a48-858f155d218c')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+<p>  &lt;svg xmlns&#x3D;”<a target="_blank" rel="noopener" href="http://www.w3.org/2000/svg&quot;">http://www.w3.org/2000/svg&quot;</a> height&#x3D;”24px”viewBox&#x3D;”0 0 24 24”<br>       width&#x3D;”24px”&gt;<br>    <path d="M0 0h24v24H0V0z" fill="none"/><br>    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/><br>  </svg><br>      </button></p>
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+<pre><code>  &lt;script&gt;
+    const buttonEl =
+      document.querySelector(&#39;#df-e9770d57-2afd-496b-9a48-858f155d218c button.colab-df-convert&#39;);
+    buttonEl.style.display =
+      google.colab.kernel.accessAllowed ? &#39;block&#39; : &#39;none&#39;;
+
+    async function convertToInteractive(key) &#123;
+      const element = document.querySelector(&#39;#df-e9770d57-2afd-496b-9a48-858f155d218c&#39;);
+      const dataTable =
+        await google.colab.kernel.invokeFunction(&#39;convertToInteractive&#39;,
+                                                 [key], &#123;&#125;);
+      if (!dataTable) return;
+
+      const docLinkHtml = &#39;Like what you see? Visit the &#39; +
+        &#39;&lt;a target=&quot;_blank&quot; href=https://colab.research.google.com/notebooks/data_table.ipynb&gt;data table notebook&lt;/a&gt;&#39;
+        + &#39; to learn more about interactive tables.&#39;;
+      element.innerHTML = &#39;&#39;;
+      dataTable[&#39;output_type&#39;] = &#39;display_data&#39;;
+      await google.colab.output.renderOutput(dataTable, element);
+      const docLink = document.createElement(&#39;div&#39;);
+      docLink.innerHTML = docLinkHtml;
+      element.appendChild(docLink);
+    &#125;
+  &lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flights</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+  <div id="df-248147a7-0c17-466a-9242-5ae79f0bfff3">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>passengers</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1949</td>
+      <td>Jan</td>
+      <td>112</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1949</td>
+      <td>Feb</td>
+      <td>118</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1949</td>
+      <td>Mar</td>
+      <td>132</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1949</td>
+      <td>Apr</td>
+      <td>129</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1949</td>
+      <td>May</td>
+      <td>121</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>139</th>
+      <td>1960</td>
+      <td>Aug</td>
+      <td>606</td>
+    </tr>
+    <tr>
+      <th>140</th>
+      <td>1960</td>
+      <td>Sep</td>
+      <td>508</td>
+    </tr>
+    <tr>
+      <th>141</th>
+      <td>1960</td>
+      <td>Oct</td>
+      <td>461</td>
+    </tr>
+    <tr>
+      <th>142</th>
+      <td>1960</td>
+      <td>Nov</td>
+      <td>390</td>
+    </tr>
+    <tr>
+      <th>143</th>
+      <td>1960</td>
+      <td>Dec</td>
+      <td>432</td>
+    </tr>
+  </tbody>
+</table>
+<p>144 rows × 3 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-248147a7-0c17-466a-9242-5ae79f0bfff3')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+<p>  &lt;svg xmlns&#x3D;”<a target="_blank" rel="noopener" href="http://www.w3.org/2000/svg&quot;">http://www.w3.org/2000/svg&quot;</a> height&#x3D;”24px”viewBox&#x3D;”0 0 24 24”<br>       width&#x3D;”24px”&gt;<br>    <path d="M0 0h24v24H0V0z" fill="none"/><br>    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/><br>  </svg><br>      </button></p>
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+<pre><code>  &lt;script&gt;
+    const buttonEl =
+      document.querySelector(&#39;#df-248147a7-0c17-466a-9242-5ae79f0bfff3 button.colab-df-convert&#39;);
+    buttonEl.style.display =
+      google.colab.kernel.accessAllowed ? &#39;block&#39; : &#39;none&#39;;
+
+    async function convertToInteractive(key) &#123;
+      const element = document.querySelector(&#39;#df-248147a7-0c17-466a-9242-5ae79f0bfff3&#39;);
+      const dataTable =
+        await google.colab.kernel.invokeFunction(&#39;convertToInteractive&#39;,
+                                                 [key], &#123;&#125;);
+      if (!dataTable) return;
+
+      const docLinkHtml = &#39;Like what you see? Visit the &#39; +
+        &#39;&lt;a target=&quot;_blank&quot; href=https://colab.research.google.com/notebooks/data_table.ipynb&gt;data table notebook&lt;/a&gt;&#39;
+        + &#39; to learn more about interactive tables.&#39;;
+      element.innerHTML = &#39;&#39;;
+      dataTable[&#39;output_type&#39;] = &#39;display_data&#39;;
+      await google.colab.output.renderOutput(dataTable, element);
+      const docLink = document.createElement(&#39;div&#39;);
+      docLink.innerHTML = docLinkHtml;
+      element.appendChild(docLink);
+    &#125;
+  &lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># flights[&#x27;year&#x27;].value_counts()</span></span><br><span class="line">flights_pivot = flights.pivot(index = <span class="string">&#x27;month&#x27;</span>, columns = <span class="string">&#x27;year&#x27;</span>, values = <span class="string">&#x27;passengers&#x27;</span>)</span><br><span class="line">flights_pivot</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+  <div id="df-f841f0d9-a299-45dd-9f8f-0eb60ed806f1">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>year</th>
+      <th>1949</th>
+      <th>1950</th>
+      <th>1951</th>
+      <th>1952</th>
+      <th>1953</th>
+      <th>1954</th>
+      <th>1955</th>
+      <th>1956</th>
+      <th>1957</th>
+      <th>1958</th>
+      <th>1959</th>
+      <th>1960</th>
+    </tr>
+    <tr>
+      <th>month</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Jan</th>
+      <td>112</td>
+      <td>115</td>
+      <td>145</td>
+      <td>171</td>
+      <td>196</td>
+      <td>204</td>
+      <td>242</td>
+      <td>284</td>
+      <td>315</td>
+      <td>340</td>
+      <td>360</td>
+      <td>417</td>
+    </tr>
+    <tr>
+      <th>Feb</th>
+      <td>118</td>
+      <td>126</td>
+      <td>150</td>
+      <td>180</td>
+      <td>196</td>
+      <td>188</td>
+      <td>233</td>
+      <td>277</td>
+      <td>301</td>
+      <td>318</td>
+      <td>342</td>
+      <td>391</td>
+    </tr>
+    <tr>
+      <th>Mar</th>
+      <td>132</td>
+      <td>141</td>
+      <td>178</td>
+      <td>193</td>
+      <td>236</td>
+      <td>235</td>
+      <td>267</td>
+      <td>317</td>
+      <td>356</td>
+      <td>362</td>
+      <td>406</td>
+      <td>419</td>
+    </tr>
+    <tr>
+      <th>Apr</th>
+      <td>129</td>
+      <td>135</td>
+      <td>163</td>
+      <td>181</td>
+      <td>235</td>
+      <td>227</td>
+      <td>269</td>
+      <td>313</td>
+      <td>348</td>
+      <td>348</td>
+      <td>396</td>
+      <td>461</td>
+    </tr>
+    <tr>
+      <th>May</th>
+      <td>121</td>
+      <td>125</td>
+      <td>172</td>
+      <td>183</td>
+      <td>229</td>
+      <td>234</td>
+      <td>270</td>
+      <td>318</td>
+      <td>355</td>
+      <td>363</td>
+      <td>420</td>
+      <td>472</td>
+    </tr>
+    <tr>
+      <th>Jun</th>
+      <td>135</td>
+      <td>149</td>
+      <td>178</td>
+      <td>218</td>
+      <td>243</td>
+      <td>264</td>
+      <td>315</td>
+      <td>374</td>
+      <td>422</td>
+      <td>435</td>
+      <td>472</td>
+      <td>535</td>
+    </tr>
+    <tr>
+      <th>Jul</th>
+      <td>148</td>
+      <td>170</td>
+      <td>199</td>
+      <td>230</td>
+      <td>264</td>
+      <td>302</td>
+      <td>364</td>
+      <td>413</td>
+      <td>465</td>
+      <td>491</td>
+      <td>548</td>
+      <td>622</td>
+    </tr>
+    <tr>
+      <th>Aug</th>
+      <td>148</td>
+      <td>170</td>
+      <td>199</td>
+      <td>242</td>
+      <td>272</td>
+      <td>293</td>
+      <td>347</td>
+      <td>405</td>
+      <td>467</td>
+      <td>505</td>
+      <td>559</td>
+      <td>606</td>
+    </tr>
+    <tr>
+      <th>Sep</th>
+      <td>136</td>
+      <td>158</td>
+      <td>184</td>
+      <td>209</td>
+      <td>237</td>
+      <td>259</td>
+      <td>312</td>
+      <td>355</td>
+      <td>404</td>
+      <td>404</td>
+      <td>463</td>
+      <td>508</td>
+    </tr>
+    <tr>
+      <th>Oct</th>
+      <td>119</td>
+      <td>133</td>
+      <td>162</td>
+      <td>191</td>
+      <td>211</td>
+      <td>229</td>
+      <td>274</td>
+      <td>306</td>
+      <td>347</td>
+      <td>359</td>
+      <td>407</td>
+      <td>461</td>
+    </tr>
+    <tr>
+      <th>Nov</th>
+      <td>104</td>
+      <td>114</td>
+      <td>146</td>
+      <td>172</td>
+      <td>180</td>
+      <td>203</td>
+      <td>237</td>
+      <td>271</td>
+      <td>305</td>
+      <td>310</td>
+      <td>362</td>
+      <td>390</td>
+    </tr>
+    <tr>
+      <th>Dec</th>
+      <td>118</td>
+      <td>140</td>
+      <td>166</td>
+      <td>194</td>
+      <td>201</td>
+      <td>229</td>
+      <td>278</td>
+      <td>306</td>
+      <td>336</td>
+      <td>337</td>
+      <td>405</td>
+      <td>432</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-f841f0d9-a299-45dd-9f8f-0eb60ed806f1')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+<p>  &lt;svg xmlns&#x3D;”<a target="_blank" rel="noopener" href="http://www.w3.org/2000/svg&quot;">http://www.w3.org/2000/svg&quot;</a> height&#x3D;”24px”viewBox&#x3D;”0 0 24 24”<br>       width&#x3D;”24px”&gt;<br>    <path d="M0 0h24v24H0V0z" fill="none"/><br>    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/><br>  </svg><br>      </button></p>
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+<pre><code>  &lt;script&gt;
+    const buttonEl =
+      document.querySelector(&#39;#df-f841f0d9-a299-45dd-9f8f-0eb60ed806f1 button.colab-df-convert&#39;);
+    buttonEl.style.display =
+      google.colab.kernel.accessAllowed ? &#39;block&#39; : &#39;none&#39;;
+
+    async function convertToInteractive(key) &#123;
+      const element = document.querySelector(&#39;#df-f841f0d9-a299-45dd-9f8f-0eb60ed806f1&#39;);
+      const dataTable =
+        await google.colab.kernel.invokeFunction(&#39;convertToInteractive&#39;,
+                                                 [key], &#123;&#125;);
+      if (!dataTable) return;
+
+      const docLinkHtml = &#39;Like what you see? Visit the &#39; +
+        &#39;&lt;a target=&quot;_blank&quot; href=https://colab.research.google.com/notebooks/data_table.ipynb&gt;data table notebook&lt;/a&gt;&#39;
+        + &#39; to learn more about interactive tables.&#39;;
+      element.innerHTML = &#39;&#39;;
+      dataTable[&#39;output_type&#39;] = &#39;display_data&#39;;
+      await google.colab.output.renderOutput(dataTable, element);
+      const docLink = document.createElement(&#39;div&#39;);
+      docLink.innerHTML = docLinkHtml;
+      element.appendChild(docLink);
+    &#125;
+  &lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.heatmap(data = flights_pivot)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb1ef1ee250&gt;
+</code></pre>
+<p><img src="/output_25_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 라인플롯</span></span><br><span class="line">sns.lineplot(x = <span class="string">&#x27;year&#x27;</span>, y =<span class="string">&#x27;passengers&#x27;</span>, data = flights)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb1ef13cf50&gt;
+</code></pre>
+<p><img src="/output_26_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 산점도</span></span><br><span class="line">tips = sns.load_dataset(<span class="string">&#x27;tips&#x27;</span>)</span><br><span class="line">tips.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+  <div id="df-9f40a5c2-4aae-4010-96ac-c9aa50c9bad8">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>total_bill</th>
+      <th>tip</th>
+      <th>sex</th>
+      <th>smoker</th>
+      <th>day</th>
+      <th>time</th>
+      <th>size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>16.99</td>
+      <td>1.01</td>
+      <td>Female</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.34</td>
+      <td>1.66</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>21.01</td>
+      <td>3.50</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>23.68</td>
+      <td>3.31</td>
+      <td>Male</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>24.59</td>
+      <td>3.61</td>
+      <td>Female</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-9f40a5c2-4aae-4010-96ac-c9aa50c9bad8')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+<p>  &lt;svg xmlns&#x3D;”<a target="_blank" rel="noopener" href="http://www.w3.org/2000/svg&quot;">http://www.w3.org/2000/svg&quot;</a> height&#x3D;”24px”viewBox&#x3D;”0 0 24 24”<br>       width&#x3D;”24px”&gt;<br>    <path d="M0 0h24v24H0V0z" fill="none"/><br>    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/><br>  </svg><br>      </button></p>
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+<pre><code>  &lt;script&gt;
+    const buttonEl =
+      document.querySelector(&#39;#df-9f40a5c2-4aae-4010-96ac-c9aa50c9bad8 button.colab-df-convert&#39;);
+    buttonEl.style.display =
+      google.colab.kernel.accessAllowed ? &#39;block&#39; : &#39;none&#39;;
+
+    async function convertToInteractive(key) &#123;
+      const element = document.querySelector(&#39;#df-9f40a5c2-4aae-4010-96ac-c9aa50c9bad8&#39;);
+      const dataTable =
+        await google.colab.kernel.invokeFunction(&#39;convertToInteractive&#39;,
+                                                 [key], &#123;&#125;);
+      if (!dataTable) return;
+
+      const docLinkHtml = &#39;Like what you see? Visit the &#39; +
+        &#39;&lt;a target=&quot;_blank&quot; href=https://colab.research.google.com/notebooks/data_table.ipynb&gt;data table notebook&lt;/a&gt;&#39;
+        + &#39; to learn more about interactive tables.&#39;;
+      element.innerHTML = &#39;&#39;;
+      dataTable[&#39;output_type&#39;] = &#39;display_data&#39;;
+      await google.colab.output.renderOutput(dataTable, element);
+      const docLink = document.createElement(&#39;div&#39;);
+      docLink.innerHTML = docLinkHtml;
+      element.appendChild(docLink);
+    &#125;
+  &lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+
+
+
+
+<ul>
+<li>두개의 연속형 데이터</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sns.scatterplot(x = <span class="string">&#x27;total_bill&#x27;</span>, y = <span class="string">&#x27;tip&#x27;</span>, hue =<span class="string">&#x27;sex&#x27;</span>, data = tips)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb1ef0c8590&gt;
+</code></pre>
+<p><img src="/output_29_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 회귀선</span></span><br><span class="line">sns.regplot(x = <span class="string">&#x27;total_bill&#x27;</span>, y = <span class="string">&#x27;tip&#x27;</span>, data = tips)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb1ef0b3fd0&gt;
+</code></pre>
+<p><img src="/output_30_1.png" alt="png"></p>
+<h2 id="머신러닝-리뷰"><a href="#머신러닝-리뷰" class="headerlink" title="머신러닝 리뷰"></a>머신러닝 리뷰</h2><ul>
+<li>가장 인기 있는 모델</li>
+</ul>
+<ul>
+<li>lightGBM.XGboost</li>
+</ul>
+<h3 id="선형-회귀"><a href="#선형-회귀" class="headerlink" title="선형 회귀"></a>선형 회귀</h3><ul>
+<li>선형 회귀식을 찾는 것이 주요</li>
+<li>y&#x3D;3x+4에 근사한 데이터 50개 생성</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="comment"># 시드값 고정 </span></span><br><span class="line">np.random.seed(<span class="number">0</span>)</span><br><span class="line">intercept = <span class="number">4</span> <span class="comment"># 절편, 상수</span></span><br><span class="line">slope = <span class="number">3</span> <span class="comment"># 기울기</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 변동성 주기 위해 노이즈 생성</span></span><br><span class="line">noise = np.random.randn(<span class="number">50</span>, <span class="number">1</span>)</span><br><span class="line">x = <span class="number">5</span> * np.random.rand(<span class="number">50</span>, <span class="number">1</span>) <span class="comment"># 0과 5사이의 실숫값 50개 생성</span></span><br><span class="line">y = slope * x + intercept + noise</span><br><span class="line"></span><br><span class="line"><span class="comment"># 데이터 프레임 생성</span></span><br><span class="line">data = pd.DataFrame(&#123;<span class="string">&#x27;X&#x27;</span> : x[:, <span class="number">0</span>], <span class="string">&#x27;Y&#x27;</span> : y[:, <span class="number">0</span>]&#125;)</span><br><span class="line"><span class="built_in">print</span>(data)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code>           X          Y
+0   0.794848   8.148596
+1   0.551876   6.055784
+2   3.281648  14.823682
+3   0.690915   8.313637
+4   0.982912   8.816293
+5   1.843626   8.553600
+6   4.104966  17.264987
+7   0.485506   5.305162
+8   4.189725  16.465955
+9   0.480492   5.852075
+10  4.882297  18.790936
+11  2.343256  12.484042
+12  4.883805  19.412454
+13  3.024228  13.194358
+14  3.696318  15.532817
+15  0.195939   4.921491
+16  1.414035   9.736184
+17  0.600983   5.597790
+18  1.480701   8.755171
+19  0.593639   4.926820
+20  1.589916   6.216758
+21  2.071315  10.867564
+22  0.320737   5.826649
+23  3.462361  13.644917
+24  2.833007  14.768776
+25  1.326947   6.526477
+26  2.616240  11.894479
+27  0.469703   5.221924
+28  2.879732  14.171977
+29  4.646481  19.408802
+30  1.592845   8.933482
+31  3.337052  14.389318
+32  0.658989   5.089182
+33  3.581636  12.764112
+34  1.447030   7.993179
+35  0.915957   6.904219
+36  2.932565  14.027985
+37  0.100538   5.503993
+38  4.144700  16.046774
+39  0.023477   3.768129
+40  3.389083  13.118695
+41  1.350040   6.630102
+42  3.675970  13.321640
+43  4.810943  20.383604
+44  1.243766   7.221645
+45  2.880787  12.204286
+46  2.960210  11.627834
+47  2.861260  13.361269
+48  1.115408   5.732327
+49  4.763745  18.078495
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.scatter(data[<span class="string">&#x27;X&#x27;</span>], data[<span class="string">&#x27;Y&#x27;</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/output_34_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns </span><br><span class="line">sns.scatterplot(x = <span class="string">&#x27;X&#x27;</span>, y = <span class="string">&#x27;Y&#x27;</span>, data = data)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fb1eef78310&gt;
+</code></pre>
+<p><img src="/output_35_1.png" alt="png"></p>
+<h4 id="선형회귀-모형-훈련"><a href="#선형회귀-모형-훈련" class="headerlink" title="선형회귀 모형 훈련"></a>선형회귀 모형 훈련</h4><ul>
+<li>모형 생성 후,회귀계수 3과y절편 4에 근사한 값이 나와야 함</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression </span><br><span class="line">lr_model = LinearRegression() <span class="comment"># 선형 회귀 모델 </span></span><br><span class="line">lr_model.fit(x, y) <span class="comment"># 모델 훈련</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;y절편:&#x27;</span>, lr_model.intercept_)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;회귀계수:&#x27;</span>, lr_model.coef_)</span><br></pre></td></tr></table></figure>
+
+<pre><code>y절편: [4.05757639]
+회귀계수: [[3.03754061]]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 예측값</span></span><br><span class="line">y_pred = lr_model.predict(x)</span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.scatter(x, y)</span><br><span class="line">ax.plot(x, y_pred, color=<span class="string">&#x27;green&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># slope, intercept </span></span><br><span class="line">label = <span class="string">&#x27;slope: &#123;&#125;\nintercept: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">round</span>(lr_model.coef_[<span class="number">0</span>][<span class="number">0</span>], <span class="number">2</span>), <span class="built_in">round</span>(lr_model.intercept_[<span class="number">0</span>], <span class="number">2</span>))</span><br><span class="line">ax.text(<span class="number">3.5</span>, <span class="number">4</span>, label, style =<span class="string">&#x27;italic&#x27;</span>, </span><br><span class="line">        fontsize = <span class="number">10</span>, color =<span class="string">&quot;green&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/output_38_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid</span>(<span class="params">arr, scale=<span class="number">1</span></span>):</span><br><span class="line">    arr = np.asarray(arr)</span><br><span class="line">    result = <span class="number">1</span>/(<span class="number">1</span> + np.exp(-arr*scale))</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">x = np.linspace(-<span class="number">6</span>, <span class="number">6</span>)</span><br><span class="line">y = sigmoid(x)</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.plot(x, y)</span><br><span class="line">ax.grid(which=<span class="string">&#x27;major&#x27;</span>, axis=<span class="string">&#x27;y&#x27;</span>, linestyle=<span class="string">&#x27;--&#x27;</span>)</span><br><span class="line">ax.axvline(x=<span class="number">0</span>, color=<span class="string">&#x27;r&#x27;</span>, linestyle=<span class="string">&#x27;--&#x27;</span>, linewidth=<span class="number">1</span>)</span><br><span class="line">ax.set_ylim(<span class="number">0</span>,<span class="number">1</span>)</span><br><span class="line">ax.set_yticks([<span class="number">0</span>, <span class="number">1</span>, <span class="number">0.5</span>])</span><br><span class="line">ax.text(<span class="number">0</span>-<span class="number">0.1</span>, <span class="number">0.5</span>, <span class="string">&#x27;0.5&#x27;</span>, ha=<span class="string">&#x27;right&#x27;</span>)</span><br><span class="line">ax.set_title(<span class="string">&#x27;Sigmoid Graph&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/output_39_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 라이브러리 불러오기</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report, confusion_matrix</span><br><span class="line"></span><br><span class="line"><span class="comment"># 데이터 가져오기</span></span><br><span class="line">x = np.arange(<span class="number">10</span>).reshape(-<span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line">y = np.array([<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 모델 생성 및 학습</span></span><br><span class="line">model = LogisticRegression(solver=<span class="string">&#x27;liblinear&#x27;</span>, C=<span class="number">10.0</span>, random_state=<span class="number">0</span>)</span><br><span class="line">model.fit(x, y)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>LogisticRegression(C=10.0, random_state=0, solver=&#39;liblinear&#39;)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 모형 평가</span></span><br><span class="line">p_pred = model.predict_proba(x)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;p_pred&#x27;</span>, p_pred, sep = <span class="string">&#x27;\n&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>p_pred
+[[0.97979027 0.02020973]
+ [0.94958202 0.05041798]
+ [0.87976149 0.12023851]
+ [0.73975066 0.26024934]
+ [0.52477284 0.47522716]
+ [0.30020373 0.69979627]
+ [0.1428487  0.8571513 ]
+ [0.06080627 0.93919373]
+ [0.02453462 0.97546538]
+ [0.00967652 0.99032348]]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.scatter(x, y)</span><br><span class="line">ax.plot(x, p_pred[:, <span class="number">1</span>], color = <span class="string">&#x27;black&#x27;</span>,  marker=<span class="string">&#x27;o&#x27;</span>, markersize=<span class="number">6</span>)</span><br><span class="line">ax.plot()</span><br><span class="line"></span><br><span class="line">ax.set_xticks(x)</span><br><span class="line">ax.set_yticks(np.arange(<span class="number">0</span>, <span class="number">1.1</span>, <span class="number">0.1</span>))</span><br><span class="line"></span><br><span class="line">ax.grid(which=<span class="string">&#x27;major&#x27;</span>, alpha=<span class="number">0.5</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/output_42_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conf_m = confusion_matrix(y, y_pred)</span><br><span class="line"><span class="built_in">print</span>(conf_m)</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>---------------------------------------------------------------------------
+
+ValueError                                Traceback (most recent call last)
+
+&lt;ipython-input-170-19d9a7fe7894&gt; in &lt;module&gt;()
+----&gt; 1 conf_m = confusion_matrix(y, y_pred)
+      2 print(conf_m)
+
+
+/usr/local/lib/python3.7/dist-packages/sklearn/metrics/_classification.py in confusion_matrix(y_true, y_pred, labels, sample_weight, normalize)
+    305     (0, 2, 1, 1)
+    306     &quot;&quot;&quot;
+--&gt; 307     y_type, y_true, y_pred = _check_targets(y_true, y_pred)
+    308     if y_type not in (&quot;binary&quot;, &quot;multiclass&quot;):
+    309         raise ValueError(&quot;%s is not supported&quot; % y_type)
+
+
+/usr/local/lib/python3.7/dist-packages/sklearn/metrics/_classification.py in _check_targets(y_true, y_pred)
+     82     y_pred : array or indicator matrix
+     83     &quot;&quot;&quot;
+---&gt; 84     check_consistent_length(y_true, y_pred)
+     85     type_true = type_of_target(y_true)
+     86     type_pred = type_of_target(y_pred)
+
+
+/usr/local/lib/python3.7/dist-packages/sklearn/utils/validation.py in check_consistent_length(*arrays)
+    332         raise ValueError(
+    333             &quot;Found input variables with inconsistent numbers of samples: %r&quot;
+--&gt; 334             % [int(l) for l in lengths]
+    335         )
+    336 
+
+
+ValueError: Found input variables with inconsistent numbers of samples: [10, 50]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">cm = confusion_matrix(y, y_pred)</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots(figsize=(<span class="number">8</span>, <span class="number">8</span>))</span><br><span class="line">ax.imshow(cm, cmap = <span class="string">&#x27;GnBu&#x27;</span>)</span><br><span class="line">ax.grid(<span class="literal">False</span>)</span><br><span class="line">ax.xaxis.<span class="built_in">set</span>(ticks=(<span class="number">0</span>, <span class="number">1</span>), ticklabels=(<span class="string">&#x27;Predicted 0&#x27;</span>, <span class="string">&#x27;Predicted 1&#x27;</span>))</span><br><span class="line">ax.yaxis.<span class="built_in">set</span>(ticks=(<span class="number">0</span>, <span class="number">1</span>), ticklabels=(<span class="string">&#x27;Actual 0&#x27;</span>, <span class="string">&#x27;Actual 1&#x27;</span>))</span><br><span class="line">ax.set_ylim(<span class="number">1.5</span>, -<span class="number">0.5</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>):</span><br><span class="line">        ax.text(j, i, cm[i, j], ha=<span class="string">&#x27;center&#x27;</span>, va=<span class="string">&#x27;center&#x27;</span>, color=<span class="string">&#x27;black&#x27;</span>, fontsize=<span class="number">20</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<h3 id="결정-트리"><a href="#결정-트리" class="headerlink" title="결정 트리"></a>결정 트리</h3><ul>
+<li>분류와 회귀 문제에 모두 사용 가능</li>
+</ul>
+<h3 id="주요-개념"><a href="#주요-개념" class="headerlink" title="주요 개념"></a>주요 개념</h3><ul>
+<li>작동 원리<ul>
+<li>데이터를 가장 잘 구분하는 조건을 정함.</li>
+<li>조건을 기준으로 데이터를 두 범주로 나눔</li>
+<li>나뉜 각 범주의 데이터를 구분하는 조건을 정함</li>
+<li>각 조건을 기준으로 데이터를 두 범주로 나눔</li>
+<li>언제까지 계속 분할할지 정한 후, 최종 결정 값을 구함.</li>
+</ul>
+</li>
+<li>불순도(Impurity)<ul>
+<li>한 범주 안에 서로 다른 데이터가 얼마나 섞여 있는지 나타냄</li>
+<li>흰색과 검은색이 50:50으로 섞여 있다. (불순도 최대)</li>
+<li>흰색과 검은색으로 완전 분리 되었다. (불순도 최소)</li>
+</ul>
+</li>
+<li>엔트로피(Entropy)<ul>
+<li>불확실한 정도를 의미함. 0 ~ 1로 정함.</li>
+<li>흰색과 검은색이 50:50으로 섞여 있다. 엔트로피 1</li>
+<li>흰색과 검은색으로 완전 분리 되었다. 엔트로피 0</li>
+</ul>
+</li>
+<li>정보이득(Information Gain)<ul>
+<li>1에서 엔트로피를 뺀 수치</li>
+<li>정보 이득을 최대화하는 방향(엔트로피를 최소화 하는 방향)으로 노드를 분할함</li>
+</ul>
+</li>
+<li>지니 불순도(Gini Impurity)<ul>
+<li>지니 불순도 값이 클수록 불순도도 높고, 작을수록 불순도도 낮음. 엔트로피와 마찬가지로 지니 불순도가 낮아지는 방향으로 노드 분할함.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split </span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns </span><br><span class="line"></span><br><span class="line"><span class="comment"># tips 데이터셋 </span></span><br><span class="line">titanic = sns.load_dataset(<span class="string">&#x27;titanic&#x27;</span>)</span><br><span class="line">titanic.info()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>survived의 비율을 구한다.</li>
+</ul>
+<ul>
+<li>0:사망자</li>
+<li>1: 생존자</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">titanic[<span class="string">&#x27;survived&#x27;</span>].value_counts()</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">X = titanic[[<span class="string">&#x27;pclass&#x27;</span>, <span class="string">&#x27;parch&#x27;</span>, <span class="string">&#x27;fare&#x27;</span>]]</span><br><span class="line">y = titanic[<span class="string">&#x27;survived&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 훈련데이터, 테스트 데이터 분리</span></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, stratify = y, test_size = <span class="number">0.3</span>, random_state=<span class="number">42</span>)</span><br><span class="line">X_train.shape, X_test.shape, y_train.shape, y_test.shape</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tree_model = DecisionTreeClassifier()</span><br><span class="line">tree_model.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line">acc = tree_model.score(X_test, y_test)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;모형 정확도 : <span class="subst">&#123;acc:<span class="number">.3</span>f&#125;</span>&#x27;</span>) <span class="comment"># 정확도 측정</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="랜덤-포레스트"><a href="#랜덤-포레스트" class="headerlink" title="랜덤 포레스트"></a>랜덤 포레스트</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split </span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns </span><br><span class="line"></span><br><span class="line"><span class="comment"># tips 데이터셋 </span></span><br><span class="line">titanic = sns.load_dataset(<span class="string">&#x27;titanic&#x27;</span>)</span><br><span class="line"></span><br><span class="line">X = titanic[[<span class="string">&#x27;pclass&#x27;</span>, <span class="string">&#x27;parch&#x27;</span>, <span class="string">&#x27;fare&#x27;</span>]]</span><br><span class="line">y = titanic[<span class="string">&#x27;survived&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 훈련데이터, 테스트 데이터 분리</span></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, stratify = y, test_size = <span class="number">0.3</span>, random_state=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 모델 훈련</span></span><br><span class="line">rf_model = RandomForestClassifier(random_state=<span class="number">42</span>) <span class="comment"># 랜덤 포레스트 정의</span></span><br><span class="line">rf_model.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line">acc = rf_model.score(X_test, y_test)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;모형 정확도 : <span class="subst">&#123;acc:<span class="number">.3</span>f&#125;</span>&#x27;</span>) <span class="comment"># 정확도 측정</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="XGBoost-amp-lightGBM"><a href="#XGBoost-amp-lightGBM" class="headerlink" title="XGBoost &amp; lightGBM"></a>XGBoost &amp; lightGBM</h2><ul>
+<li>전통적인 머선러닝 알고리즘의 융합</li>
+<li>선형회귀 릿지 라쏘, 과적합 방지 위한 규제</li>
+</ul>
+<ul>
+<li>결정 트리의 핵심적인 알고리즘</li>
+<li>경사 하강법</li>
+<li>부스팅 기법</li>
+</ul>
+<ul>
+<li>문제점 : 파라미터의 개수가 매우 많음.</li>
+<li>왜 많이 쓸까요?</li>
+</ul>
+<ul>
+<li>모델 학습 속도</li>
+<li>성능</li>
+<li>가장 좋은 모델이란, 학습 속도는 빠르면서 성능은 좋은 것<br> (지금까지 나온 알고리즘 보다)</li>
+</ul>
+<ul>
+<li>python,</li>
+</ul>
+<ul>
+<li>java, c, c++<br> +c, c++ &#x2F; r data.table 패키지</li>
+</ul>
+<ul>
+<li>큰 회사들 개발</li>
+</ul>
+<ul>
+<li>첫번째 옵션, 우리가 자체적으로 배포하자. -&gt; python wrapper API</li>
+<li>R, 머신러닝 프레임워크 종류 다양</li>
+<li>두번째 옵션 파이썬 머신러닝 &#x3D;<br> scikit-Learn에서 쉽게 쓸 수 있도록 개발, scikit-Learn Wrapper API</li>
+</ul>
+<h2 id="python-Wrapper-방식"><a href="#python-Wrapper-방식" class="headerlink" title="python Wrapper 방식"></a>python Wrapper 방식</h2><ul>
+<li>X_train, y_train</li>
+<li>각 모듈에 맞도록 행렬을 재변환 해야 함</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xgboost <span class="keyword">as</span> xgb </span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns </span><br><span class="line"></span><br><span class="line"><span class="comment"># 데이터 분리</span></span><br><span class="line">titanic = sns.load_dataset(<span class="string">&#x27;titanic&#x27;</span>)</span><br><span class="line"><span class="comment"># titanic.info()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># X, 독립변수, y 종속변수</span></span><br><span class="line">X = titanic[[<span class="string">&#x27;pclass&#x27;</span>, <span class="string">&#x27;parch&#x27;</span>, <span class="string">&#x27;fare&#x27;</span>]]</span><br><span class="line">y = titanic[<span class="string">&#x27;survived&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 훈련데이터, 테스트 데이터 분리</span></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, </span><br><span class="line">                                                    y, </span><br><span class="line">                                                    stratify = y, </span><br><span class="line">                                                    test_size = <span class="number">0.3</span>, </span><br><span class="line">                                                    random_state=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line">X_train.shape, X_test.shape, y_train.shape, y_test.shape</span><br></pre></td></tr></table></figure>
+
+<p>!!!!!!!!!!!!!!!!!!!!!!!!!!!! 여기가 매우 중요!!!!!!!!!!!!!!!!!!!!!!</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dtrain = xgb. DMatrix(data = X_train, label = y_train)</span><br><span class="line">dtest = xgb.DMatrix(data = X_test, label = y_test)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(dtrain)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>머신러닝 코드</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">params = &#123;</span><br><span class="line">    <span class="string">&#x27;max_depth&#x27;</span> : <span class="number">3</span>, </span><br><span class="line">    <span class="string">&#x27;n_estimators&#x27;</span> : <span class="number">100</span>, </span><br><span class="line">    <span class="string">&#x27;eta&#x27;</span> : <span class="number">0.1</span>, </span><br><span class="line">    <span class="string">&#x27;objective&#x27;</span> : <span class="string">&#x27;binary:logistic&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">num_rounds = <span class="number">400</span></span><br><span class="line"></span><br><span class="line">w_list = [(dtrain, <span class="string">&#x27;train&#x27;</span>), (dtest, <span class="string">&#x27;test&#x27;</span>)]</span><br><span class="line">xgb_ml = xgb.train(params = params, </span><br><span class="line">                   dtrain = dtrain, </span><br><span class="line">                   num_boost_round = <span class="number">400</span>, </span><br><span class="line">                   early_stopping_rounds = <span class="number">100</span>, </span><br><span class="line">                   evals = w_list)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 평가</span></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score</span><br><span class="line">pred_probs = xgb_ml.predict(dtest) </span><br><span class="line">y_pred = [<span class="number">1</span> <span class="keyword">if</span> x &gt; <span class="number">0.5</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">for</span> x <span class="keyword">in</span> pred_probs]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 예측 라벨과 실제 라벨 사이의 정확도 측정</span></span><br><span class="line">accuracy_score(y_pred, y_test)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Scikit-Learn-API방식"><a href="#Scikit-Learn-API방식" class="headerlink" title="Scikit-Learn API방식"></a>Scikit-Learn API방식</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">from</span> xgboost <span class="keyword">import</span> XGBClassifier <span class="comment"># API </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># dt = DecisionTreeClassifier()</span></span><br><span class="line">xgb_model = XGBClassifier(objective = <span class="string">&#x27;binary:logistic&#x27;</span>, </span><br><span class="line">                          n_estimators=<span class="number">100</span>, </span><br><span class="line">                          max_depth=<span class="number">3</span>, </span><br><span class="line">                          learning_rate = <span class="number">0.1</span>, </span><br><span class="line">                          num_rounds = <span class="number">400</span>,</span><br><span class="line">                          random_state=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line">w_list = [(X_train, y_train), (X_test, y_test)]</span><br><span class="line"></span><br><span class="line">xgb_model.fit(X_train, y_train, eval_set = w_list, eval_metric=<span class="string">&#x27;error&#x27;</span>, verbose=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">y_probas = xgb_model.predict_proba(X_test)+</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lightgbm <span class="keyword">as</span> lgb </span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split </span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns </span><br><span class="line"></span><br><span class="line"><span class="comment"># tips 데이터셋 </span></span><br><span class="line">titanic = sns.load_dataset(<span class="string">&#x27;titanic&#x27;</span>)</span><br><span class="line"></span><br><span class="line">X = titanic[[<span class="string">&#x27;pclass&#x27;</span>, <span class="string">&#x27;parch&#x27;</span>, <span class="string">&#x27;fare&#x27;</span>]]</span><br><span class="line">y = titanic[<span class="string">&#x27;survived&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 훈련데이터, 테스트 데이터 분리</span></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, stratify = y, test_size = <span class="number">0.3</span>, random_state=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># XGBoost 코드와 유사하다. </span></span><br><span class="line">dtrain = lgb.Dataset(data = X_train, label = y_train)</span><br><span class="line">dtest = lgb.Dataset(data = X_test, label = y_test)</span><br><span class="line"></span><br><span class="line">params = &#123;<span class="string">&#x27;max_depth&#x27;</span>:<span class="number">3</span>,</span><br><span class="line">          <span class="string">&#x27;n_estimators&#x27;</span>:<span class="number">100</span>,</span><br><span class="line">          <span class="string">&#x27;learning_rate&#x27;</span>: <span class="number">0.1</span>, <span class="comment"># xgboost eta</span></span><br><span class="line">          <span class="string">&#x27;objective&#x27;</span>:<span class="string">&#x27;binary&#x27;</span>, <span class="comment"># xgboost binary </span></span><br><span class="line">          <span class="string">&#x27;metric&#x27;</span> : <span class="string">&#x27;binary_error&#x27;</span>, </span><br><span class="line">          <span class="string">&#x27;num_boost_round&#x27;</span> : <span class="number">400</span>, </span><br><span class="line">          <span class="string">&#x27;verbose&#x27;</span> : <span class="number">1</span>&#125; </span><br><span class="line"></span><br><span class="line">w_list = [dtrain, dtest]</span><br><span class="line">lgb_ml = lgb.train(params=params, train_set = dtrain,\</span><br><span class="line">                  early_stopping_rounds=<span class="number">100</span>, valid_sets= w_list)</span><br><span class="line"></span><br><span class="line">pred_probs = lgb_ml.predict(X_test)</span><br><span class="line">y_pred=[<span class="number">1</span> <span class="keyword">if</span> x &gt; <span class="number">0.5</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">for</span> x <span class="keyword">in</span> pred_probs]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 예측 라벨과 실제 라벨 사이의 정확도 측정</span></span><br><span class="line">accuracy_score(y_pred, y_test)</span><br></pre></td></tr></table></figure>
+
+<h3 id="LightGBM-scikit-Learn-API"><a href="#LightGBM-scikit-Learn-API" class="headerlink" title="LightGBM scikit_Learn API"></a>LightGBM scikit_Learn API</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lightgbm <span class="keyword">import</span> LGBMClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score</span><br><span class="line"></span><br><span class="line"><span class="comment"># model </span></span><br><span class="line">w_list = [dtrain, dtest]</span><br><span class="line">model = LGBMClassifier(objective = <span class="string">&#x27;binary&#x27;</span>, </span><br><span class="line">                       metric = <span class="string">&#x27;binary_error&#x27;</span>,</span><br><span class="line">                       n_estimators=<span class="number">100</span>, </span><br><span class="line">                       learning_rate=<span class="number">0.1</span>, </span><br><span class="line">                       max_depth=<span class="number">3</span>, </span><br><span class="line">                       num_boost_round = <span class="number">400</span>,</span><br><span class="line">                       random_state = <span class="number">32</span>)</span><br><span class="line">model.fit(X_train, </span><br><span class="line">          y_train, </span><br><span class="line">          eval_set = [(X_train, y_train), (X_test, y_test)], </span><br><span class="line">          verbose=<span class="number">1</span>,</span><br><span class="line">          early_stopping_rounds = <span class="number">100</span>)</span><br><span class="line">y_probas = model.predict_proba(X_test) </span><br><span class="line">y_pred=[<span class="number">1</span> <span class="keyword">if</span> x &gt; <span class="number">0.5</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">for</span> x <span class="keyword">in</span> y_probas[:, <span class="number">1</span>]] <span class="comment"># 예측 라벨(0과 1로 예측)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 예측 라벨과 실제 라벨 사이의 정확도 측정</span></span><br><span class="line">accuracy_score(y_pred, y_test)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://seoseonho.github.io/2022/07/06/day0706%20(1)/day0706%20(1)/" data-id="cl59b2m1d0000agv2e27v2179" data-title="0706, python" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-day0705_ch05_3ipynb/day0705_ch05_3ipynb" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/07/05/day0705_ch05_3ipynb/day0705_ch05_3ipynb/" class="article-date">
@@ -7553,464 +9309,6 @@ Name: Park, dtype: int64
 
 
   
-    <article id="post-day_0627" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/06/28/day_0627/" class="article-date">
-  <time class="dt-published" datetime="2022-06-28T01:00:00.000Z" itemprop="datePublished">2022-06-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/06/28/day_0627/">0627</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>hello world</li>
-</ul>
-<p>print(“Hello wordl”)</p>
-<p>주석처리</p>
-<ul>
-<li>1줄 주석, 여러줄 주석처리</li>
-<li>여러 줄 주석 처리</li>
-</ul>
-<ul>
-<li>함수 또는 클래스를 문서화 할 때 주로 사용</li>
-</ul>
-<ul>
-<li>프로젝트 할 때<ul>
-<li>전체 공정 100</li>
-<li>코드 &#x2F; 코드 문서화 &#x2F; 한글작업 문서화</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#print() 함수 사용</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;1줄 주석&quot;</span>)</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">여러 줄 주석</span></span><br><span class="line"><span class="string">쌍따옴표 3개를 입력해주세여</span></span><br><span class="line"><span class="string">앞과 뒤로</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;여러줄 주석&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>1줄 주석
-여러줄 주석
-</code></pre>
-<h2 id="변수-Scalar"><a href="#변수-Scalar" class="headerlink" title="변수 (Scalar)"></a>변수 (Scalar)</h2><ul>
-<li>자료형</li>
-<li>Scalar형 Non-Saclar형</li>
-</ul>
-<h3 id="수치형-자료형"><a href="#수치형-자료형" class="headerlink" title="수치형 자료형"></a>수치형 자료형</h3><ul>
-<li>int, float</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">num_int = <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(num_int)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(num_int))</span><br></pre></td></tr></table></figure>
-
-<pre><code>1
-&lt;class &#39;int&#39;&gt;
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">num_float = <span class="number">0.1</span></span><br><span class="line"><span class="built_in">print</span>(num_float)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(num_float))</span><br></pre></td></tr></table></figure>
-
-<pre><code>0.1
-&lt;class &#39;float&#39;&gt;
-</code></pre>
-<h3 id="Bool형"><a href="#Bool형" class="headerlink" title="Bool형"></a>Bool형</h3><ul>
-<li>True, False</li>
-<li>R :TRUE,FALSE</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bool_true = <span class="literal">True</span></span><br><span class="line"><span class="built_in">print</span>(bool_true)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(bool_true))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>none 자료형</p>
-<ul>
-<li>Null값, 값이 정해지지 않는 자료형</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">none_x = <span class="literal">None</span></span><br><span class="line"><span class="built_in">print</span>(none_x)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(none_x))</span><br></pre></td></tr></table></figure>
-
-<pre><code>None
-&lt;class &#39;NoneType&#39;&gt;
-</code></pre>
-<h2 id="사칙연산"><a href="#사칙연산" class="headerlink" title="사칙연산"></a>사칙연산</h2><ul>
-<li>정수형 사칙연산, 실수형 사칙연산<br>-결괏값의 자료형</li>
-</ul>
-<h1 id="정수형-사칙-연산"><a href="#정수형-사칙-연산" class="headerlink" title="정수형 사칙 연산"></a>정수형 사칙 연산</h1><ul>
-<li>+, -, *, &#x2F;</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">3</span></span><br><span class="line">b = <span class="number">2</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;a + b =&#x27;</span> , a+b)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;a - b =&#x27;</span> , a-b)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;a * b =&#x27;</span> , a*b)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;a / b =&#x27;</span> , a/b)</span><br></pre></td></tr></table></figure>
-
-<pre><code>a + b = 5
-a - b = 1
-a * b = 6
-a / b = 1.5
-</code></pre>
-<h3 id="실수형-사칙-연산"><a href="#실수형-사칙-연산" class="headerlink" title="실수형 사칙 연산"></a>실수형 사칙 연산</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1.5</span></span><br><span class="line">b = <span class="number">2.5</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;a + b =&#x27;</span> , a+b)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;a - b =&#x27;</span> , a-b)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;a * b =&#x27;</span> , a*b)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;a / b =&#x27;</span> , a/b)</span><br></pre></td></tr></table></figure>
-
-<pre><code>a + b = 4.0
-a - b = -1.0
-a * b = 3.75
-a / b = 0.6
-</code></pre>
-<h2 id="논리형-연산자"><a href="#논리형-연산자" class="headerlink" title="논리형 연산자"></a>논리형 연산자</h2><ul>
-<li>Bool형</li>
-<li>True와 False 값으로 정의</li>
-<li>조건식<ul>
-<li>교집합(&#x3D;and), 합집합(&#x3D;or)</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="literal">True</span> <span class="keyword">and</span> <span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="literal">True</span> <span class="keyword">and</span> <span class="literal">False</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="literal">False</span> <span class="keyword">and</span> <span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="literal">False</span> <span class="keyword">and</span> <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>True
-False
-False
-False
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="literal">True</span> <span class="keyword">or</span> <span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="literal">True</span> <span class="keyword">or</span> <span class="literal">False</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="literal">False</span> <span class="keyword">or</span> <span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="literal">False</span> <span class="keyword">or</span> <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>True
-True
-True
-False
-</code></pre>
-<h2 id="비교-연산자"><a href="#비교-연산자" class="headerlink" title="비교 연산자"></a>비교 연산자</h2><ul>
-<li>비교 연산자는 부동호를 의마한다</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="number">4</span> &gt; <span class="number">3</span>) <span class="comment"># 참 = True</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">4</span> &lt; <span class="number">3</span>) <span class="comment"># 거짓 = False</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> (<span class="number">4</span> &gt; <span class="number">3</span> <span class="keyword">or</span> <span class="number">4</span> &lt; <span class="number">3</span>) <span class="comment"># False</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>True
-False
-True
-</code></pre>
-<h2 id="논리형-amp-비교-연산자-응용"><a href="#논리형-amp-비교-연산자-응용" class="headerlink" title="논리형 &amp; 비교 연산자 응용"></a>논리형 &amp; 비교 연산자 응용</h2><ul>
-<li>input()</li>
-<li>형변환</li>
-<li>데이터 타입을 바꾸는 것</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;숫자를 입력하세요..!&quot;</span>))</span><br><span class="line"><span class="built_in">print</span>(var)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(var))</span><br></pre></td></tr></table></figure>
-
-<pre><code>숫자를 입력하세요..!1
-1
-&lt;class &#39;int&#39;&gt;
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">num1 = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;첫번째 숫자를 입력하세요..!&quot;</span>))</span><br><span class="line">num2 = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;두번째 숫자를 입력하세요..!&quot;</span>))</span><br><span class="line">num3 = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;세번째 숫자를 입력하세요..!&quot;</span>))</span><br><span class="line">num4 = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;네번째 숫자를 입력하세요..!&quot;</span>))</span><br></pre></td></tr></table></figure>
-
-<pre><code>첫번째 숫자를 입력하세요..!10
-두번째 숫자를 입력하세요..!20
-세번째 숫자를 입력하세요..!30
-네번째 숫자를 입력하세요..!40
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var1 = num1 &gt;= num2 <span class="comment"># False</span></span><br><span class="line">var2 = num3 &lt; num4 <span class="comment"># True</span></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(var1 <span class="keyword">and</span> var2) <span class="comment"># True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1 True</span></span><br><span class="line"><span class="comment"># 2 False</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>False
-</code></pre>
-<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><ul>
-<li>Non Scalar</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Hello World&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hello World&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;&#x27;Hello World&#x27;&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;&quot;Hello World&quot;&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>Hello World
-Hello World
-&#39;Hello World&#39;
-&quot;Hello World&quot;
-</code></pre>
-<h2 id="String-Operators"><a href="#String-Operators" class="headerlink" title="String Operators"></a>String Operators</h2><ul>
-<li>문자열 연산자</li>
-<li>+,* 가능</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str1 = <span class="string">&quot;Hello&quot;</span></span><br><span class="line">str2 = <span class="string">&quot;World&quot;</span></span><br><span class="line"><span class="built_in">print</span>(str1 + str2)</span><br></pre></td></tr></table></figure>
-
-<pre><code>HelloWorld
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">greet = str1 +str2</span><br><span class="line"><span class="built_in">print</span>(greet * <span class="number">4</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>HelloWorldHelloWorldHelloWorldHelloWorld
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = <span class="number">4</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a + b</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a * b</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a / b</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>0.75
-</code></pre>
-<h1 id="문자열-인덱싱"><a href="#문자열-인덱싱" class="headerlink" title="문자열 인덱싱"></a>문자열 인덱싱</h1><ul>
-<li>인덱싱은 0번째 부터 시작</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">greeting = <span class="string">&quot;Hello Kaggle&quot;</span></span><br><span class="line">i = <span class="number">7</span></span><br><span class="line"><span class="built_in">print</span>(greeting[i])</span><br><span class="line"><span class="built_in">print</span>(greeting[<span class="number">7</span>])</span><br></pre></td></tr></table></figure>
-
-<pre><code>a
-a
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">greeting = <span class="string">&quot;Hello Kaggle&quot;</span></span><br><span class="line">i = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;숫자를 입력하세요...!&quot;</span>))</span><br><span class="line"><span class="built_in">print</span>(greeting[i])</span><br></pre></td></tr></table></figure>
-
-<pre><code>숫자를 입력하세요...!7
-a
-</code></pre>
-<h1 id="슬라이싱"><a href="#슬라이싱" class="headerlink" title="슬라이싱"></a>슬라이싱</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">greeting = <span class="string">&quot;Hello Kaggle&quot;</span></span><br><span class="line"><span class="comment"># print(greeting[시작인덱스 : 끝인덱스-1  ])</span></span><br><span class="line"><span class="built_in">print</span>(greeting[<span class="number">0</span>:<span class="number">8</span>])</span><br><span class="line"><span class="built_in">print</span>(greeting[:<span class="number">8</span>])</span><br><span class="line"><span class="built_in">print</span>(greeting[<span class="number">6</span>:])</span><br><span class="line"><span class="built_in">print</span>(greeting[<span class="number">0</span>:<span class="number">10</span>:<span class="number">2</span>])</span><br><span class="line"><span class="built_in">print</span>(greeting[<span class="number">0</span>:<span class="number">10</span>:<span class="number">3</span>])</span><br><span class="line"><span class="built_in">print</span>(greeting[<span class="number">0</span>:<span class="number">10</span>:<span class="number">4</span>])</span><br></pre></td></tr></table></figure>
-
-<pre><code>Hello Ka
-Hello Ka
-Kaggle
-HloKg
-HlKg
-Hog
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alphabet_letter = <span class="string">&quot;123456789&quot;</span></span><br><span class="line"><span class="built_in">print</span>(alphabet_letter[<span class="number">0</span>:<span class="number">5</span>:<span class="number">2</span>])</span><br></pre></td></tr></table></figure>
-
-<pre><code>135
-</code></pre>
-<ul>
-<li>문자열 관련 메서드<br>+split()<br>+sort()<br>+etc</li>
-</ul>
-<h1 id="리스트"><a href="#리스트" class="headerlink" title="리스트"></a>리스트</h1><ul>
-<li><input disabled="" type="checkbox"> 로 표시</li>
-<li>[item1, item2, item3</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = [] <span class="comment"># 빈 리스트</span></span><br><span class="line">a_func = <span class="built_in">list</span>() <span class="comment"># 빈 리스트 생성</span></span><br><span class="line">b = [<span class="number">1</span>] <span class="comment">#숫자 요소</span></span><br><span class="line">c = [<span class="string">&#x27;apple&#x27;</span>] <span class="comment"># 문자 요소</span></span><br><span class="line">d = [<span class="number">1</span>, <span class="number">2</span>, [<span class="string">&#x27;apple&#x27;</span>], <span class="string">&#x27;apple&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(d)</span><br></pre></td></tr></table></figure>
-
-<pre><code>[1, 2, [&#39;apple&#39;], &#39;apple&#39;]
-</code></pre>
-<h1 id="리스트-값-수정하기"><a href="#리스트-값-수정하기" class="headerlink" title="리스트 값 수정하기"></a>리스트 값 수정하기</h1><ul>
-<li>리스트 값 수정</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line">a[<span class="number">0</span>] = <span class="string">&quot;아무값&quot;</span></span><br><span class="line"><span class="built_in">print</span>(a)</span><br></pre></td></tr></table></figure>
-
-<pre><code>[&#39;아무값&#39;, 1, 2]
-</code></pre>
-<h1 id="리스트-값-추가하기"><a href="#리스트-값-추가하기" class="headerlink" title="리스트 값 추가하기"></a>리스트 값 추가하기</h1><ul>
-<li>메서드 사용</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>]</span><br><span class="line">a .append(<span class="number">400</span>)</span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"></span><br><span class="line">a.append([<span class="number">500</span>, <span class="number">600</span>])</span><br><span class="line"><span class="built_in">print</span>(a)</span><br></pre></td></tr></table></figure>
-
-<pre><code>[100, 200, 300, 400]
-[100, 200, 300, 400, [500, 600]]
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>]</span><br><span class="line">a .append(<span class="number">400</span>)</span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"></span><br><span class="line">a.extend([<span class="number">400</span>, <span class="number">500</span>])</span><br><span class="line"><span class="built_in">print</span>(a)</span><br></pre></td></tr></table></figure>
-
-<pre><code>[100, 200, 300, 400]
-[100, 200, 300, 400, 400, 500]
-</code></pre>
-<ul>
-<li>insert(인덱스 위치, 값)</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">100</span>, <span class="number">200</span> ,<span class="number">300</span>]</span><br><span class="line">a. insert(<span class="number">1</span>, <span class="number">1000</span>)</span><br><span class="line"><span class="built_in">print</span>(a)</span><br></pre></td></tr></table></figure>
-
-<pre><code>[100, 1000, 200, 300]
-</code></pre>
-<p>#리스트 값 삭제하기</p>
-<ul>
-<li>remove(), del</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">10</span>]</span><br><span class="line">a.remove(<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"></span><br><span class="line">a.remove(<span class="number">10</span>)</span><br><span class="line"><span class="built_in">print</span>(a)</span><br></pre></td></tr></table></figure>
-
-<pre><code>[2, 1, 2, 10]
-[2, 1, 2]
-</code></pre>
-<p>-del</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"><span class="keyword">del</span> a[<span class="number">1</span>]</span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span> a[<span class="number">0</span>:<span class="number">2</span>]</span><br><span class="line"><span class="built_in">print</span>(a)</span><br></pre></td></tr></table></figure>
-
-<pre><code>[0, 1, 2, 3, 4]
-[2, 3, 4]
-</code></pre>
-<p>&#x3D; pop()</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a= [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">rem = a.pop(<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="built_in">print</span>(rem)</span><br><span class="line"></span><br><span class="line">x = a.pop()</span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
-
-<pre><code>[1, 3, 4, 5]
-2
-[1, 3, 4]
-5
-</code></pre>
-<ul>
-<li>clear() : 리스트 내 모든 값<br>삭제<br>-inddex(“값”) : 값의 위치를 불러옴</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">b = [<span class="string">&quot;철수&quot;</span>, <span class="string">&quot;영희&quot;</span>, <span class="string">&quot;길동&quot;</span>]</span><br><span class="line"><span class="built_in">print</span>(a.index(<span class="number">4</span>))</span><br><span class="line"><span class="built_in">print</span>(b.index(<span class="string">&quot;길동&quot;</span>))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<pre><code>1
-2
-</code></pre>
-<ul>
-<li>sort : 리스트의 정렬</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">a.sort(reverse=<span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"></span><br><span class="line"><span class="comment">#help(list.sort)</span></span><br><span class="line"><span class="built_in">help</span>(<span class="built_in">list</span>. index)</span><br></pre></td></tr></table></figure>
-
-<pre><code>[5, 4, 3, 2, 1]
-Help on method_descriptor:
-
-index(self, value, start=0, stop=9223372036854775807, /)
-    Return first index of value.
-    
-    Raises ValueError if the value is not present.
-</code></pre>
-<h2 id="튜플"><a href="#튜플" class="headerlink" title="튜플"></a>튜플</h2><ul>
-<li>면접질문 : 리스트와 튜플의 차이가 뭐에요?</li>
-<li>리스트 : []</li>
-</ul>
-<ul>
-<li>수정, 삭제, 추가</li>
-</ul>
-<ul>
-<li>튜플 : ()</li>
-</ul>
-<ul>
-<li>리스트에서 할수있는일을 못함</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">tuple1 = (<span class="number">0</span>)</span><br><span class="line">tuple2 = (<span class="number">0</span>, )</span><br><span class="line">tuple3 = <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(tuple1))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(tuple2))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(tuple3))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(tuple1)</span><br><span class="line"><span class="built_in">print</span>(tuple2)</span><br><span class="line"><span class="built_in">print</span>(tuple3)</span><br></pre></td></tr></table></figure>
-
-<pre><code>&lt;class &#39;int&#39;&gt;
-&lt;class &#39;tuple&#39;&gt;
-&lt;class &#39;tuple&#39;&gt;
-0
-(0,)
-(0, 1, 2)
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = (<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="string">&#x27;a&#x27;</span>)</span><br><span class="line"><span class="keyword">del</span> a[<span class="number">4</span>]</span><br></pre></td></tr></table></figure>
-
-
-<pre><code>---------------------------------------------------------------------------
-
-TypeError                                 Traceback (most recent call last)
-
-&lt;ipython-input-241-3c8e6a62588a&gt; in &lt;module&gt;()
-      1 a = (0, 1, 2, 3, &#39;a&#39;)
-----&gt; 2 del a[4]
-
-
-TypeError: &#39;tuple&#39; object doesn&#39;t support item deletion
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = (<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">a[<span class="number">4</span>] = <span class="number">4</span></span><br><span class="line"><span class="built_in">print</span>(a)</span><br></pre></td></tr></table></figure>
-
-
-<pre><code>---------------------------------------------------------------------------
-
-TypeError                                 Traceback (most recent call last)
-
-&lt;ipython-input-242-fdbbdf9f616e&gt; in &lt;module&gt;()
-      1 a = (0, 1, 2, 3, &#39;a&#39;)
-----&gt; 2 a[4] = 4
-      3 print(a)
-
-
-TypeError: &#39;tuple&#39; object does not support item assignment
-</code></pre>
-<h2 id="튜플-x3D-리스트-연산자"><a href="#튜플-x3D-리스트-연산자" class="headerlink" title="튜플(&#x3D;리스트) 연산자"></a>튜플(&#x3D;리스트) 연산자</h2><p>-문자열 연산자</p>
-<ul>
-<li>+, *</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">t1 = (<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">t2 = (<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"><span class="built_in">print</span>(t1 + t2)</span><br></pre></td></tr></table></figure>
-
-<pre><code>(0, 1, 2, 3, 4, 5)
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">t1 = (<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">t2 = (<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"><span class="built_in">print</span>(t1 * t2)</span><br></pre></td></tr></table></figure>
-
-
-<pre><code>---------------------------------------------------------------------------
-
-TypeError                                 Traceback (most recent call last)
-
-&lt;ipython-input-139-8681ef5b6283&gt; in &lt;module&gt;()
-      1 t1 = (0, 1, 2)
-      2 t2 = (3, 4, 5)
-----&gt; 3 print(t1 * t2)
-
-
-TypeError: can&#39;t multiply sequence by non-int of type &#39;tuple&#39;
-</code></pre>
-<h2 id="딕셔너리"><a href="#딕셔너리" class="headerlink" title="딕셔너리"></a>딕셔너리</h2><ul>
-<li>key(키)와 Value(값)으로<br>구성됨</li>
-<li>슬라이싱! &#x3D; (값의 순서가 존재해야 함)</li>
-<li>순서라는 개념 자체가 존재하지 않음</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">temp_dict= &#123;</span><br><span class="line">    <span class="string">&#x27;teacher&#x27;</span> : <span class="string">&#x27;evan&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;class&#x27;</span> : <span class="number">15</span>,</span><br><span class="line">    <span class="string">&#x27;students&#x27;</span> : [<span class="string">&#x27;s1&#x27;</span>, <span class="string">&#x27;s2&#x27;</span>, <span class="string">&#x27;s3&#x27;</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(temp_dict[<span class="string">&quot;teacher&quot;</span>])</span><br><span class="line"><span class="built_in">print</span>(temp_dict[<span class="string">&#x27;class&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(temp_dict[<span class="string">&#x27;students&#x27;</span>])</span><br></pre></td></tr></table></figure>
-
-<pre><code>evan
-15
-[&#39;s1&#39;, &#39;s2&#39;, &#39;s3&#39;]
-</code></pre>
-<p>keys() 값만 출력</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span>(temp_dict.keys())</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>[&#39;teacher&#39;, &#39;class&#39;, &#39;students&#39;]
-</code></pre>
-<p>values() 값만 출</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">temp_dict.values()</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>dict_values([&#39;evan&#39;, 15, [&#39;s1&#39;, &#39;s2&#39;, &#39;s3&#39;]])
-</code></pre>
-<ul>
-<li>items() key-value 쌍으로, list</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">temp_dict.items()</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>dict_items([(&#39;teacher&#39;, &#39;evan&#39;), (&#39;class&#39;, 15), (&#39;students&#39;, [&#39;s1&#39;, &#39;s2&#39;, &#39;s3&#39;])])
-</code></pre>
-<h1 id="조건문"><a href="#조건문" class="headerlink" title="조건문"></a>조건문</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;숫자를 입력하세요..!&quot;</span>))</span><br><span class="line"><span class="keyword">if</span> a &gt; <span class="number">5</span>:</span><br><span class="line"> <span class="built_in">print</span>(<span class="string">&quot;a는 5보다 크다&quot;</span>)</span><br><span class="line"><span class="keyword">elif</span> a &gt; <span class="number">0</span>:</span><br><span class="line"> <span class="built_in">print</span>(<span class="string">&quot;a는 0보다 크다&quot;</span>)</span><br><span class="line"><span class="keyword">elif</span> a &gt; -<span class="number">5</span>:</span><br><span class="line"> <span class="built_in">print</span>(<span class="string">&quot;a는 -5보다 크다&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line"> <span class="built_in">print</span>(<span class="string">&quot;a는 매우 작다&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>숫자를 입력하세요..!8
-a는 5보다 크다
-</code></pre>
-<h1 id="반복론"><a href="#반복론" class="headerlink" title="반복론"></a>반복론</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Helo World 1000 출력하세요</span></span><br><span class="line"><span class="keyword">for</span> idx <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line"> <span class="comment"># print(idx+1)</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;Hello World&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<pre><code>Hello World
-Hello World
-Hello World
-</code></pre>
-<ul>
-<li>for loop 조건문 사용</li>
-<li>문자열, 리스트 등 –&gt; 시퀀스 데이터</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;Kaggle&quot;</span></span><br><span class="line"><span class="comment"># g가 시작하면 반복문을 멈추세요</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> a:</span><br><span class="line">   <span class="built_in">print</span>(x)</span><br><span class="line">   <span class="keyword">if</span> x == <span class="string">&#x27;g&#x27;</span>:</span><br><span class="line">    <span class="keyword">break</span> </span><br><span class="line">   <span class="comment">#print(x)</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>K
-a
-g
-</code></pre>
-<p>-enumerate()</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alphabets = [<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>,]</span><br><span class="line"><span class="keyword">for</span> index, value <span class="keyword">in</span> <span class="built_in">enumerate</span>(alphabets):</span><br><span class="line">  <span class="built_in">print</span>(index, value)</span><br></pre></td></tr></table></figure>
-
-<pre><code>0 A
-1 B
-2 C
-</code></pre>
-<h2 id="리스트-컴프리헨션"><a href="#리스트-컴프리헨션" class="headerlink" title="리스트 컴프리헨션"></a>리스트 컴프리헨션</h2><p>list comprehension</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">fruits = [<span class="string">&#x27;apple&#x27;</span>, <span class="string">&#x27;kiwi&#x27;</span>, <span class="string">&#x27;mango&#x27;</span>]</span><br><span class="line">newlists = []</span><br><span class="line"></span><br><span class="line"><span class="comment"># 알파벳 a가 있는 과일만 추출 후, 새로운 리스트에 담기</span></span><br><span class="line"><span class="keyword">for</span> fruit <span class="keyword">in</span> fruits:</span><br><span class="line">  <span class="comment"># print(fruit)</span></span><br><span class="line">  <span class="keyword">if</span> <span class="string">&quot;a&quot;</span> <span class="keyword">in</span> fruit:</span><br><span class="line">    newlists.append(fruit)</span><br><span class="line">    <span class="built_in">print</span>(newlists)</span><br></pre></td></tr></table></figure>
-
-<pre><code>[&#39;apple&#39;]
-[&#39;apple&#39;, &#39;mango&#39;]
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 리스트 컴프리헨션</span></span><br><span class="line">newlist = [<span class="built_in">print</span>(fruit) <span class="keyword">for</span> fruit <span class="keyword">in</span> fruits <span class="keyword">if</span> <span class="string">&#x27;a&#x27;</span> <span class="keyword">in</span> fruit]</span><br><span class="line"><span class="built_in">print</span>(newlist)</span><br></pre></td></tr></table></figure>
-
-<pre><code>apple
-mango
-[None, None]
-</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://seoseonho.github.io/2022/06/28/day_0627/" data-id="cl4whgnzd0000wwv218brdilg" data-title="0627" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -8047,6 +9345,10 @@ mango
       <ul>
         
           <li>
+            <a href="/2022/07/06/day0706%20(1)/day0706%20(1)/">0706, python</a>
+          </li>
+        
+          <li>
             <a href="/2022/07/05/day0705_ch05_3ipynb/day0705_ch05_3ipynb/">0705 ch05_3ipynb</a>
           </li>
         
@@ -8060,10 +9362,6 @@ mango
         
           <li>
             <a href="/2022/07/01/day0701_ch03/">0701 ch03</a>
-          </li>
-        
-          <li>
-            <a href="/2022/07/01/day0701_ch04/">0701 ch04</a>
           </li>
         
       </ul>
