@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>0707, python | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1234567891011121314151617# This Python 3 environment comes with many helpful analytics libraries installed# It is defined by the kaggle&#x2F;python Docker image: https:&#x2F;&#x2F;github.com&#x2F;kaggle&#x2F;docker-python# Fo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="0707, python">
+<meta property="og:url" content="http://seoseonho.github.io/2022/07/07/lecture-in-humanedu_0707_1500/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1234567891011121314151617# This Python 3 environment comes with many helpful analytics libraries installed# It is defined by the kaggle&#x2F;python Docker image: https:&#x2F;&#x2F;github.com&#x2F;kaggle&#x2F;docker-python# Fo">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-07-07T01:00:00.000Z">
+<meta property="article:modified_time" content="2022-07-07T07:35:51.495Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://seoseonho.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-lecture-in-humanedu_0707_1500" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/07/07/lecture-in-humanedu_0707_1500/" class="article-date">
+  <time class="dt-published" datetime="2022-07-07T01:00:00.000Z" itemprop="datePublished">2022-07-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      0707, python
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># This Python 3 environment comes with many helpful analytics libraries installed</span></span><br><span class="line"><span class="comment"># It is defined by the kaggle/python Docker image: https://github.com/kaggle/docker-python</span></span><br><span class="line"><span class="comment"># For example, here&#x27;s several helpful packages to load</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np <span class="comment"># linear algebra</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd <span class="comment"># data processing, CSV file I/O (e.g. pd.read_csv)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Input data files are available in the read-only &quot;../input/&quot; directory</span></span><br><span class="line"><span class="comment"># For example, running this (by clicking run or pressing Shift+Enter) will list all files under the input directory</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">for</span> dirname, _, filenames <span class="keyword">in</span> os.walk(<span class="string">&#x27;/kaggle/input&#x27;</span>):</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> filenames:</span><br><span class="line">        <span class="built_in">print</span>(os.path.join(dirname, filename))</span><br><span class="line"></span><br><span class="line"><span class="comment"># You can write up to 20GB to the current directory (/kaggle/working/) that gets preserved as output when you create a version using &quot;Save &amp; Run All&quot; </span></span><br><span class="line"><span class="comment"># You can also write temporary files to /kaggle/temp/, but they won&#x27;t be saved outside of the current session</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="라이브러리-불러오기"><a href="#라이브러리-불러오기" class="headerlink" title="라이브러리 불러오기"></a>라이브러리 불러오기</h2><ul>
+<li>주요 라이브러리 버전을 확인한다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd </span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl </span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns </span><br><span class="line"><span class="keyword">import</span> sklearn</span><br><span class="line"><span class="keyword">import</span> xgboost <span class="keyword">as</span> xgb </span><br><span class="line"><span class="keyword">import</span> lightgbm <span class="keyword">as</span> lgb</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;pandas version :&quot;</span>, pd.__version__)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;numpy version :&quot;</span>, np.__version__)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;matplotlib version :&quot;</span>, mpl.__version__)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;seaborn version :&quot;</span>, sns.__version__)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;scikit-learn version :&quot;</span>, sklearn.__version__)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;xgboost version :&quot;</span>, xgb.__version__)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;lightgbm version :&quot;</span>, lgb.__version__)</span><br></pre></td></tr></table></figure>
+
+<h2 id="데이터-불러오기"><a href="#데이터-불러오기" class="headerlink" title="데이터 불러오기"></a>데이터 불러오기</h2><ul>
+<li>pandas 활용</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">DATA_PATH = <span class="string">&#x27;/kaggle/input/house-prices-advanced-regression-techniques/&#x27;</span></span><br><span class="line">train = pd.read_csv(DATA_PATH + <span class="string">&quot;train.csv&quot;</span>)</span><br><span class="line">test = pd.read_csv(DATA_PATH + <span class="string">&quot;test.csv&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;데이터 불러오기 완료!&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="데이터-둘러보기"><a href="#데이터-둘러보기" class="headerlink" title="데이터 둘러보기"></a>데이터 둘러보기</h2><ul>
+<li>데이터를 둘러봅니다. </li>
+<li>train : 행 갯수 1460 열 갯수 81 (SalePrice 존재)</li>
+<li>test : 행 갯수 1459, 열 갯수 80 (SalePrice 컬럼 미 존재)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train.shape, test.shape</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train.info()</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test.info()</span><br></pre></td></tr></table></figure>
+
+<h2 id="데이터-시각화"><a href="#데이터-시각화" class="headerlink" title="데이터 시각화"></a>데이터 시각화</h2><ul>
+<li><p>여기에서는 생략</p>
+</li>
+<li><p>종속변수 분포 확인</p>
+</li>
+<li><p>샤피로 검정</p>
+</li>
+<li><p>정규분포인가요? </p>
+<ul>
+<li>정규분포가 아님! –&gt; 로그변환, 박스콕스 변환 등등</li>
+<li>정규분포로 만들어 줘야 함.</li>
+</ul>
+</li>
+<li><p>선형모델의 성능을 올리기 위해서는</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt </span><br><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> norm </span><br><span class="line">(mu, sigma) = norm.fit(train[<span class="string">&#x27;SalePrice&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;평균:&quot;</span>, mu)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;표준편차:&quot;</span>, sigma)</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots(figsize=(<span class="number">10</span>, <span class="number">6</span>))</span><br><span class="line">sns.histplot(train[<span class="string">&#x27;SalePrice&#x27;</span>])</span><br><span class="line">ax.<span class="built_in">set</span>(title=<span class="string">&quot;SalePrice Distribution&quot;</span>)</span><br><span class="line">ax.axvline(mu, color = <span class="string">&#x27;r&#x27;</span>, linestyle = <span class="string">&#x27;--&#x27;</span>)</span><br><span class="line">ax.text(mu + <span class="number">10000</span>, <span class="number">160</span>, <span class="string">&#x27;Mean of SalePrice&#x27;</span>, color = <span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>로그변환을 해서 정규분포로 변환해준다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 로그변환을 함. </span></span><br><span class="line">train[<span class="string">&#x27;SalePrice&#x27;</span>] = np.log1p(train[<span class="string">&#x27;SalePrice&#x27;</span>])</span><br><span class="line"></span><br><span class="line">(mu, sigma) = norm.fit(train[<span class="string">&#x27;SalePrice&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;평균:&quot;</span>, mu)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;표준편차:&quot;</span>, sigma)</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots(figsize=(<span class="number">10</span>, <span class="number">6</span>))</span><br><span class="line">sns.histplot(train[<span class="string">&#x27;SalePrice&#x27;</span>])</span><br><span class="line">ax.<span class="built_in">set</span>(title=<span class="string">&quot;SalePrice Distribution&quot;</span>)</span><br><span class="line">ax.axvline(mu, color = <span class="string">&#x27;r&#x27;</span>, linestyle = <span class="string">&#x27;--&#x27;</span>)</span><br><span class="line">ax.text(mu + <span class="number">0.0001</span>, <span class="number">160</span>, <span class="string">&#x27;Mean of SalePrice&#x27;</span>, color = <span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">ax.set_ylim(<span class="number">0</span>, <span class="number">170</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<h2 id="데이터-전처리"><a href="#데이터-전처리" class="headerlink" title="데이터 전처리"></a>데이터 전처리</h2><ul>
+<li>컬럼 갯수가 많다?, 어떤 컬럼을 없앨 것인가? </li>
+<li>머신러닝 연산 속도부터 높여야 함.</li>
+</ul>
+<h3 id="데이터-ID값-제거"><a href="#데이터-ID값-제거" class="headerlink" title="데이터 ID값 제거"></a>데이터 ID값 제거</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">train_ID = train[<span class="string">&#x27;Id&#x27;</span>]</span><br><span class="line">test_ID = test[<span class="string">&#x27;Id&#x27;</span>]</span><br><span class="line"></span><br><span class="line">train = train.drop([<span class="string">&#x27;Id&#x27;</span>], axis = <span class="number">1</span>)</span><br><span class="line">train.shape</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">test = test.drop([<span class="string">&#x27;Id&#x27;</span>], axis = <span class="number">1</span>)</span><br><span class="line">test.shape </span><br></pre></td></tr></table></figure>
+
+<h3 id="Y값-추출"><a href="#Y값-추출" class="headerlink" title="Y값 추출"></a>Y값 추출</h3><ul>
+<li>train데이터에 SalePrice만 따로 저장한다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">y = train[<span class="string">&#x27;SalePrice&#x27;</span>]</span><br><span class="line">train = train.drop(<span class="string">&#x27;SalePrice&#x27;</span>, axis = <span class="number">1</span>)</span><br><span class="line">train.shape</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test.shape</span><br></pre></td></tr></table></figure>
+
+<h3 id="데이터-합치기"><a href="#데이터-합치기" class="headerlink" title="데이터 합치기"></a>데이터 합치기</h3><ul>
+<li>강의 목적</li>
+<li>원칙<ul>
+<li>train, 따로 정리</li>
+<li>test, 따로 정리</li>
+</ul>
+</li>
+<li>Data Leakage 오류를 범할 가능성이 높음.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">all_df = pd.concat([train, test]).reset_index(drop=<span class="literal">True</span>)</span><br><span class="line">all_df.shape</span><br></pre></td></tr></table></figure>
+
+<h2 id="결측치-확인"><a href="#결측치-확인" class="headerlink" title="결측치 확인"></a>결측치 확인</h2><ul>
+<li>결측치의 비율 확인하는 사용자 정의 함수 작성</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train.info()</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">check_na</span>(<span class="params">data, head_num = <span class="number">6</span></span>):</span><br><span class="line">  isnull_na = (data.isnull().<span class="built_in">sum</span>() / <span class="built_in">len</span>(data)) * <span class="number">100</span></span><br><span class="line">  data_na = isnull_na.drop(isnull_na[isnull_na == <span class="number">0</span>].index).sort_values(ascending=<span class="literal">False</span>)</span><br><span class="line">  missing_data = pd.DataFrame(&#123;<span class="string">&#x27;Missing Ratio&#x27;</span> :data_na, </span><br><span class="line">                               <span class="string">&#x27;Data Type&#x27;</span>: data.dtypes[data_na.index]&#125;)</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;결측치 데이터 컬럼과 건수:\n&quot;</span>, missing_data.head(head_num))</span><br><span class="line"></span><br><span class="line">check_na(all_df, <span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>결측치 제거</li>
+<li>결측치 비율이 높은 변수들을 모두 제거하기로 했다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">all_df = all_df.drop([<span class="string">&#x27;PoolQC&#x27;</span>, <span class="string">&#x27;MiscFeature&#x27;</span>, <span class="string">&#x27;Alley&#x27;</span>, <span class="string">&#x27;Fence&#x27;</span>, <span class="string">&#x27;FireplaceQu&#x27;</span>, <span class="string">&#x27;LotFrontage&#x27;</span>], axis = <span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(all_df.shape)</span><br><span class="line">check_na(all_df, <span class="number">40</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="결측치-채우기"><a href="#결측치-채우기" class="headerlink" title="결측치 채우기"></a>결측치 채우기</h2><ul>
+<li>train 데이터와 test 데이터가 섞이면 안됨. </li>
+<li>train &#x2F; test 분리해서 진행해야 함. </li>
+<li>문자데이터 : 자주 등장하는 빈도 값으로 채움</li>
+<li>숫자데이터 : 평균이 아니라, 중간값으로 채울 예정</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># all_df[&#x27;SaleType&#x27;].value_counts()</span></span><br><span class="line">all_df[<span class="string">&#x27;SaleType&#x27;</span>].mode()[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">check_na(all_df, <span class="number">40</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 문자열 데이터만 추출</span></span><br><span class="line">cat_all_vars = train.select_dtypes(exclude=[np.number])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;The whole number of all_vars&quot;</span>, <span class="built_in">len</span>(<span class="built_in">list</span>(cat_all_vars)))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 문자열 데이터 중에서 이미 기 삭제했던 Feature들이 있었기 때문에, </span></span><br><span class="line"><span class="comment"># 한번 더 Feature를 정리하는 코드를 작성한다. </span></span><br><span class="line"><span class="comment"># 따라서 38개의 Feature만 추출했다. </span></span><br><span class="line">final_cat_vars = []</span><br><span class="line"><span class="keyword">for</span> v <span class="keyword">in</span> cat_all_vars:</span><br><span class="line">    <span class="keyword">if</span> v <span class="keyword">not</span> <span class="keyword">in</span> [<span class="string">&#x27;PoolQC&#x27;</span>, <span class="string">&#x27;MiscFeature&#x27;</span>, <span class="string">&#x27;Alley&#x27;</span>, <span class="string">&#x27;Fence&#x27;</span>, <span class="string">&#x27;FireplaceQu&#x27;</span>]:</span><br><span class="line">        final_cat_vars.append(v)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;The whole number of final_cat_vars&quot;</span>, <span class="built_in">len</span>(final_cat_vars))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 이제 각 Feature 마다 빈도수가 가장 많이 나타나는 값을 추가하는 코드를 작성한다. </span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> final_cat_vars:</span><br><span class="line">  all_df[i] = all_df[i].fillna(all_df[i].mode()[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 이제 수치형 데이터만 남은 것을 확인한다. </span></span><br><span class="line">check_na(all_df, <span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>수치형 데이터의 결측치를 추가할 수 있다. </li>
+<li>평균이 아닌 중간값으로 진행한다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 방법은 기존과 동일하다. </span></span><br><span class="line"><span class="comment"># 이번에는 수치형 데이터만 추출한다. </span></span><br><span class="line">num_all_vars = <span class="built_in">list</span>(train.select_dtypes(include=[np.number]))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;The whole number of all_vars&quot;</span>, <span class="built_in">len</span>(num_all_vars))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 수치형 데이터 중, 결측치가 많았던 `LotFrontage`만 처리한다. </span></span><br><span class="line">num_all_vars.remove(<span class="string">&#x27;LotFrontage&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;The whole number of final_cat_vars&quot;</span>, <span class="built_in">len</span>(num_all_vars))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 이번에는 수치형 데이터의 평균이 아닌 중간값을 지정했다. </span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> num_all_vars:</span><br><span class="line">  all_df[i].fillna(value=all_df[i].median(), inplace=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">check_na(all_df, <span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="도출-변수"><a href="#도출-변수" class="headerlink" title="도출 변수"></a>도출 변수</h2><ul>
+<li><p>새로운 도출 변수를 작성 (기존 변수 활용)</p>
+</li>
+<li><p>기존 변수 제거 </p>
+</li>
+<li><p>각 층의 면적으로 모두 더해 전체 면적으로 계산한 새로운 변수를 작성한다.</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">all_df[<span class="string">&#x27;TotalSF&#x27;</span>] = all_df[<span class="string">&#x27;TotalBsmtSF&#x27;</span>] + all_df[<span class="string">&#x27;1stFlrSF&#x27;</span>] + all_df[<span class="string">&#x27;2ndFlrSF&#x27;</span>]</span><br><span class="line">all_df = all_df.drop([<span class="string">&#x27;TotalBsmtSF&#x27;</span>, <span class="string">&#x27;1stFlrSF&#x27;</span>, <span class="string">&#x27;2ndFlrSF&#x27;</span>], axis=<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(all_df.shape)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">all_df[<span class="string">&#x27;Total_Bathrooms&#x27;</span>] = (all_df[<span class="string">&#x27;FullBath&#x27;</span>] + (<span class="number">0.5</span> * all_df[<span class="string">&#x27;HalfBath&#x27;</span>]) + all_df[<span class="string">&#x27;BsmtFullBath&#x27;</span>] + (<span class="number">0.5</span> * all_df[<span class="string">&#x27;BsmtHalfBath&#x27;</span>]))</span><br><span class="line">all_df[<span class="string">&#x27;Total_porch_sf&#x27;</span>] = (all_df[<span class="string">&#x27;OpenPorchSF&#x27;</span>] + all_df[<span class="string">&#x27;3SsnPorch&#x27;</span>] + all_df[<span class="string">&#x27;EnclosedPorch&#x27;</span>] + all_df[<span class="string">&#x27;ScreenPorch&#x27;</span>])</span><br><span class="line">all_df = all_df.drop([<span class="string">&#x27;FullBath&#x27;</span>, <span class="string">&#x27;HalfBath&#x27;</span>, <span class="string">&#x27;BsmtFullBath&#x27;</span>, <span class="string">&#x27;BsmtHalfBath&#x27;</span>, <span class="string">&#x27;OpenPorchSF&#x27;</span>, <span class="string">&#x27;3SsnPorch&#x27;</span>, <span class="string">&#x27;EnclosedPorch&#x27;</span>, <span class="string">&#x27;ScreenPorch&#x27;</span>], axis=<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(all_df.shape)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>연도와 관련된 변수를 추출하는 코드 작성.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">num_all_vars = <span class="built_in">list</span>(train.select_dtypes(include=[np.number]))</span><br><span class="line">year_feature = []</span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> num_all_vars:</span><br><span class="line">  <span class="keyword">if</span> <span class="string">&#x27;Yr&#x27;</span> <span class="keyword">in</span> var:</span><br><span class="line">    year_feature.append(var)</span><br><span class="line">  <span class="keyword">elif</span> <span class="string">&#x27;Year&#x27;</span> <span class="keyword">in</span> var:</span><br><span class="line">    year_feature.append(var)</span><br><span class="line">  <span class="keyword">else</span>:  </span><br><span class="line">    <span class="built_in">print</span>(var, <span class="string">&quot;is not related with Year&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(year_feature)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fig, ax = plt.subplots(<span class="number">3</span>, <span class="number">1</span>, figsize=(<span class="number">10</span>, <span class="number">6</span>), sharex=<span class="literal">True</span>, sharey=<span class="literal">True</span>)</span><br><span class="line"><span class="keyword">for</span> i, var <span class="keyword">in</span> <span class="built_in">enumerate</span>(year_feature):</span><br><span class="line">  <span class="keyword">if</span> var != <span class="string">&#x27;YrSold&#x27;</span>:</span><br><span class="line">    ax[i].scatter(train[var], y, alpha=<span class="number">0.3</span>)</span><br><span class="line">    ax[i].set_title(<span class="string">&#x27;&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(var), size=<span class="number">15</span>)</span><br><span class="line">    ax[i].set_ylabel(<span class="string">&#x27;SalePrice&#x27;</span>, size=<span class="number">15</span>, labelpad=<span class="number">12.5</span>)</span><br><span class="line">plt.tight_layout()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">all_df = all_df.drop([<span class="string">&#x27;YearBuilt&#x27;</span>, <span class="string">&#x27;GarageYrBlt&#x27;</span>], axis=<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(all_df.shape)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">YearsSinceRemodel = train[<span class="string">&#x27;YrSold&#x27;</span>].astype(<span class="built_in">int</span>) - train[<span class="string">&#x27;YearRemodAdd&#x27;</span>].astype(<span class="built_in">int</span>)</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots(figsize=(<span class="number">10</span>, <span class="number">6</span>))</span><br><span class="line">ax.scatter(YearsSinceRemodel, y, alpha=<span class="number">0.3</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">all_df[<span class="string">&#x27;YearsSinceRemodel&#x27;</span>] = all_df[<span class="string">&#x27;YrSold&#x27;</span>].astype(<span class="built_in">int</span>) - all_df[<span class="string">&#x27;YearRemodAdd&#x27;</span>].astype(<span class="built_in">int</span>)</span><br><span class="line">all_df = all_df.drop([<span class="string">&#x27;YrSold&#x27;</span>, <span class="string">&#x27;YearRemodAdd&#x27;</span>], axis=<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(all_df.shape)</span><br></pre></td></tr></table></figure>
+
+<h2 id="더미변수"><a href="#더미변수" class="headerlink" title="더미변수"></a>더미변수</h2><ul>
+<li>더미변수란 원 데이터 독립변수를 0과 1로 변환하는 변수를 말함.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">all_df[<span class="string">&#x27;PoolArea&#x27;</span>].value_counts() </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>사용자 정의 함수 만들기</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">count_dummy</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">if</span> x &gt; <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">all_df[<span class="string">&#x27;PoolArea&#x27;</span>] = all_df[<span class="string">&#x27;PoolArea&#x27;</span>].apply(count_dummy) </span><br><span class="line">all_df[<span class="string">&#x27;PoolArea&#x27;</span>].value_counts()</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">all_df[<span class="string">&#x27;GarageArea&#x27;</span>] = all_df[<span class="string">&#x27;GarageArea&#x27;</span>].apply(count_dummy)</span><br><span class="line">all_df[<span class="string">&#x27;GarageArea&#x27;</span>].value_counts()</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">all_df[<span class="string">&#x27;Fireplaces&#x27;</span>] = all_df[<span class="string">&#x27;Fireplaces&#x27;</span>].apply(count_dummy)</span><br><span class="line">all_df[<span class="string">&#x27;Fireplaces&#x27;</span>].value_counts()</span><br></pre></td></tr></table></figure>
+
+<h2 id="인코딩"><a href="#인코딩" class="headerlink" title="인코딩"></a>인코딩</h2><ul>
+<li>문자를 숫자로 변환해주는 코드를 인코딩 변환</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">all_df.shape</span><br></pre></td></tr></table></figure>
+
+<h2 id="Label-Encoding-Ordinal-Encoding-One-Hot-Encoding"><a href="#Label-Encoding-Ordinal-Encoding-One-Hot-Encoding" class="headerlink" title="Label Encoding, Ordinal Encoding, One-Hot Encoding"></a>Label Encoding, Ordinal Encoding, One-Hot Encoding</h2><ul>
+<li>인코딩은 문자 데이터를 수치로 변환하는 방법론 중의 하나이다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 분류모형</span></span><br><span class="line"><span class="comment"># 종속변수 (양성, 음성)</span></span><br><span class="line"><span class="comment"># Label Encoder는 종속변수에만 적용</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> LabelEncoder</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">temp = pd.DataFrame(&#123;<span class="string">&#x27;Food_Name&#x27;</span>: [<span class="string">&#x27;Apple&#x27;</span>, <span class="string">&#x27;Chicken&#x27;</span>, <span class="string">&#x27;Broccoli&#x27;</span>], </span><br><span class="line">                     <span class="string">&#x27;Calories&#x27;</span>: [<span class="number">95</span>, <span class="number">231</span>, <span class="number">50</span>]&#125;)</span><br><span class="line"></span><br><span class="line">encoder = LabelEncoder()</span><br><span class="line">encoder.fit(temp[<span class="string">&#x27;Food_Name&#x27;</span>])</span><br><span class="line">labels = encoder.transform(temp[<span class="string">&#x27;Food_Name&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(temp[<span class="string">&#x27;Food_Name&#x27;</span>]), <span class="string">&quot;==&gt;&quot;</span>, labels)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>OrdinalEncoder는 독립변수에만 쓴다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> OrdinalEncoder</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">temp = pd.DataFrame(&#123;<span class="string">&#x27;Food_Name&#x27;</span>: [<span class="string">&#x27;Apple&#x27;</span>, <span class="string">&#x27;Chicken&#x27;</span>, <span class="string">&#x27;Broccoli&#x27;</span>], </span><br><span class="line">                     <span class="string">&#x27;Calories&#x27;</span>: [<span class="number">95</span>, <span class="number">231</span>, <span class="number">50</span>]&#125;)</span><br><span class="line"></span><br><span class="line">encoder = OrdinalEncoder()</span><br><span class="line">labels = encoder.fit_transform(temp[[<span class="string">&#x27;Food_Name&#x27;</span>]])</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(temp[<span class="string">&#x27;Food_Name&#x27;</span>]), <span class="string">&quot;==&gt;&quot;</span>, labels.tolist())</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>pandas 메서드 통해서 직접 숫자로 변환</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">temp = pd.DataFrame(&#123;<span class="string">&#x27;Food_Name&#x27;</span>: [<span class="string">&#x27;Apple&#x27;</span>, <span class="string">&#x27;Chicken&#x27;</span>, <span class="string">&#x27;Broccoli&#x27;</span>], </span><br><span class="line">                     <span class="string">&#x27;Calories&#x27;</span>: [<span class="number">95</span>, <span class="number">231</span>, <span class="number">50</span>]&#125;)</span><br><span class="line"></span><br><span class="line">temp[<span class="string">&#x27;Food_No&#x27;</span>] = temp[<span class="string">&#x27;Food_Name&#x27;</span>].replace(to_replace = [<span class="string">&#x27;Apple&#x27;</span>, <span class="string">&#x27;Chicken&#x27;</span>, <span class="string">&#x27;Broccoli&#x27;</span>], value = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line"><span class="built_in">print</span>(temp[[<span class="string">&#x27;Food_Name&#x27;</span>, <span class="string">&#x27;Food_No&#x27;</span>]])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>원핫 인코딩<ul>
+<li>scikit-learn 방식이 조금 복잡함. </li>
+<li>그래서 보통은 pandas get_dummies() 함수를 활</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> LabelBinarizer</span><br><span class="line"></span><br><span class="line">temp = pd.DataFrame(&#123;<span class="string">&#x27;Food_Name&#x27;</span>: [<span class="string">&#x27;Apple&#x27;</span>, <span class="string">&#x27;Chicken&#x27;</span>, <span class="string">&#x27;Broccoli&#x27;</span>], </span><br><span class="line">                     <span class="string">&#x27;Calories&#x27;</span>: [<span class="number">95</span>, <span class="number">231</span>, <span class="number">50</span>]&#125;)</span><br><span class="line"></span><br><span class="line">encoder = LabelBinarizer()</span><br><span class="line">encoder.fit(temp[<span class="string">&#x27;Food_Name&#x27;</span>])</span><br><span class="line">transformed = encoder.transform(temp[<span class="string">&#x27;Food_Name&#x27;</span>])</span><br><span class="line">ohe_df = pd.DataFrame(transformed)</span><br><span class="line">temp = pd.concat([temp, ohe_df], axis=<span class="number">1</span>).drop([<span class="string">&#x27;Food_Name&#x27;</span>], axis=<span class="number">1</span>)</span><br><span class="line">temp.columns = [<span class="string">&#x27;Calories&#x27;</span>, <span class="string">&#x27;Food_Name_Apple&#x27;</span>, <span class="string">&#x27;Food_Name_Broccoli&#x27;</span>, <span class="string">&#x27;Food_Name_Chicken&#x27;</span>]</span><br><span class="line"><span class="built_in">print</span>(temp)</span><br><span class="line"><span class="built_in">print</span>(temp.shape)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">temp = pd.DataFrame(&#123;<span class="string">&#x27;Food_Name&#x27;</span>: [<span class="string">&#x27;Apple&#x27;</span>, <span class="string">&#x27;Chicken&#x27;</span>, <span class="string">&#x27;Broccoli&#x27;</span>], </span><br><span class="line">                     <span class="string">&#x27;Calories&#x27;</span>: [<span class="number">95</span>, <span class="number">231</span>, <span class="number">50</span>]&#125;)</span><br><span class="line"></span><br><span class="line">temp = pd.get_dummies(temp)</span><br><span class="line"><span class="built_in">print</span>(temp)</span><br><span class="line"><span class="built_in">print</span>(temp.shape)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>본 데이터 적용<ul>
+<li>여기서는 Ordinal Encoding 적용 안함. (단, 실전에서는 꼭 찾아서 해야함).</li>
+</ul>
+</li>
+<li>원핫 인코딩 적용</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">all_df = pd.get_dummies(all_df).reset_index(drop=<span class="literal">True</span>)</span><br><span class="line">all_df.shape</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">all_df.head()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>train, test 데이터 합쳐서 진행. </li>
+<li>train, test 데이터 재분리</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">X = all_df.iloc[:<span class="built_in">len</span>(y), :]</span><br><span class="line">test = all_df.iloc[<span class="built_in">len</span>(y):, :]</span><br><span class="line"></span><br><span class="line">X.shape, y.shape, test.shape</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>머신러닝을 위한 데이터 전처리가 끝이 남.</li>
+</ul>
+<h2 id="과제"><a href="#과제" class="headerlink" title="과제"></a>과제</h2><ul>
+<li>남은 시간동안 교제를 보고 머신러닝 학습 및 RMSE 구하세요. </li>
+<li>데이터셋 분리<ul>
+<li>X 데이터를 X_train, X_test, y_train, y_test로 분리</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split </span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(</span><br><span class="line">    <span class="comment"># 독립변수, 종속변수 </span></span><br><span class="line">    X,         y, test_size = <span class="number">0.3</span>, random_state=<span class="number">0</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">X_train.shape, X_test.shape, y_train.shape, y_test.shape</span><br></pre></td></tr></table></figure>
+
+<h2 id="평가지표"><a href="#평가지표" class="headerlink" title="평가지표"></a>평가지표</h2><ul>
+<li>MAE, MSE, RMSE</li>
+</ul>
+<h3 id="MAE"><a href="#MAE" class="headerlink" title="MAE"></a>MAE</h3><ul>
+<li>실젯값과 예측값의 차이, 오차, 오차들의 절댓값 평균을 말함.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">mean_absolute_error</span>(<span class="params">y_true, y_pred</span>):</span><br><span class="line">    error = <span class="number">0</span> </span><br><span class="line">    <span class="keyword">for</span> yt, yp <span class="keyword">in</span> <span class="built_in">zip</span>(y_true, y_pred):</span><br><span class="line">        <span class="comment"># yt : 실젯값</span></span><br><span class="line">        <span class="comment"># yp : 예측값</span></span><br><span class="line">        error = error + np.<span class="built_in">abs</span>(yt - yp)</span><br><span class="line">        <span class="comment"># 절댓값 오차의 평균</span></span><br><span class="line">    mae = error / <span class="built_in">len</span>(y_true)</span><br><span class="line">    <span class="keyword">return</span> mae</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">mean_squared_error</span>(<span class="params">y_true, y_pred</span>):</span><br><span class="line">    error = <span class="number">0</span> </span><br><span class="line">    <span class="keyword">for</span> yt, yp <span class="keyword">in</span> <span class="built_in">zip</span>(y_true, y_pred):</span><br><span class="line">        <span class="comment"># yt : 실젯값</span></span><br><span class="line">        <span class="comment"># yp : 예측값</span></span><br><span class="line">        error = error + (yt - yp) ** <span class="number">2</span></span><br><span class="line">        <span class="comment"># 제곱값 오차의 평균</span></span><br><span class="line">    mse = error / <span class="built_in">len</span>(y_true)</span><br><span class="line">    <span class="keyword">return</span> mse</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">root_mean_squared_error</span>(<span class="params">y_true, y_pred</span>):</span><br><span class="line">    error = <span class="number">0</span> </span><br><span class="line">    <span class="keyword">for</span> yt, yp <span class="keyword">in</span> <span class="built_in">zip</span>(y_true, y_pred):</span><br><span class="line">        <span class="comment"># yt : 실젯값</span></span><br><span class="line">        <span class="comment"># yp : 예측값</span></span><br><span class="line">        error = error + (yt - yp) ** <span class="number">2</span></span><br><span class="line">        <span class="comment"># 제곱값 오차의 평균</span></span><br><span class="line">    mse = error / <span class="built_in">len</span>(y_true)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 제곱근 추가</span></span><br><span class="line">    rmse = np.<span class="built_in">round</span>(np.sqrt(mse), <span class="number">3</span>)</span><br><span class="line">    <span class="keyword">return</span> rmse</span><br><span class="line"></span><br><span class="line">y_true = [<span class="number">400</span>, <span class="number">300</span>, <span class="number">800</span>]</span><br><span class="line">y_pred = [<span class="number">380</span>, <span class="number">320</span>, <span class="number">777</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;MAE:&quot;</span>, mean_absolute_error(y_true, y_pred))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;MSE:&quot;</span>, mean_squared_error(y_true, y_pred))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;RMSE:&quot;</span>, root_mean_squared_error(y_true, y_pred))</span><br></pre></td></tr></table></figure>
+
+<p>sklearn 참고 자료</p>
+<ul>
+<li>URL : <a target="_blank" rel="noopener" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html">https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html</a></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">rmse</span>(<span class="params">y_true, y_pred</span>):</span><br><span class="line">    <span class="keyword">return</span> np.sqrt(mean_squared_error(y_true, y_pred))</span><br></pre></td></tr></table></figure>
+
+<h2 id="머신러닝-모형-정의-검증-평가"><a href="#머신러닝-모형-정의-검증-평가" class="headerlink" title="머신러닝 모형 정의, 검증 평가"></a>머신러닝 모형 정의, 검증 평가</h2><ul>
+<li>교차 검증 함수 만들기</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> KFold, cross_val_score</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestRegressor </span><br><span class="line"><span class="keyword">from</span> lightgbm <span class="keyword">import</span> LGBMRegressor</span><br><span class="line"><span class="keyword">from</span> xgboost <span class="keyword">import</span> XGBRegressor</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cv_rmse</span>(<span class="params">model, n_folds=<span class="number">5</span></span>):</span><br><span class="line">    cv = KFold(n_splits=n_folds, random_state=<span class="number">42</span>, shuffle=<span class="literal">True</span>)</span><br><span class="line">    rmse_list = np.sqrt(-cross_val_score(model, X, y, scoring=<span class="string">&#x27;neg_mean_squared_error&#x27;</span>, cv=cv))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;CV RMSE value list:&#x27;</span>, np.<span class="built_in">round</span>(rmse_list, <span class="number">4</span>))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;CV RMSE mean value:&#x27;</span>, np.<span class="built_in">round</span>(np.mean(rmse_list), <span class="number">4</span>))</span><br><span class="line">    <span class="keyword">return</span> (rmse_list)</span><br><span class="line"></span><br><span class="line">n_folds = <span class="number">5</span></span><br><span class="line">rmse_scores = &#123;&#125;</span><br><span class="line"><span class="comment"># lr_model = LinearRegression()</span></span><br><span class="line">lgb_model = LGBMRegressor()</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">score = cv_rmse(lgb_model, n_folds)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;linear regression - mean: &#123;:.4f&#125; (std: &#123;:.4f&#125;)&quot;</span>.<span class="built_in">format</span>(score.mean(), score.std()))</span><br><span class="line">rmse_scores[<span class="string">&#x27;linear regression&#x27;</span>] = (score.mean(), score.std())</span><br></pre></td></tr></table></figure>
+
+<h2 id="제출-방법"><a href="#제출-방법" class="headerlink" title="제출 방법"></a>제출 방법</h2><p>- </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_predict</span><br><span class="line"></span><br><span class="line"><span class="comment"># X = all_df.iloc[:len(y), :]</span></span><br><span class="line"><span class="comment"># X_test = all_df.iloc[len(y):, :]</span></span><br><span class="line"><span class="comment"># X.shape, y.shape, X_test.shape</span></span><br><span class="line"></span><br><span class="line">lr_model_fit = lgb_model.fit(X_train, y_train)</span><br><span class="line">final_preds = np.floor(np.expm1(lr_model_fit.predict(test)))</span><br><span class="line"><span class="built_in">print</span>(final_preds)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>선형회귀 : 0.17437</li>
+<li>랜덤포레스트 : 0.1429</li>
+<li>LightGBM : 0.1353</li>
+<li>XGBoost : 0.1473</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">submission = pd.read_csv(DATA_PATH + <span class="string">&quot;sample_submission.csv&quot;</span>)</span><br><span class="line">submission.iloc[:,<span class="number">1</span>] = final_preds</span><br><span class="line"><span class="built_in">print</span>(submission.head())</span><br><span class="line">submission.to_csv(<span class="string">&quot;submission.csv&quot;</span>, index=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="모형-만들기"><a href="#모형-만들기" class="headerlink" title="모형 만들기"></a>모형 만들기</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># from sklearn.linear_model import LinearRegression</span></span><br><span class="line"><span class="comment"># lr_model = LinearRegression()</span></span><br><span class="line"><span class="comment"># lr_model.fit(X_train, y_train) </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># print(lr_model.score(X_train, y_train))</span></span><br><span class="line"><span class="comment"># print(lr_model.score(X_test, y_test))</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://seoseonho.github.io/2022/07/07/lecture-in-humanedu_0707_1500/" data-id="cl5apuhq800006cv2gml7cnzz" data-title="0707, python" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/07/06/day0706%20(1)/day0706%20(1)/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">0706, python</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/07/07/lecture-in-humanedu_0707_1500/">0707, python</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/06/day0706%20(1)/day0706%20(1)/">0706, python</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/05/day0705_ch05_3ipynb/day0705_ch05_3ipynb/">0705 ch05_3ipynb</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/05/pycaret_sample/pycaret_sample/">0705 pycaret_sample</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/04/day0704_1700ipynb/">0704 </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
