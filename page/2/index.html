@@ -71,6 +71,149 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-day29_ml/day29_ml" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/06/29/day29_ml/day29_ml/" class="article-date">
+  <time class="dt-published" datetime="2022-06-29T05:00:00.000Z" itemprop="datePublished">2022-06-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/06/29/day29_ml/day29_ml/">0629</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="파이썬"><a href="#파이썬" class="headerlink" title="파이썬"></a>파이썬</h2><ul>
+<li><p>Machine Learning</p>
+<ul>
+<li>정형데이터</li>
+<li>사이킷런scikit-Learn</li>
+</ul>
+</li>
+<li><p>Deep Learning</p>
+<ul>
+<li>비정형데이터</li>
+<li>Tensorflow(구글) vs Pytorch(페이스북)</li>
+<li>혼공머 : Tensorflow</li>
+<li>실제 상용서비스 - Tensorflow vs R&amp;D - Pytorch</li>
+</ul>
+</li>
+<li><p>30cm 도미라고 알려줘라</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fish_length = <span class="number">31</span></span><br><span class="line"><span class="keyword">if</span> fish_length &gt;= <span class="number">30</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;도미&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>도미
+</code></pre>
+<p>- </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 도미의 길이</span></span><br><span class="line">bream_length = [<span class="number">25.4</span>, <span class="number">26.3</span>, <span class="number">26.5</span>, <span class="number">29.0</span>, <span class="number">29.0</span>, <span class="number">29.7</span>, <span class="number">29.7</span>, <span class="number">30.0</span>, <span class="number">30.0</span>, <span class="number">30.7</span>, <span class="number">31.0</span>, <span class="number">31.0</span>, <span class="number">31.5</span>, <span class="number">32.0</span>, <span class="number">32.0</span>, <span class="number">32.0</span>, <span class="number">33.0</span>, <span class="number">33.0</span>, <span class="number">33.5</span>, <span class="number">33.5</span>, <span class="number">34.0</span>, <span class="number">34.0</span>, <span class="number">34.5</span>, <span class="number">35.0</span>, <span class="number">35.0</span>, <span class="number">35.0</span>, <span class="number">35.0</span>, <span class="number">36.0</span>, <span class="number">36.0</span>, <span class="number">37.0</span>, <span class="number">38.5</span>, <span class="number">38.5</span>, <span class="number">39.5</span>, <span class="number">41.0</span>, <span class="number">41.0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 도미의 무게</span></span><br><span class="line">bream_weight = [<span class="number">242.0</span>, <span class="number">290.0</span>, <span class="number">340.0</span>, <span class="number">363.0</span>, <span class="number">430.0</span>, <span class="number">450.0</span>, <span class="number">500.0</span>, <span class="number">390.0</span>, <span class="number">450.0</span>, <span class="number">500.0</span>, <span class="number">475.0</span>, <span class="number">500.0</span>, <span class="number">500.0</span>, <span class="number">340.0</span>, <span class="number">600.0</span>, <span class="number">600.0</span>, <span class="number">700.0</span>, <span class="number">700.0</span>, <span class="number">610.0</span>, <span class="number">650.0</span>, <span class="number">575.0</span>, <span class="number">685.0</span>, <span class="number">620.0</span>, <span class="number">680.0</span>, <span class="number">700.0</span>, <span class="number">725.0</span>, <span class="number">720.0</span>, <span class="number">714.0</span>, <span class="number">850.0</span>, <span class="number">1000.0</span>, <span class="number">920.0</span>, <span class="number">955.0</span>, <span class="number">925.0</span>, <span class="number">975.0</span>, <span class="number">950.0</span>]</span><br></pre></td></tr></table></figure>
+
+<h2 id="데이터-가공"><a href="#데이터-가공" class="headerlink" title="데이터 가공"></a>데이터 가공</h2><ul>
+<li>여기서는 생략</li>
+</ul>
+<h2 id="데이터-시각화"><a href="#데이터-시각화" class="headerlink" title="데이터 시각화"></a>데이터 시각화</h2><ul>
+<li><p>여러 인사이트 확인 위해 시각화, 통계 수치 계산<br>-탐색적 자료 분석(EAD: Exploratory Data Analysis)</p>
+</li>
+<li><p>밑에는 참고</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.scatter(bream_length, bream_weight)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/output_7_0.png" alt="png"></p>
+<ul>
+<li>파이썬 시각화는 객체지향으로 한다.</li>
+<li>이유 “좀더 이쁘고, 아름답게 다듬으려면…</li>
+<li>캐글</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.scatter(bream_length, bream_weight)</span><br><span class="line">ax.set_xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>빙어 데이터 준비하기</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">smelt_length = [<span class="number">9.8</span>, <span class="number">10.5</span>, <span class="number">10.6</span>, <span class="number">11.0</span>, <span class="number">11.2</span>, <span class="number">11.3</span>, <span class="number">11.8</span>, <span class="number">11.8</span>, <span class="number">12.0</span>, <span class="number">12.2</span>, <span class="number">12.4</span>, <span class="number">13.0</span>, <span class="number">14.3</span>, <span class="number">15.0</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">smelt_weight = [<span class="number">6.7</span>, <span class="number">7.5</span>, <span class="number">7.0</span>, <span class="number">9.7</span>, <span class="number">9.8</span>, <span class="number">8.7</span>, <span class="number">10.0</span>, <span class="number">9.9</span>, <span class="number">9.8</span>, <span class="number">12.2</span>, <span class="number">13.4</span>, <span class="number">12.2</span>, <span class="number">19.7</span>, <span class="number">19.9</span>]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fig, ax =plt. subplots()</span><br><span class="line">ax.scatter(bream_length, bream_weight)</span><br><span class="line">ax.scatter(smelt_length, smelt_weight)</span><br><span class="line">ax.set_xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/output_12_0.png" alt="png"></p>
+<ul>
+<li>두개의 리스트 합치기</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">length = bream_length + smelt_length</span><br><span class="line">weight = bream_weight + smelt_weight</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>2차원 리스트로 만든다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fish_data = [[l, w] <span class="keyword">for</span>  l, w <span class="keyword">in</span> <span class="built_in">zip</span>(length, weight)]</span><br><span class="line">fish_data[<span class="number">0</span>:<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[[25.4, 242.0], [26.3, 290.0], [26.5, 340.0], [29.0, 363.0], [29.0, 430.0]]
+</code></pre>
+<ul>
+<li>라벨링을 해준다 &#x3D; 지도 해준다<br>&#x3D; 지도학습</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fish_target = [<span class="number">1</span>] * <span class="number">35</span> + [<span class="number">0</span>] * <span class="number">14</span></span><br><span class="line"><span class="built_in">print</span>(fish_target)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+</code></pre>
+<h2 id="모델링"><a href="#모델링" class="headerlink" title="모델링"></a>모델링</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"></span><br><span class="line"><span class="comment"># 클래스 인스턴스화</span></span><br><span class="line">kn = KNeighborsClassifier()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 모형 학습</span></span><br><span class="line">kn.fit(fish_data, fish_target)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>KNeighborsClassifier()
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 예측 정확도</span></span><br><span class="line">kn.score(fish_data, fish_target)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>1.0
+</code></pre>
+<ul>
+<li>실제 예측을 해보자</li>
+<li>새로운 물고기 도착했습니다.<ul>
+<li>길이 : 30, 몸무게 : 600</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ac_length = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;물고기 길이를 입력하세요...&quot;</span>))</span><br><span class="line">ac_weight = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;물고기 무게를 입력하세요...&quot;</span>))</span><br><span class="line"></span><br><span class="line">preds = <span class="built_in">int</span>(kn.predict([[ac_length, ac_weight]]))</span><br><span class="line"><span class="built_in">print</span>(preds)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> preds == <span class="number">1</span>:</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;도미&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;빙어&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>물고기 길이를 입력하세요...30
+물고기 무게를 입력하세요...600
+1
+도미
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://seoseonho.github.io/2022/06/29/day29_ml/day29_ml/" data-id="cl4zba70c0000egv22mjb41a8" data-title="0629" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-day0629_pandas" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/06/29/day0629_pandas/" class="article-date">
@@ -3619,109 +3762,11 @@ memory usage: 1.9+ KB
 
 
   
-    <article id="post-0621-dplyr" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/06/21/0621-dplyr/" class="article-date">
-  <time class="dt-published" datetime="2022-06-21T00:00:00.000Z" itemprop="datePublished">2022-06-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/06/21/0621-dplyr/">0621 dplyr</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="p-98"><a href="#p-98" class="headerlink" title="p.98"></a>p.98</h1><h1 id="분석-프로세스"><a href="#분석-프로세스" class="headerlink" title="분석 프로세스"></a>분석 프로세스</h1><h1 id="데이터-전처리를-위한-도구-dplyr"><a href="#데이터-전처리를-위한-도구-dplyr" class="headerlink" title="데이터 전처리를 위한 도구 dplyr"></a>데이터 전처리를 위한 도구 dplyr</h1><h1 id="데이터-전처리를-위한-도구-data-table"><a href="#데이터-전처리를-위한-도구-data-table" class="headerlink" title="데이터 전처리를 위한 도구 data.table"></a>데이터 전처리를 위한 도구 data.table</h1><h2 id="처리속도-차이"><a href="#처리속도-차이" class="headerlink" title="처리속도 차이"></a>처리속도 차이</h2><h1 id="dplyr-10gb-이내"><a href="#dplyr-10gb-이내" class="headerlink" title="dplyr : 10gb 이내"></a>dplyr : 10gb 이내</h1><h1 id="data-table-50gb-이상"><a href="#data-table-50gb-이상" class="headerlink" title="data.table : 50gb 이상"></a>data.table : 50gb 이상</h1><h1 id="배움의-측면"><a href="#배움의-측면" class="headerlink" title="배움의 측면"></a>배움의 측면</h1><h1 id="dplyr-매우-쉬움"><a href="#dplyr-매우-쉬움" class="headerlink" title="dplyr 매우 쉬움"></a>dplyr 매우 쉬움</h1><h1 id="data-table-어려움"><a href="#data-table-어려움" class="headerlink" title="data.table 어려움"></a>data.table 어려움</h1><h1 id="라이브러리-불러오기"><a href="#라이브러리-불러오기" class="headerlink" title="라이브러리 불러오기"></a>라이브러리 불러오기</h1><h1 id="install-packages-“dplyr”"><a href="#install-packages-“dplyr”" class="headerlink" title="install.packages(“dplyr”)"></a>install.packages(“dplyr”)</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">library<span class="punctuation">(</span>dplyr<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## 다음의 패키지를 부착합니다: &#x27;dplyr&#x27;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## The following objects are masked from &#x27;package:stats&#x27;:</span><br><span class="line">## </span><br><span class="line">##     filter, lag</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## The following objects are masked from &#x27;package:base&#x27;:</span><br><span class="line">## </span><br><span class="line">##     intersect, setdiff, setequal, union</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">&lt;-</span> read.csv<span class="punctuation">(</span><span class="string">&quot;mpg1.csv&quot;</span><span class="punctuation">,</span> stringsAsFactors <span class="operator">=</span> <span class="built_in">F</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str<span class="punctuation">(</span>mpg1<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">## &#x27;data.frame&#x27;:	234 obs. of  5 variables:</span><br><span class="line">##  $ manufacturer: chr  &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; ...</span><br><span class="line">##  $ trans       : chr  &quot;auto&quot; &quot;manual&quot; &quot;manual&quot; &quot;auto&quot; ...</span><br><span class="line">##  $ drv         : chr  &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; ...</span><br><span class="line">##  $ cty         : int  18 21 20 21 16 18 18 18 16 20 ...</span><br><span class="line">##  $ hwy         : int  29 29 31 30 26 26 27 26 25 28 ...</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data2 <span class="operator">&lt;-</span> mpg1 <span class="operator">%&gt;%</span></span><br><span class="line">  select<span class="punctuation">(</span>drv<span class="punctuation">,</span> cty<span class="punctuation">,</span> hwy<span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">  filter<span class="punctuation">(</span>drv <span class="operator">==</span> <span class="string">&quot;f&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str<span class="punctuation">(</span>mpg1<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">## &#x27;data.frame&#x27;:	234 obs. of  5 variables:</span><br><span class="line">##  $ manufacturer: chr  &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; ...</span><br><span class="line">##  $ trans       : chr  &quot;auto&quot; &quot;manual&quot; &quot;manual&quot; &quot;auto&quot; ...</span><br><span class="line">##  $ drv         : chr  &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; ...</span><br><span class="line">##  $ cty         : int  18 21 20 21 16 18 18 18 16 20 ...</span><br><span class="line">##  $ hwy         : int  29 29 31 30 26 26 27 26 25 28 ...</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data2 <span class="operator">&lt;-</span> mpg1 <span class="operator">%&gt;%</span></span><br><span class="line">  select<span class="punctuation">(</span>drv<span class="punctuation">,</span> cty<span class="punctuation">,</span> hwy<span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">  filter<span class="punctuation">(</span>drv <span class="operator">==</span> <span class="string">&quot;f&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-<p>  #select : 컬러명 추출<br>  #filter : 행 추출 (조건식)</p>
-<h1 id="group-by"><a href="#group-by" class="headerlink" title="group by :"></a>group by :</h1><h1 id="summarize"><a href="#summarize" class="headerlink" title="summarize() :"></a>summarize() :</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data3 <span class="operator">&lt;-</span> select<span class="punctuation">(</span>mpg1<span class="punctuation">,</span> drv<span class="punctuation">,</span> cty<span class="punctuation">,</span> hwy<span class="punctuation">)</span></span><br><span class="line">data3 <span class="operator">&lt;-</span> filter<span class="punctuation">(</span>data3<span class="punctuation">,</span> drv <span class="operator">==</span> <span class="string">&quot;f&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p>%&gt;% &lt;- 컨트롤+쉽프트+m</p>
-<h1 id="교재-p99-p120"><a href="#교재-p99-p120" class="headerlink" title="교재 p99 ~ p120"></a>교재 p99 ~ p120</h1><h1 id="파생변수-만들기"><a href="#파생변수-만들기" class="headerlink" title="파생변수 만들기"></a>파생변수 만들기</h1><h1 id="filter-select-rename-mutate"><a href="#filter-select-rename-mutate" class="headerlink" title="filter, select, rename, mutate"></a>filter, select, rename, mutate</h1><p> glimpse(iris)</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">iris <span class="operator">%&gt;%</span> </span><br><span class="line">  <span class="comment"># species, setosa versicolor</span></span><br><span class="line">  filter<span class="punctuation">(</span>Species <span class="operator">!=</span> <span class="string">&quot;virginica&quot;</span><span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">  select<span class="punctuation">(</span>Sepal.Length<span class="punctuation">,</span> Sepal.Width<span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">  filter<span class="punctuation">(</span>Sepal.Length <span class="operator">&gt;</span> <span class="number">5.0</span><span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">  mutate<span class="punctuation">(</span>total <span class="operator">=</span> Sepal.Length <span class="operator">+</span> Sepal.Width<span class="punctuation">)</span> <span class="operator">-&gt;</span>data2</span><br></pre></td></tr></table></figure>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">iris <span class="operator">%&gt;%</span> </span><br><span class="line">  <span class="comment"># species, setosa versicolor</span></span><br><span class="line">  filter<span class="punctuation">(</span>Species <span class="operator">!=</span> <span class="string">&quot;Virginica&quot;</span><span class="operator">&amp;</span> Sepal.Length<span class="operator">&gt;</span> <span class="number">5.0</span><span class="punctuation">)</span> <span class="operator">%&gt;%</span>   </span><br><span class="line">  select<span class="punctuation">(</span>Sepal.Length<span class="punctuation">,</span> Sepal.Width<span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">  mutate<span class="punctuation">(</span>total <span class="operator">=</span> Sepal.Length <span class="operator">+</span> Sepal.Width<span class="punctuation">)</span> <span class="operator">-&gt;</span>data3</span><br></pre></td></tr></table></figure>
-<h1 id="p-121-집단별-통계량"><a href="#p-121-집단별-통계량" class="headerlink" title="p.121 집단별 통계량"></a>p.121 집단별 통계량</h1><h1 id="p-122"><a href="#p-122" class="headerlink" title="p.122"></a>p.122</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">%&gt;%</span>  </span><br><span class="line">    group_by<span class="punctuation">(</span>trans<span class="punctuation">)</span> <span class="operator">%&gt;%</span> </span><br><span class="line">    summarise<span class="punctuation">(</span>avg <span class="operator">=</span> mean<span class="punctuation">(</span>cty<span class="punctuation">)</span>     <span class="comment"># 평균</span></span><br><span class="line">           <span class="punctuation">,</span>total <span class="operator">=</span> <span class="built_in">sum</span><span class="punctuation">(</span>cty<span class="punctuation">)</span>      <span class="comment"># 총합</span></span><br><span class="line">           <span class="punctuation">,</span>med   <span class="operator">=</span> median<span class="punctuation">(</span>cty<span class="punctuation">)</span>  </span><br><span class="line">           <span class="punctuation">,</span>count <span class="operator">=</span> n<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span> <span class="comment"># 중간값</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## # A tibble: 2 × 5</span><br><span class="line">##   trans    avg total   med count</span><br><span class="line">##   &lt;chr&gt;  &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;</span><br><span class="line">## 1 auto    16.0  2507    16   157</span><br><span class="line">## 2 manual  18.7  1438    18    77</span><br></pre></td></tr></table></figure>
-
-
-
-
-<p> 빈도분석 p.99<br> count (데이터세트, 변수)<br> table (데이터세트 $변수)</p>
-<p>count(mpg1, trans)</p>
-<p>trans n<br>1 auto 157<br>2 manual 77</p>
-<h1 id="class-함수-안에-count-함수를-바로-넣음"><a href="#class-함수-안에-count-함수를-바로-넣음" class="headerlink" title="class() 함수 안에 count () 함수를 바로 넣음"></a>class() 함수 안에 count () 함수를 바로 넣음</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">class</span><span class="punctuation">(</span>count<span class="punctuation">(</span>mpg1<span class="punctuation">,</span> trans<span class="punctuation">)</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## [1] &quot;data.frame&quot;</span><br></pre></td></tr></table></figure>
-
-<p>“data. frame”</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">table<span class="punctuation">(</span>mpg1<span class="operator">$</span>trans<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">##   auto manual </span><br><span class="line">##    157     77</span><br></pre></td></tr></table></figure>
-
-<p> auto manual<br>   157     77 </p>
-<p>p102</p>
-<p>방법1 새 데이터세트 &lt;- 데이터세트 %&gt;% select(열1,열2,열3)</p>
-<p>방법2 새 데이터세트 &lt;- select(데이터세트,열1,열2,열3)</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mpg1_1 <span class="operator">&lt;-</span> mpg1 <span class="operator">%&gt;%</span>  select<span class="punctuation">(</span>manufacturer<span class="punctuation">,</span>trans<span class="punctuation">,</span>cty<span class="punctuation">)</span> </span><br><span class="line"></span><br><span class="line">mpg1_2 <span class="operator">&lt;-</span> select<span class="punctuation">(</span>mpg1<span class="punctuation">,</span>manufacturer<span class="punctuation">,</span> trans<span class="punctuation">,</span> cty<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<p>str(mpg1_1) #str(mpg1_2)의 결과도 같음<br>‘data.frame’ : 234obs. of 3 variables:<br>$maunfacturer: chr “audi” “audi”….<br>$trans       : chr “auto” “manual” “manual””auto”<br>$cty         : int 18 21 20 21 16 18 18 18 16 20</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://seoseonho.github.io/2022/06/21/0621-dplyr/" data-id="cl4nw87850000awv22c752yzn" data-title="0621 dplyr" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -3753,6 +3798,10 @@ memory usage: 1.9+ KB
       <ul>
         
           <li>
+            <a href="/2022/07/19/day0719/">SQL연습 1일차</a>
+          </li>
+        
+          <li>
             <a href="/2022/07/07/lecture-in-humanedu_0707_1500/">0707, python</a>
           </li>
         
@@ -3766,10 +3815,6 @@ memory usage: 1.9+ KB
         
           <li>
             <a href="/2022/07/05/pycaret_sample/pycaret_sample/">0705 pycaret_sample</a>
-          </li>
-        
-          <li>
-            <a href="/2022/07/04/day0704_1700ipynb/">0704 </a>
           </li>
         
       </ul>

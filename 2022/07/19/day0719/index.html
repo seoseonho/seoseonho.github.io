@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>SQL연습 1일차 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="SELECT table_name FROM user_tables; – 입문: SQL 테이블, 뷰  –&gt; PL&#x2F;SQL 함수,  프로시저 – 테이블 생성&#x2F;* 12CREATE TABLE 테이블명(     컬럼1 컬럼1_데이터타입 결측치 허용유무,  ) 123456789*&#x2F;-- P. 50CREATE TABLE ex2_1(      COLUMN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL연습 1일차">
+<meta property="og:url" content="http://seoseonho.github.io/2022/07/19/day0719/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="SELECT table_name FROM user_tables; – 입문: SQL 테이블, 뷰  –&gt; PL&#x2F;SQL 함수,  프로시저 – 테이블 생성&#x2F;* 12CREATE TABLE 테이블명(     컬럼1 컬럼1_데이터타입 결측치 허용유무,  ) 123456789*&#x2F;-- P. 50CREATE TABLE ex2_1(      COLUMN">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-07-19T01:00:00.000Z">
+<meta property="article:modified_time" content="2022-07-19T08:02:35.781Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://seoseonho.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-day0719" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/07/19/day0719/" class="article-date">
+  <time class="dt-published" datetime="2022-07-19T01:00:00.000Z" itemprop="datePublished">2022-07-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      SQL연습 1일차
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>SELECT table_name FROM user_tables;</p>
+<p>– 입문: SQL 테이블, 뷰  –&gt; PL&#x2F;SQL 함수,  프로시저</p>
+<p>– 테이블 생성<br>&#x2F;*</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 테이블명(</span><br><span class="line">     컬럼1 컬럼1_데이터타입 결측치 허용유무,</span><br></pre></td></tr></table></figure>
+
+<p>)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">*/</span><br><span class="line"></span><br><span class="line">-- P. 50</span><br><span class="line">CREATE TABLE ex2_1(</span><br><span class="line">      COLUMN1   CHAR(10),</span><br><span class="line">      COLUMN2   VARCHAR2(10),</span><br><span class="line">      COLUMN3   VARCHAR2(10),</span><br><span class="line">      COLUMN4   NUMBER</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-- 데이터 추가 P52</span><br><span class="line">INSERT INTO ex2_1 (column1, column2) VALUES (&#x27;abc&#x27;, &#x27;abc&#x27;);</span><br><span class="line"></span><br><span class="line">-- 테이블 생성, 추가, 삭제, 수정 코드들</span><br><span class="line">-- 파이썬이나, java에서 다 쓸 코드들...</span><br><span class="line"></span><br><span class="line">-- 데이터 조회</span><br><span class="line">SELECT column1, LENGTH(column1) as len1</span><br><span class="line">FROM ex2_1;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-- 데이터 수정 p.53</span><br><span class="line">-- 영어에서 한 문자는 1byte</span><br><span class="line">-- 한글에서 한 문자는 2byte</span><br><span class="line">CREATE TABLE ex2_2(</span><br><span class="line">     COLUMN1 VARCHAR2(3), -- 디폴트 값이 byte 적용</span><br><span class="line">     COLUMN2 VARCHAR2(3 byte),</span><br><span class="line">     COLUMn3 VARCHAR2(3 char)             </span><br><span class="line"></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">-- 데이터 추가</span><br><span class="line">INSERT INTO ex2_2 VALUES(&#x27;abc&#x27;, &#x27;abc&#x27;, &#x27;abc&#x27;);</span><br><span class="line"></span><br><span class="line">SELECT column1</span><br><span class="line">       ,LENGTH (colum1) as len1,</span><br><span class="line">        column2</span><br><span class="line">       ,LENGTH(column2) as len2,</span><br><span class="line">        column3</span><br><span class="line">       ,LENGTH(column3) as len3</span><br><span class="line">        FROM ex2_2;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- 한글 추가</span><br><span class="line">INSERT INTO ex2_2 VALUES (&#x27;홍길동&#x27;, &#x27;홍길동&#x27;, &#x27;홍길동&#x27;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">-- P.54</span><br><span class="line">INSERT INTO ex2_2 (column3) VALUES(&#x27;홍길동&#x27;);</span><br><span class="line"></span><br><span class="line">SELECT column3</span><br><span class="line">       ,LENGTH(column3) as len3, LENGTHB(column3) as bytelen </span><br><span class="line">       FROM ex2_2;</span><br><span class="line">       </span><br><span class="line">-- 숫자 데이터 타입</span><br><span class="line">CREATE TABLE ex2_3(</span><br><span class="line">    COL_INT   INTEGER,</span><br><span class="line">    COL_DEC   DECIMAL,</span><br><span class="line">    COL_NUM   NUMBER</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">-- SQL vs PL/SQL</span><br><span class="line">-- R dplyr 패키지, SQL 모방해서 만듬</span><br><span class="line"></span><br><span class="line">SELECT 컬럼명</span><br><span class="line">FROM 테이블명</span><br><span class="line">WHERE 조건식</span><br><span class="line">ORDER BY 정렬</span><br><span class="line"></span><br><span class="line">SELECT * FROM user_tab_cols</span><br><span class="line"></span><br><span class="line">SELECT column_id</span><br><span class="line">       , column_name</span><br><span class="line">       , data_type</span><br><span class="line">       , data_length</span><br><span class="line">FROM user_tab_cols</span><br><span class="line">WHERE table_name = &#x27;EX2_3&#x27;</span><br><span class="line">ORDER BY column_id;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-- 날짜 데이터 타입</span><br><span class="line">CREATE TABLE ex2_5(</span><br><span class="line">    COL_DATE       DATE,</span><br><span class="line">    COL_TIMESTAMP  TIMESTAMP</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">INSERT INTO ex2_5 VALUES (SYSDATE, SYSTIMESTAMP);</span><br><span class="line">SELECT * FROM ex2_5;</span><br><span class="line"></span><br><span class="line">-- NULL : 값이 없음</span><br><span class="line">-- 해당 컬럼은 NULL</span><br><span class="line">-- 결측치 혀용 X : NOT NULL</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">-- P.60</span><br><span class="line">CREATE TABLE ex2_6(</span><br><span class="line">   COL_NULL VARCHAR2(10), -- 결측치 허용</span><br><span class="line">   COL_NOT_NULL VARCHAR2(10) NOT NULL -- 결측치 허용 X</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">-- 에러 발생</span><br><span class="line">INSERT INTO ex2_6 VALUES (&#x27;AA&#x27;,&#x27;&#x27;);</span><br><span class="line">SELECT * FROM ex2_6;</span><br><span class="line">INSERT INTO ex_26 VALUES (&#x27;AA&#x27;,&#x27;BB&#x27;);</span><br><span class="line">SELECT * FROM ex2_6;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SELECT constraint_name</span><br><span class="line">        , constraint_type</span><br><span class="line">        , table_name</span><br><span class="line">        , search_condition</span><br><span class="line">FROM user_constraints</span><br><span class="line">WHERE table_name = &#x27;EX2_6&#x27;;</span><br><span class="line"></span><br><span class="line">-- UNIQUE</span><br><span class="line">-- 중복 값 허용</span><br><span class="line"></span><br><span class="line">CREATE TABLE ex2_7(</span><br><span class="line">   COL_UNIQUE_NULL  VARCHAR2(10) UNIQUE</span><br><span class="line">  ,COL_UNIQUE_NNULL VARCHAR2(10) UNIQUE NOT NULL</span><br><span class="line">  ,COL_UNIQUE       VARCHAR2(10)</span><br><span class="line">  ,CONSTRAINTS unique_nm1 UNIQUE (COL_UNIQUE)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SELECT constraint_name</span><br><span class="line">       , constraint_type</span><br><span class="line">       , table_name</span><br><span class="line">       , search_condition</span><br><span class="line">FROM user_constraints</span><br><span class="line">WHERE table_name = &#x27;EX4_7&#x27;;</span><br><span class="line"></span><br><span class="line">INSERT INTO ex2_7 VALUES (&#x27;AA&#x27;, &#x27;AA&#x27;, &#x27;AA&#x27;);</span><br><span class="line">INSERT INTO ex2_7 VALUES (&#x27;&#x27;, &#x27;BB&#x27;, &#x27;CC&#x27;);</span><br><span class="line"></span><br><span class="line">-- 기본키</span><br><span class="line">-- Primary key</span><br><span class="line">-- UNIQUE(중복 허용 안됨), NOT NULL(결측치 허용 안됨)</span><br><span class="line">-- 테이블 당 1개의 기본키만 설정 가능</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">-- P.63</span><br><span class="line"></span><br><span class="line">CREATE TABLE  ex2_8 (</span><br><span class="line">  COL1 VARCHAR2(10) PRIMARY KEY</span><br><span class="line">   , COL2 VARCHAR2(10)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">SELECT constraint_name</span><br><span class="line">       , constraint_type</span><br><span class="line">       , table_name</span><br><span class="line">       , search_condition</span><br><span class="line">      </span><br><span class="line">FROM user_constraints</span><br><span class="line">WHERE table_name = &#x27;EX2_8&#x27;;</span><br><span class="line">-- INSERT INTO ex2_8 VALUES(&#x27;&#x27;,&#x27;AA&#x27;);</span><br><span class="line"></span><br><span class="line">SELECT * FROM user_constraints;</span><br><span class="line"></span><br><span class="line">SELECT constraint_name</span><br><span class="line">       , constraint_tupe</span><br><span class="line">       , table_name</span><br><span class="line">       , search_condition</span><br><span class="line">FROM user_constraints</span><br><span class="line">WHERE table_name = &#x27;JOBS&#x27;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">-- 외래키 : 테이블 간의 참조 데이터 무결성 위한 제약 조건</span><br><span class="line">-- 참조 무결성을 보장한다.</span><br><span class="line">-- 잘못된 정보가 입력되는 것을 방지함</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- Check</span><br><span class="line">-- 컬럼에 입력되는 데이터를 체크해 특정 조건에 맞는 데이터만 입력받고 그렇지 않으면 오류를 뱉어 낸다</span><br><span class="line">SELECT constraint_name</span><br><span class="line">       , constraint_type</span><br><span class="line">       , table_name</span><br><span class="line">       , search_condition</span><br><span class="line"></span><br><span class="line">FROM user_constraints</span><br><span class="line">WHERE table_name = &#x27;EX2_8&#x27;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE ex2_9 (</span><br><span class="line">           num1     NUMBER</span><br><span class="line">           CONSTRAINTS check1 CHECK ( num1 BETWEEN 1 AND 9),</span><br><span class="line">           gender   VARCHAR2(10)</span><br><span class="line">           CONSTRAINTS check2 CHECK ( gender IN (&#x27;MALE&#x27;, &#x27;FEMALE&#x27;))</span><br><span class="line">);</span><br><span class="line">    </span><br><span class="line">SELECT constraint_name</span><br><span class="line">       , constraint_type</span><br><span class="line">       , table_name</span><br><span class="line">       , search_condition</span><br><span class="line">FROM user_constraints</span><br><span class="line">WHERE table_name = &#x27;EX2_9&#x27;;</span><br><span class="line"> </span><br><span class="line">INSERT INTO ex2_9 VALUES (10, &#x27;MAN&#x27;);  </span><br><span class="line">INSERT INTO ex2_9 VALUES (10, &#x27;FEMALE&#x27;);</span><br><span class="line">INSERT INTO ex2_9 VALUES (5, &#x27;FEMALE&#x27;);</span><br><span class="line"></span><br><span class="line">-- Default</span><br><span class="line"></span><br><span class="line">alter session set nls_date_format=&#x27;YYYY/MM/DD HH24:MI:SS&#x27;;</span><br><span class="line">CREATE TABLE ex2_10(</span><br><span class="line">    CO11 VARCHAR2(10) NOT NULL</span><br><span class="line">    , CO12 VARCHAR2(10) NULL</span><br><span class="line">    , Create_date DATE DEFAULT SYSDATE</span><br><span class="line"></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO ex2_10 (co11, co12) VALUES(&#x27;AA&#x27;, &#x27;BB&#x27;);</span><br><span class="line">SELECT * FROM ex2_10;</span><br><span class="line"></span><br><span class="line">-- 테이블 변경</span><br><span class="line">-- ALTER TABLE</span><br><span class="line">ALTER TABLE ex2_10 RENAME COLUMN COL TO COL11;</span><br><span class="line">SELECT * FROM ex2_10;</span><br><span class="line"></span><br><span class="line">DESC ex2_10;</span><br><span class="line"></span><br><span class="line">-- 컬럼 타입 변경</span><br><span class="line">ALTER TABLE ex2_10 MODIFY COL2 VARCHAR2(30);</span><br><span class="line">DESC ex2_10;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- 신규 컬럼 추가</span><br><span class="line">ATRER TABLE ex2_10 ADD COL3 NUMBER;</span><br><span class="line">DESC ex2_10;</span><br><span class="line"></span><br><span class="line">-- 컬럼 삭제</span><br><span class="line">ALTER TABLE ex2_10 DROP COLUMN col3;</span><br><span class="line">DESC ex2_10;</span><br><span class="line"></span><br><span class="line">-- 제약조건 추가</span><br><span class="line">ALTER TABLE ex2_10 ADD CONSTRAINTS pk_ex2_10 PRIMARY KEY (COL11);</span><br><span class="line"></span><br><span class="line">SELECT constraint_name</span><br><span class="line">       , constraint_type</span><br><span class="line">       , table_name</span><br><span class="line">       , search_condition</span><br><span class="line">FROM user_constraints</span><br><span class="line">WHERE table_name = &#x27;EX2_10&#x27;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">--  테이블 복사</span><br><span class="line"></span><br><span class="line">CREATE TABLE ex2_9_1 AS</span><br><span class="line">SELECT * FROM ex2_9;</span><br><span class="line"></span><br><span class="line">DESC ex2_9_1;</span><br><span class="line"></span><br><span class="line">-- 뷰 생성</span><br><span class="line">CREATE OR REPLACE VIEW emp_dept_vl as</span><br><span class="line">SELECT a.employee_id</span><br><span class="line">       ,a.emp_name</span><br><span class="line">       ,a.department_id</span><br><span class="line">       ,b.department_name</span><br><span class="line">FROM employees a</span><br><span class="line">    , departments b</span><br><span class="line">WHERE a.department_id = b.department_id;</span><br><span class="line"></span><br><span class="line">DROP VIEW emp_dept_vl;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://seoseonho.github.io/2022/07/19/day0719/" data-id="cl5rv7rj00000rwv26opy5lxi" data-title="SQL연습 1일차" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/07/07/lecture-in-humanedu_0707_1500/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">0707, python</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/07/19/day0719/">SQL연습 1일차</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/07/lecture-in-humanedu_0707_1500/">0707, python</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/06/day0706%20(1)/day0706%20(1)/">0706, python</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/05/day0705_ch05_3ipynb/day0705_ch05_3ipynb/">0705 ch05_3ipynb</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/05/pycaret_sample/pycaret_sample/">0705 pycaret_sample</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
