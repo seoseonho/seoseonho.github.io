@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>SQL연습 2일차 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="SELECT * FROM EX2_10;– SELECT 문– p.92– 급여가 5000이 넘는 사원번호와 사원명 조회SELECT * FROM employees;  – 107개 데이터 SELECT    employee_id    , emp_name    , salaryFROM employeesWHERE salary &lt; 3000ORDER BY employe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL연습 2일차">
+<meta property="og:url" content="http://seoseonho.github.io/2022/07/20/day0720/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="SELECT * FROM EX2_10;– SELECT 문– p.92– 급여가 5000이 넘는 사원번호와 사원명 조회SELECT * FROM employees;  – 107개 데이터 SELECT    employee_id    , emp_name    , salaryFROM employeesWHERE salary &lt; 3000ORDER BY employe">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-07-20T01:00:00.000Z">
+<meta property="article:modified_time" content="2022-07-20T07:54:38.401Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://seoseonho.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-day0720" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/07/20/day0720/" class="article-date">
+  <time class="dt-published" datetime="2022-07-20T01:00:00.000Z" itemprop="datePublished">2022-07-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      SQL연습 2일차
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>SELECT * FROM EX2_10;<br>– SELECT 문<br>– p.92<br>– 급여가 5000이 넘는 사원번호와 사원명 조회<br>SELECT * FROM employees;  – 107개 데이터</p>
+<p>SELECT<br>    employee_id<br>    , emp_name<br>    , salary<br>FROM employees<br>WHERE salary &lt; 3000<br>ORDER BY employee_id;</p>
+<p>– 급여가 5000 이상, job_id, IT_PROG 사원 조회<br>SELECT employee_id<br>             , emp_name<br>             , job_id<br>             , salary<br>FROM employees<br>WHERE salary &gt; 5000<br>            OR job_id &#x3D; ‘IT_PROG’<br>ORDER BY employee_id;</p>
+<p>– 테이블에 별칭 줄 수 있음<br>SELECT<br>    – a 테이블에서 옴 (&#x3D;employees)<br>    a.employee_id, a.emp_name, a.department_id,<br>    – b 테이블에서 옴 (&#x3D;departments)<br>    b.department_name<br>FROM<br>    employees a,<br>    departments b<br>WHERE a.department_id &#x3D; b.department_id;</p>
+<p>– INSERT문 &amp; UPDATE문<br>– 4교시에 실습</p>
+<p>– p101<br>– Merge, 데이터를 합치다 또는 추가하다<br>– 조건을 비교해서 테이블에 해당 조건에 맞는 데이터 없으면 추가<br>– 있으면 UPDATE문을 수행하다. </p>
+<p>DROP TABLE ex3_3;<br>CREATE TABLE ex3_3(<br>    employee_id   NUMBER<br>    , bonus_amt   NUMBER DEFAULT 0<br>);</p>
+<p>INSERT INTO ex3_3 (employee_id)<br>SELECT<br>    e.employee_id<br>FROM employees e, sales s<br>WHERE e.employee_id &#x3D; s.employee_id<br>    AND s.SALES_MONTH BETWEEN ‘200010’ AND ‘200012’<br>GROUP BY e.employee_id;</p>
+<p>SELECT * FROM ex3_3 ORDER BY employee_id;</p>
+<p>– p.103<br> SELECT<br>    employee_id<br>    ,manager_id<br>    , salary<br>    , salary * 0.01<br>FROM employees<br>WHERE employee_id IN (  SELECT employee_id FROM ex3_3 );<br> AND manager_id &#x3D; 146;</p>
+<p> – MERGE를 통해서 작성<br> – 관리자 사번 146인 것중, ex3_3 테이블에 없는<br> – 사원의 사번, 관리자 사번, 급여 * 0.001 조회<br> – ex3_3 테이블의 160번 사원의 보너스 금액은 7.5로 신규 입력</p>
+<p>SELECT * FROM ex3_3;</p>
+<p>–서브쿼리 개념 : 메인퀘리<br>MERGE INTO ex3_3 d<br>SING (SELECT employee_id<br>             , salary<br>             , manager_id<br>     FROM employees<br>     WHERE manager_id &#x3D; 146) b<br>            ON (d.employee_id &#x3D; b.employee_id)</p>
+<p>WHEN MATCHED THEN<br> UPDATE SET d.bonus_amt &#x3D; d.bonus_amt + b.salary * 0.01<br>– DELETE WHERE (B..employee_di*161)<br> WHEN NOT MATCHED THEN<br> INSERT (d.employee_id, d.bonus_amt) VALUES (b.employee_id, b.salary *.001) WHERE (b.salary &lt; 8000);</p>
+<p> SELECT * FROM ex3_3 ORDER BY employee_id;</p>
+<p> – p. 106<br> – 테이블 삭제<br> DELETE ex3_3;<br> SELECT * FROM ex3_3  ORDER BY employee_id;</p>
+<p> – p.107<br> –commit % rollback<br> –commit은 변경한 데이터를 데이터에스에 마지막으로 반영<br> – Rollback은 그대로 변경한 데이터를 변경하기 이번 상태로 되돌리는 역할</p>
+<p> CREATE TABLE ex3_4 (<br>     employee_id NUMBER);</p>
+<p>INSERT INTO ex3_4 VALUES (100);<br>SELECT * FROM ex3_4;</p>
+<p>– p. 109<br>TRUNCATE TABLE ex3_4;<br>rollback;</p>
+<p>– p.110</p>
+<p>– Select rows from a Table</p>
+<p>SELECT<br> ROWNUM, employee_id<br>FROM employees;<br>WHERE ROWNUM &lt; 5;</p>
+<p>– ROWID 주소 값<br>– DBA,DB모델링(쿼리속도 측정 –&gt; 특징)<br>SELECT ROWINUM, employee_id, ROWID<br>FROM EMPLOYEES<br>WHERE ROWINUM &lt; 5;</p>
+<p>– 연산자<br>– Operator 연산 수행<br>– 수식 연산자 &amp; 문자 연산자<br>– ‘ll’ 두 문자를 붙이는 연결 연산자<br>– Select rows from a Table</p>
+<p>SELECT<br>  employee_id || ‘-‘ || emp_name AS employee_info<br>FROM employees<br>WHERE ROWNUM &lt; 5;</p>
+<p>– 표현식<br>– 조건문, if조건문(PL&#x2F;SQL)<br>– CASE 표현식<br>– Select rows from a Table</p>
+<p>SELECT employee_id, salary,<br>           CASE WHEN salary &lt;&#x3D; 5000 THEN ‘C등급’<br>                WHEN salary &gt; 5000 AND salary &lt;&#x3D; 15000 THEN ‘B등급’<br>                ELSE ‘A등급’<br>           END AS salary_grade<br>      FROM employees;</p>
+<p>– 조건식<br>– TRUE, FALSE, UNKNOWN 세가지 타입으로 반환<br>– 비교 조건식<br>– 분석가,DB데이터를 추출할 시, 서브쿼리</p>
+<p>– Select rows from a Table</p>
+<p>SELECT<br> EMPLOYEE_ID<br> ,SALARY<br>FROM employees<br>WHERE salary &#x3D; ANY(2000,3000,4000)<br>ORDER BY employee_id;</p>
+<p>–ANY –&gt;OR 연산자 변환</p>
+<p>– ( 복잡하게 할시)<br>–SELECT<br>–EMPLOYEE_ID<br>– ,SALARY<br>–FROM employees<br>–WHERE salary &#x3D; 2000 OR salary &#x3D; 3000 OR salary &#x3D; 4000 OR<br>–ORDER BY employee_id;</p>
+<p>– SOME<br>– Select rows from a Table</p>
+<p>SELECT EMPLOYEE_ID<br>       , salary<br>FROM employees<br>WHERE salary &#x3D; 2000<br>        OR salary &#x3D; 3000<br>        OR salary &#x3D; 4000<br>ORDER BY employee_id;</p>
+<p>– NOT 조건식<br>SELECT employee_id<br>       , salary<br>FROM employees<br>WHERE NOT ( salary &gt;&#x3D; 2500)<br>ORDER BY employee_id;</p>
+<p>– NULL 조건식**</p>
+<p>– IN 조건식<br>– 조건절에 명시한 값이 포함된 건을 반환하는데 앞에서 배웠던 ANY</p>
+<p>SELECT employee_id<br>       , salary<br>FROM employees<br>WHERE salary IN (2000, 3000, 4000)<br>ORDER BY employee_id;</p>
+<p>– EXISTS 조건식<br>– “서브쿼리”만 올 수 있음.</p>
+<p>SELECT department_id<br>        , department_name<br>FROM departments a<br>WHERE EXISTS ( SELECT *<br>              FROM employees b<br>              WHERE a.department_id &#x3D; b.department_id<br>              AND b.salary &gt; 3000)<br>ORDER BY a.department_name;</p>
+<p>– Like 조건식<br>– 문자열의 패턴을 검색해서 사용하는 조건식<br>SELECT<br> emp_name<br>FROM EMPLOYEES<br>WHERE emp_name LIKE ‘A%’<br>ORDER BY emp_name;</p>
+<p>CREATE TABLE ex3_5 (<br>names VARCHAR2(30));</p>
+<p>INSERT INTO ex3_5 VALUES (‘홍길동’);</p>
+<p>INSERT INTO ex3_5 VALUES (‘홍길용’);</p>
+<p>INSERT INTO ex3_5 VALUES (‘홍길상’);</p>
+<p>INSERT INTO ex3_5 VALUES (‘홍길상동’);</p>
+<p>SELECT *<br>FROM ex3_5<br>WHERE names LIKE ‘홍길%’;</p>
+<p>SELECT *<br>      FROM ex3_5<br>     WHERE names LIKE ‘홍길_’;</p>
+<p>– 4장 숫자 함수 (타이핑쳐보기)<br>– P.126</p>
+<p>SELECT ABS(10), ABS(-10), ABS(-10.123)<br>FROM DUAL;</p>
+<p>– 정수 반환</p>
+<p>– 내림<br>SELECT CEIL(10.123), CEIL(10.541), CEIL(11.001)<br>FROM DUAL;</p>
+<p>SELECT FLOOR(10.123), FLOOR(10.541), FLOOR(11.001)<br>FROM DUAL;</p>
+<p>SELECT ROUND(10.123,2), ROUND(10.541,2), ROUND(11.001,2)<br>FROM DUAL;</p>
+<p>– TRUNC<br>– 반올림 안함, 소수점 절삭, 자리수 지정 가능</p>
+<p>SELECT TRUNC(115.155), TRUNC(115.155, 1), TRUNC(115.155, 2), TRUNC(115.155, -2)<br>FROM DUAL;</p>
+<p>–POWER<br>–POWER 함수, SQRT<br>SELECT POWER(3,2) POWER(3,3) POWER(3,3,001)<br>FROM DUAL;</p>
+<p>– 제곱근 반환<br>SELECT SQRT(2), SQRT(5), SQRT(9)<br>FROM DUAL;</p>
+<p>SELECT INITCAP(‘never say goodbye’), INITCAP(‘never6say*good가bye’)<br>FROM DUAL;</p>
+<p>– LOWER 함수<br>– 매개변수로 들어오는 문자를 모두 소문자로, UPPDER 함수는 대문자로 반환<br>SELECT LOWER(‘NEVER SAY GOODBYE’), UPPER(‘never say goodbey’)<br>FROM DUAL;</p>
+<p>– CONCAT(char1, char2), ‘II’ 연산자와 비슷<br>SELECT CONCAT(‘I Have’, ‘A Dream’), ‘I Have’II’A Dream’<br>FROM DUAL;</p>
+<p>– SUBSTR<br>– 문자열 자르기<br>SELECT SUBSTR(‘ABCDEFG’,1,4), SUBSTR(‘ABCDEFG’,-1,4)<br>FROM DUAL;</p>
+<p>– 글자 1개당 3Byte씩 인식(교재는 2Byte인식)<br>SELECT SUBSTR(‘ABCDEFG’,1,4), SUBSTR(‘가나다라마바사’,-1,4)<br>FROM DUAL;</p>
+<p>– LTRIM, RTRIM 함수<br>SELECT<br> LTRIM(‘ABCDEFGABC’,’ABC’)<br> ,RTRIM(‘ABCDEFGABC’,’ABC’)<br>FROM DUAL;</p>
+<p>– LPAD, RPAD</p>
+<p>– 날짜 함수 (P.138)<br>SELECT SYSDATE, SYSTIMESTAMP<br>FROM DAUL;</p>
+<p>–ADD_MONTHS<br>–ADD_MONTHS 함수, 매개변수로 들어온 날짜, integer 만큼 월을 더함<br>SELECT ADD_MONTHS(SYSDATE,-1)<br>FROM DUAL;</p>
+<p>SELECT MONTHS_BETWEEN(SYSDATE,ADD_MONTHS(SYSDATE,1))MON1<br>FROM DUAL;</p>
+<p>– LAST_DATE<br>SELECT LAST_DAY(SYSDATE)<br>FROM DUAL;</p>
+<p>–NEXT_DAY<br>SELECTNEXT_DAY(SYSDATE,’금요일’)<br>FROM DULA;</p>
+<p>–P.141 형변환<br>– TO_CHAR(숫자 혹은 날짜, FORMAT)<br>SELECT TO_CHAR(1232456789,’999,999,999’)<br>FROM DUAL;</p>
+<p>SELECT TO_CHAR(SYSDATE,’D’)<br>FROM DUAL;</p>
+<p>– 문자를 숫자로 변환<br>SELECT TO_NUMBER(‘123456’)<br>FROM DUAL;</p>
+<p>– * NULL 관련함수 *<br>SELECT manager_id, employee_id<br>FROM employess;</p>
+<p>– NVL: 표현식1이 NULL일때 , 표현식 2를 반환함<br>SELECT NVL(manager_id, employee_id)<br>FROM EMPLOYEES<br>WHERE manager_id IS NULL;</p>
+<p>–NVL2 : 표현식1이 NULL이 아니면 표현식2출력,<br>–       표현식2가 NULL이면, 표현식3을 출력</p>
+<p>SELECT employee_id,<br>           NVL2(commission_pct, salary + (salary * commission_pct), salary) AS salary2<br>      FROM employees;</p>
+<p>SELECT employee_id<br>                , salary<br>                , commission_pct<br>                , NVL2(commission_pct, salary + (salary * commission_pct), salary) AS salary2<br>FROM employees<br>WHERE employee_id IN (118, 179);</p>
+<p>– COALESCE(expr1, expr2)<br>– 매개변수로 들어오는 표현식에서 NULL이 아닌 첫 번째 표현식 반환<br>– Select rows from a Table</p>
+<p>SELECT<br>  employee_id<br>  ,salary<br>  ,commission_pct<br>  ,COALESCE(salary * commission_pct, salary) as salary2<br>FROM EMPLOYEES;</p>
+<p>–DECODE<br>– IF-ELIF-ELIF-ELIF-ELSE</p>
+<p>SELECT prod-id<br>      , DECODE(channel_id, 3,’Direct’,<br>                           9,’Direct’,<br>                           5,’Indirect’,<br>                           4,’Indirect’,<br>                             ‘Others’) decodes<br>FROM sales<br>WHRE rownum &lt; 10;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://seoseonho.github.io/2022/07/20/day0720/" data-id="cl5tb8xbc000004v24xygfnh6" data-title="SQL연습 2일차" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/07/19/day0719/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">SQL연습 1일차</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/07/20/day0720/">SQL연습 2일차</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/19/day0719/">SQL연습 1일차</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/07/lecture-in-humanedu_0707_1500/">0707, python</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/06/day0706%20(1)/day0706%20(1)/">0706, python</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/05/day0705_ch05_3ipynb/day0705_ch05_3ipynb/">0705 ch05_3ipynb</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
