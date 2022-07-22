@@ -71,6 +71,164 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-day0721~22" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/07/22/day0721~22/" class="article-date">
+  <time class="dt-published" datetime="2022-07-22T05:33:47.072Z" itemprop="datePublished">2022-07-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/07/22/day0721~22/">SQL연습 3~4일차</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>– 기본집계함수<br>SELECT COUNT(*)FROM employees;</p>
+<p>SELECT COUNT(employee_id)FROM employees;</p>
+<p>–NULL은 카운트를 하지 않는다.<br>SELECT COUNT(department_id)FROM employees;</p>
+<p>– 유일한 값만 조회됨<br>SELECT COUNT(DISTINCT department_id)<br>FROM employees;</p>
+<p>SELECT DISTINCT department_id<br>FROM employees<br>ORDER BY 1;</p>
+<p>– 기초통계량<br>– P.154<br>– 합계, 평균, 최소, 최대, 분산, 표준편차<br>– SQL–&gt; 통계도구 &amp; 머신러닝, 데이터 과학 도구로</p>
+<p>SELECT SUM(salary)<br>FROM employees;</p>
+<p>SELECT SUM(salary), SUM(DISTINCT salary)<br>FROM employees;</p>
+<p>–평균값 반환<br>SELECT AVG(salary), AVG(DISTINCT salary)<br>FROM employees;</p>
+<p>– 최소 최대값 반환<br>SELECT MIN(salary), MAX( salary)<br>FROM employees;</p>
+<p>SELECT MIN(DISTINCT salary), MAX(DISTINCT salary)<br>FROM employees;</p>
+<p>– 분산, 표준편차<br>SSELECT VARIANCE(salary), STDDEV(salary)<br>FROM employees;</p>
+<p>– 그룹바이 HAVING<br>– 그전 까지는 전체 데이터를 기분으로 집계</p>
+<p>SELECT department_id<br>       ,SUM(salary)<br>FROM employees<br>GROUP BY department_id<br>ORDER BY department_id;</p>
+<p>SELECT *  FROM kor_loan_status;  — 가계대출 단위는 십억<br>SELECT<br>  period<br>  ,region<br>  ,SUM(loan_jan_amt)totl_jan<br>FROM kor_loan_status<br>WHERE period LIKE ‘2013%’<br>GROUP BY period, region<br>ORDER BY period, region;</p>
+<p>–2013년 11월 총 잔액만 구한다.<br>SELECT<br>   –period<br>   ,region<br>   ,SUM(loan_jan_amt) totl_jan<br>FROM kor_loan_status<br>WHERE period &#x3D; ‘201311’<br>GROUP BY region<br>ORDER BY region;</p>
+<p>SELECT period, region, SUM(loan_jan_amt)AS totl_jan<br>      FROM kor_loan_status<br>     WHERE period &#x3D; ‘201311’<br>     GROUP BY period, region<br>    HAVING SUM(loan_jan_amt) &gt; 100000<br>    ORDER BY region;</p>
+<p>– ROLLUP절과 CCUBE절<br>SELECT period, gubun, SUM(loan_jan_amt)totl_jan<br>FROM kor_loan_status<br>WHERE period LIKE ‘2013%’<br>GROUP BY period, gubun<br>ORDER BY period;</p>
+<p>– ROLL UP<br>SELECT period, gubun, SUM(loan_jan_amt) totl_jan<br>      FROM kor_loan_status<br>     WHERE period LIKE ‘2013%’<br>     GROUP BY ROLLUP(period, gubun);</p>
+<p>SELECT period, gubun, SUM(loan_jan_amt)totl_jan<br>FROM kor_loan_status<br>WHERE period LIKE ‘2013%’<br>GROUP BY period, CUBE(gubun);</p>
+<p>CREATE TABLE exp_goods_asia (<br>           country VARCHAR2(10),<br>           seq     NUMBER,<br>           goods   VARCHAR2(80));</p>
+<pre><code>INSERT INTO exp_goods_asia VALUES (&#39;한국&#39;, 1, &#39;원유제외 석유류&#39;);
+INSERT INTO exp_goods_asia VALUES (&#39;한국&#39;, 2, &#39;자동차&#39;);
+INSERT INTO exp_goods_asia VALUES (&#39;한국&#39;, 3, &#39;전자집적회로&#39;);
+INSERT INTO exp_goods_asia VALUES (&#39;한국&#39;, 4, &#39;선박&#39;);
+INSERT INTO exp_goods_asia VALUES (&#39;한국&#39;, 5,  &#39;LCD&#39;);
+INSERT INTO exp_goods_asia VALUES (&#39;한국&#39;, 6,  &#39;자동차부품&#39;);
+INSERT INTO exp_goods_asia VALUES (&#39;한국&#39;, 7,  &#39;휴대전화&#39;);
+INSERT INTO exp_goods_asia VALUES (&#39;한국&#39;, 8,  &#39;환식탄화수소&#39;);
+INSERT INTO exp_goods_asia VALUES (&#39;한국&#39;, 9,  &#39;무선송신기 디스플레이 부속품&#39;);
+INSERT INTO exp_goods_asia VALUES (&#39;한국&#39;, 10,  &#39;철 또는 비합금강&#39;);
+
+INSERT INTO exp_goods_asia VALUES (&#39;일본&#39;, 1, &#39;자동차&#39;);
+INSERT INTO exp_goods_asia VALUES (&#39;일본&#39;, 2, &#39;자동차부품&#39;);
+INSERT INTO exp_goods_asia VALUES (&#39;일본&#39;, 3, &#39;전자집적회로&#39;);
+INSERT INTO exp_goods_asia VALUES (&#39;일본&#39;, 4, &#39;선박&#39;);
+INSERT INTO exp_goods_asia VALUES (&#39;일본&#39;, 5, &#39;반도체웨이퍼&#39;);
+INSERT INTO exp_goods_asia VALUES (&#39;일본&#39;, 6, &#39;화물차&#39;);
+INSERT INTO exp_goods_asia VALUES (&#39;일본&#39;, 7, &#39;원유제외 석유류&#39;);
+INSERT INTO exp_goods_asia VALUES (&#39;일본&#39;, 8, &#39;건설기계&#39;);
+INSERT INTO exp_goods_asia VALUES (&#39;일본&#39;, 9, &#39;다이오드, 트랜지스터&#39;);
+INSERT INTO exp_goods_asia VALUES (&#39;일본&#39;, 10, &#39;기계류&#39;);
+</code></pre>
+<p>commit;</p>
+<p>SELECT * FROM exp_goods_asia;</p>
+<p>SELECT goods<br>FROM exp_goods_asia<br>WHERE country &#x3D; ‘한국’<br>ORDER BY seq;</p>
+<p>SELECT goods<br>FROM exp_goods_asia<br>WHERE country &#x3D; ‘일본’<br>ORDER BY seq;</p>
+<p>– 두 국가가 겹치는 수출품목은 한번만 조회가 가능하도록 함<br>– UNION<br>SELECT goods<br>FROM exp_goods_asia<br>WHERE country &#x3D; ‘한국’<br>UNION<br>SELECT goods<br>FROM exp_goods_asia<br>WHERE country &#x3D; ‘일본’;</p>
+<p>– UNION ALL<br>SELECT goods<br>FROM exp_goods_asia<br>WHERE country &#x3D; ‘한국’<br>UNION ALL<br>SELECT goods<br>FROM exp_goods_asia<br>WHERE country &#x3D; ‘일본’;</p>
+<p>– INTERSECT (교집함)<br>SELECT goods<br>FROM exp_goods_asia<br>WHERE country &#x3D; ‘한국’<br>INTERSECT<br>SELECT goods<br>FROM exp_goods_asia<br>WHERE country &#x3D; ‘일본’;</p>
+<p>– MINUS (차집함)</p>
+<p>SELECT goods<br>FROM exp_goods_asia<br>WHERE country &#x3D; ‘한국’<br>MINUS<br>SELECT goods<br>FROM exp_goods_asia<br>WHERE country &#x3D; ‘일본’;</p>
+<p>–GROUPING SETS 절</p>
+<p>SELECT period, gubun, SUM(loan_jan_amt) totl_jan<br>FROM kor_loan_status<br>WHERE period LIKE ‘2013%’<br> AND region IN (‘서울’,’경기’)<br>GROUP BY GROUPING SETS(period, (gubun,region));</p>
+<p>– p.177 조인의 종류<br>– 동등조인</p>
+<p>SELECT a.employee_id<br>       ,a.emp_name<br>       ,a.department_id<br>       ,b.department_name<br>FROM employees a,departments b<br>WHERE a.department_id &#x3D; b.department_id;</p>
+<p>– 세미조인<br>– 서브쿼리를 이용해 서브쿼리에 존재하는 데이터만 메인 쿼리에서 추출<br>– EXISTS 사용</p>
+<p>SELECT department_id, department_name<br>FROM departments a<br>WHERE EXISTS ( SELECT *<br>FROM employees b<br>WHERE a.department_id &#x3D; b.department_id<br>AND b.salary &gt; 3000)<br>ORDER BY a.department_name;</p>
+<p>– IN 사용</p>
+<p>SELECT department_id, department_name<br>FROM departments a<br>WHERE a.department_id  IN ( SELECT b.department_id<br>FROM employees b<br>WHERE b.salary &gt; 3000);</p>
+<p>SELECT a.department_id, a.department_name<br>FROM departments a, employees b<br>WHERE a.department_id &#x3D; b.department_id<br>AND b.salary &gt; 3000<br>ORDER BY a.department_name;</p>
+<p>– 안티 조인<br>– 세미 조인의 반대 개념<br>– NOT EXISTS 연산자를 사용한다</p>
+<p>SELECT a.employee_id<br>     , a.emp_name<br>     , a.department_id<br>     , b.department_name<br>      FROM employees a<br>         , departments b<br>     WHERE a.department_id &#x3D; b.department_id<br>       AND a.department_id NOT IN ( SELECT department_id<br>                                      FROM departments<br>                                     WHERE manager_id IS NULL) ;</p>
+<p>SELECT count(*)<br>FROM employees a<br>WHERE NOT EXISTS ( SELECT 1<br>FROM departments c<br>WHERE a.department_id &#x3D; c.department_id<br>AND manager_id IS NULL</p>
+<p>– 셀프조인<br>– 조인을 하려면, 두개의 테이블<br>– 하나의 테이블을, 두개로 분리</p>
+<p>SELECT<br>   SELECT a.employee_id<br>        , a.emp_name<br>        , b.employee_id<br>        , b.emp_name, b.department_id<br>      FROM employees a,<br>           employees b<br>WHERE a.employee_id &lt; b.employee_id……①<br>       AND a.department_id &#x3D; b.department_id<br>       AND a.department_id &#x3D; 20;</p>
+<p>– p.181 일반조인</p>
+<p>SELECT a.department_id, a.department_name, b.job_id, b.department_id<br>FROM departments a,<br>     job_history b<br>WHERE a.department_id &#x3D; b.department_id;</p>
+<p>– 외부 조인<br>SELECT a.department_id, a.department_name, b.job_id, b.department_id<br>FROM departments a,<br>     job_history b<br>WHERE a.department_id &#x3D; b.department_id (+) ;</p>
+<p>SELECT a.employee_id, a.emp_name, b.job_id, b.department_id<br>FROM employees a,<br>     job_history b<br>WHERE a.employee_id &#x3D; b.employee_id(+)<br>AND a.department_id &#x3D; b.department_id;</p>
+<p>select a.employee_id, a.emp_name, b.job_id, b.department_id<br>from employees a,<br>     job_history b<br>where a.employee_id  &#x3D; b.employee_id(+)<br>and a.department_id &#x3D; b.department_id(+);</p>
+<p>– ANSI  내부조인</p>
+<p>SELECT a.employee_id, a.emp_name, b.department_id, b.department_name<br>FROM employees a<br>INNER JOIN departments b<br> ON (a.department_id &#x3D; b.department_id )<br>WHERE a.hire_date &gt;&#x3D; TO_DATE(‘2003-01-01’,’YYYY-MM-DD</p>
+<p>– P.187 ANSI 외부조인<br>select a.employee_id<br>     , a.emp_name<br>     , b.job_id<br>     , b.department_id<br>from employees a,<br>job_history b<br>where a.employee_id  &#x3D; b.employee_id(+)<br>and a.department_id &#x3D; b.department_id(+);</p>
+<p>– RIGHT 조인</p>
+<p> SELECT a.employee_id<br>      , a.emp_name<br>      , b.job_id<br>      , b.department_id<br>FROM job_history b<br>RIGHT OUTER JOIN employees a<br> ON ( a.employee_id  &#x3D; b.employee_id<br>and a.department_id &#x3D; b.department_id) ;</p>
+<p>– 서브쿼리<br>– SQL수업의 하이라이트!!<br>–서브퀘리<br>– SELECT,FROM,WHERE</p>
+<p>– 배치 자동화<br>SELECT count(*)<br>FROM employees<br>WHERE salary &gt;&#x3D; ( SELECT AVG(salary) FROM employees);</p>
+<p>SELECT count(*)<br>FROM employees<br>WHERE department_id IN ( SELECT department_id<br>                         FROM departments<br>                         WHERE parent_id IS NULL);</p>
+<p>SELECT employee_id<br>     , emp_name, job_id<br>FROM employees<br>WHERE (employee_id, job_id ) IN ( SELECT employee_id, job_id<br>                                  FROM job_history);</p>
+<p>– 서브쿼리 SELECT 뿐 아니라 UPDATE, DELETE 운<br>– 전 사원의 급여를 평균 금액으로 갱신<br>– COMMIT</p>
+<p>CREATE TABLE employees0721 AS<br>SELECT * FROM employsse;</p>
+<p>SELECT a.employee_id,<br>           ( SELECT b.emp_name<br>               FROM employees b<br>              WHERE a.employee_id &#x3D; b.employee_id) AS emp_name,<br>           a.department_id,<br>           ( SELECT b.department_name<br>               FROM departments b<br>              WHERE a.department_id &#x3D; b.department_id) AS dep_name<br>    FROM job_history a;</p>
+<p>– 메인쿼리, 부서테이블에서 부서 ID와 부서명<br>– 서브쿼리, 특정 조건<br>SELECT<br>       a.department_id<br>     , a.department_name<br>FROM departments a<br>      WHERE EXISTS ( SELECT 1<br>                    FROM employees b<br>                    WHERE a.department_id &#x3D; b.department_id<br>                    AND b.salary &gt; ( SELECT AVG(salary)<br>                                    FROM employees )</p>
+<p>– P.196<br>– 메인쿼리 : 사원 테이블의 사원들의 부서별 평균 급여를 조회<br>– 서브쿼리 : 상위 부서가 기획부(부서번호가 90)에 속함<br>SELECT department_id, AVG(salary)<br>FROM employees<br>WHERE department_id IN(SELECT department_id<br>GROUP BY department_id;</p>
+<p>– day0722</p>
+<p>– p.198</p>
+<p>–서브쿼리<br>– SELECT, FROM, WHERE<br>–FROM : 인라인 뷰<br>– 메인 쿠리 : 사원테이블에서는 id,name 출력<br>–           부서테이블에서는 부서 ID, 부서명 출력<br>–           사원테이블의 급여가 기획부서의 평균급여보다 높은 사람<br>–           a.salary &gt; d.avg_salary<br>– 서브쿼리 : 기획부서의 평균급여</p>
+<p>SELECT a.employee_id, a.emp_name, b.department_id, b.department_name<br>FROM employees a,<br>     departments b,<br>    ( SELECT AVG(c.salary) AS avg_salary<br>FROM departments b,<br>       employees c<br>WHERE b.parent_id &#x3D; 90  – 기획부<br>AND b.department_id &#x3D; c.department_id ) d<br>WHERE a.department_id &#x3D; b.department_id<br>AND a.salary &gt; d.avg_salary;</p>
+<p>– p.199 하단<br>– 2000년 이탈리아 평균 매출액(연평균)보다 큰 월의 평균 매출액을 구하는 것<br>SELECT a.*<br>FROM (SELECT a.sales_month, ROUND(AVG(a.amount_sold)) AS month_avg<br>      FROM sales a,<br>           customers b,<br>           countries c<br>     WHERE a.sales_month  BETWEEN ‘200001’ AND ‘200012’<br>       AND a.cust_id &#x3D; b.CUST_ID<br>       AND b.COUNTRY_ID &#x3D; c.COUNTRY_ID<br>       AND c.COUNTRY_NAME &#x3D; ‘Italy’ – 이탈리아<br>      GROUP BY a.sales_month<br>    ) a,<br>    ( SELECT ROUND(AVG(a.amount_sold)) AS year_avg<br>      FROM sales a,<br>           customers b,<br>           countries c<br>     WHERE a.sales_month BETWEEN ‘200001’ AND ‘200012’<br>       AND a.cust_id &#x3D; b.CUST_ID<br>       AND b.COUNTRY_ID &#x3D; c.COUNTRY_ID<br>       AND c.COUNTRY_NAME &#x3D; ‘Italy’ – 이탈리아<br>    ) b<br> WHERE a.month_avg &gt; b.year_avg;</p>
+<p>– 연평균 매출액 쿼리<br>SELECT<br>  ROUND(AVG(a.amount_sold))AS year_avg<br>FROM<br> sales a<br> ,customers b</p>
+<p>– 계층형 쿼리<br>– p.208 부서정보<br>– p.211<br>– START WITH 조건 &amp; CONNECT BY 조건<br>– parent_id &#x3D;&#x3D; 상위 부서 정보를 가지고 있음.<br>– CONNECT BY PRIOR department_id &#x3D; parent_id</p>
+<p>SELECT a.employee_id, LPAD(‘ ‘ , 3 * (LEVEL-1)) || a.emp_name,<br>           LEVEL,<br>           b.department_name<br>      FROM employees a,<br>           departments b<br>     WHERE a.department_id &#x3D; b.department_id<br>      START WITH a.manager_id IS NULL<br>     CONNECT BY PRIOR a.employee_id &#x3D; a.manager_id;</p>
+<p>– 사원테이블에 있는 manager_id, employee_id<br>SELECT a.employee_id, LPAD(‘ ‘ , 3 * (LEVEL-1)) || a.emp_name,<br>           LEVEL,<br>           b.department_name, a.DEPARTMENT_ID<br>     FROM employees a,<br>           departments b<br>     WHERE a.department_id &#x3D; b.department_id<br>    START WITH a.manager_id IS NULL<br>      CONNECT BY NOCYCLE PRIOR a.employee_id &#x3D; a.manager_id</p>
+<p>SELECT a.employee_id, LPAD(‘ ‘ , 3 * (LEVEL-1)) || a.emp_name,<br>           LEVEL,<br>           b.department_name, a.DEPARTMENT_ID<br>      FROM employees a,<br>           departments b<br>     WHERE a.department_id &#x3D; b.department_id<br>     AND a.department_id &#x3D; 30<br>     START WITH a.manager_id IS NULL<br>     CONNECT BY NOCYCLE PRIOR a.employee_id &#x3D; a.manager_id;</p>
+<p>SELECT a.employee_id, LPAD(‘ ‘ , 3 * (LEVEL-1)) || a.emp_name,<br>           LEVEL,<br>           b.department_name, a.DEPARTMENT_ID<br>FROM employees a,<br>           departments b<br>WHERE a.department_id &#x3D; b.department_id<br>START WITH a.manager_id IS NULL<br>CONNECT BY NOCYCLE PRIOR a.employee_id &#x3D; a.manager_id<br> AND a.department_id &#x3D; 30;     </p>
+<p>– 계층형 쿼리 심화학습<br>– 쿼리가 나옴. ORDER BY 정렬가능<br>– ORDER SIBLINGS BY<br>SELECT department_id, LPAD(‘ ‘ , 3 * (LEVEL-1)) || department_name, LEVEL<br>FROM departments<br>START WITH parent_id IS NULL<br>CONNECT BY PRIOR department_id  &#x3D; parent_id<br>ORDER BY department_name;</p>
+<p>– CONNECT BY ROOT</p>
+<p>SELECT department_id, LPAD(‘ ‘ , 3 * (LEVEL-1)) || department_name, LEVEL,<br>        CONNECT_BY_ROOT department_name AS root_name<br>FROM departments<br>START WITH parent_id IS NULL<br>CONNECT BY PRIOR department_id  &#x3D; parent_id;</p>
+<p>– P.220<br>– 계층형 쿼리 응용<br>– 샘플 데이터 만들기</p>
+<p>CREATE TABLE ex7_1 AS<br>SELECT<br>  ROWNUM seq<br>  ,’2014’|| LPAD(CEIL(ROWNUM&#x2F;1000),2,’0’)month<br>  ,ROUND(DBMS_RANDOM.VALUE(100,1000))amt<br>FROM DUAL<br>CONNECT BY LEVEL &lt;&#x3D; 12000;</p>
+<p>SELECT * FROM ex7_1;</p>
+<p>SELECT<br>  month<br>  ,sum(amt)<br>FROM ex7_1<br>GROUP BY month<br>ORDER BY month;</p>
+<p>SELECT ROWNUM<br>FROM(<br>      SELECT 1 AS row_num<br>       FROM DUAL<br>       UNION ALL<br>       SELECT 1 AS row_num<br>         FROM DUAL<br>)<br>CONNECT BY LEVEL &lt;&#x3D;4;</p>
+<p>– WITH 절<br>– 서브쿼리의 가독성 향상<br>– 연도별</p>
+<p>WITH b2 AS(<br>  SELECT<br>  period<br> ,region<br> ,SUM(loan_jan_amt)jan_amt<br> FROM kor_loan_status<br> GROUP BY period,region)</p>
+<p>SELECT b2.*FROM b2;<br>  ]</p>
+<p>– p.231<br>– 분석함수와 window 함수<br>– 문법<br>– 분석 함수(매개변수)DVER(PARTITION BY….)<br>– 분석 함수<br>– ROW_NUMBER()&#x2F;ROWNUM</p>
+<p>– (1)<br>SELECT<br>  department_id<br>  ,emp_name<br>  ,ROW_NUMBER()OVER(PARTITION BY department_id<br>   ORDER BY salary ) dep_rank<br>FROM employees ;</p>
+<p>SELECT department_id<br>       , emp_name<br>       , salary<br>       , DENSE_RANK() OVER (PARTITION BY department_id<br>                              ORDER BY salary ) dep_rank<br>      FROM employees;</p>
+<p> SELECT *<br>    FROM ( SELECT department_id, emp_name,<br>                  salary,<br>                  DENSE_RANK() OVER (PARTITION BY department_id<br>                                     ORDER BY salary desc) dep_rank<br>             FROM employees<br>         )<br>    WHERE dep_rank &lt;&#x3D; 3;</p>
+<p>– (2)<br>with temp AS (<br>SELECT<br>    department_id<br>    , emp_name<br>    , salary<br>    – , RANK () OVER (PARTITION BY department_id ORDER BY salary) dep_rank<br>    , DENSE_RANK () OVER (PARTITION BY department_id ORDER BY salary) dep_rank<br>FROM employees)</p>
+<p>SELECT *<br>FROM (SELECT<br>    department_id<br>    , emp_name<br>    , salary<br>    – , RANK () OVER (PARTITION BY department_id ORDER BY salary) dep_rank<br>    , DENSE_RANK () OVER (PARTITION BY department_id ORDER BY salary) dep_rank<br>FROM employees)<br>WHERE dep_rank &lt;&#x3D; 3;</p>
+<p>– P.234</p>
+<p>– CUME_DIST(): 상대적인 누적분포도 값을 반환<br>SELECT department_id, emp_name,<br>           salary,<br>           CUME_DIST() OVER (PARTITION BY department_id<br>                             ORDER BY salary ) dep_dist<br>      FROM employees;</p>
+<p>– PERCENT_RANK 함수<br>– 백문위 순위 반환<br>– 60번 부서에 대한 CUME_DIST(),PERCENT_RANK() 값을 조회한다.</p>
+<p>SELECT department_id, emp_name,<br>       salary<br>       ,rank() OVER (PARTITION BY department_id<br>                     ORDER BY salary ) raking<br>       ,CUME_DIST() OVER (PARTITION BY department_id<br>                          ORDER BY salary ) cume_dist_value<br>       ,PERCENT_RANK() OVER (PARTITION BY department_id<br>                             ORDER BY salary ) percentile<br>FROM employees<br>WHERE department_id &#x3D; 60;</p>
+<p> SELECT department_id, emp_name,<br>           salary<br>          ,NTILE(4) OVER (PARTITION BY department_id<br>                          ORDER BY salary<br>                         ) NTILES<br>      FROM employees<br>     WHERE department_id IN (30, 60) ;</p>
+<p>– LAG, LEAD<br>– LAG 선행로우의 값을 반환한다.<br>– LEAD 후행로우의 값을 가져와 반환한다.</p>
+<p>SELECT emp_name<br>       , hire_date<br>       , salary,<br>       LAG(salary, 3, 0) OVER (ORDER BY hire_date) AS prev_sal,<br>       LEAD(salary, 3, 0) OVER (ORDER BY hire_date) AS next_sal<br>FROM employees<br>WHERE department_id &#x3D; 30;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://seoseonho.github.io/2022/07/22/day0721~22/" data-id="cl5w170b20000f8v2f2pp6b62" data-title="SQL연습 3~4일차" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-day0720" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/07/20/day0720/" class="article-date">
@@ -7195,131 +7353,6 @@ Name: Species, dtype: int64
 
 
   
-    <article id="post-day_0630_ch3/day_0630_ch3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/06/30/day_0630_ch3/day_0630_ch3/" class="article-date">
-  <time class="dt-published" datetime="2022-06-30T01:00:00.000Z" itemprop="datePublished">2022-06-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/06/30/day_0630_ch3/day_0630_ch3/">0630 ch03</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="k-최근접-이웃-회귀"><a href="#k-최근접-이웃-회귀" class="headerlink" title="k-최근접 이웃 회귀"></a>k-최근접 이웃 회귀</h2><ul>
-<li>지도 학습 알고리즘은 크게 분류와 회귀<br>-지도 학습 : 종속변수 존재<ul>
-<li>분류 : 도미와 빙어 분류 문제 해결</li>
-<li>회귀 : 통계 회귀분석 y &#x3D; ax + b &#x2F; 수치 예측</li>
-</ul>
-</li>
-</ul>
-<h2 id="데이터-불러오기"><a href="#데이터-불러오기" class="headerlink" title="데이터 불러오기"></a>데이터 불러오기</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="built_in">print</span>(np.__version__)</span><br></pre></td></tr></table></figure>
-
-<pre><code>1.21.6
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">perch_length = np.array(</span><br><span class="line">    [<span class="number">8.4</span>, <span class="number">13.7</span>, <span class="number">15.0</span>, <span class="number">16.2</span>, <span class="number">17.4</span>, <span class="number">18.0</span>, <span class="number">18.7</span>, <span class="number">19.0</span>, <span class="number">19.6</span>, <span class="number">20.0</span>, </span><br><span class="line">     <span class="number">21.0</span>, <span class="number">21.0</span>, <span class="number">21.0</span>, <span class="number">21.3</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.5</span>, </span><br><span class="line">     <span class="number">22.5</span>, <span class="number">22.7</span>, <span class="number">23.0</span>, <span class="number">23.5</span>, <span class="number">24.0</span>, <span class="number">24.0</span>, <span class="number">24.6</span>, <span class="number">25.0</span>, <span class="number">25.6</span>, <span class="number">26.5</span>, </span><br><span class="line">     <span class="number">27.3</span>, <span class="number">27.5</span>, <span class="number">27.5</span>, <span class="number">27.5</span>, <span class="number">28.0</span>, <span class="number">28.7</span>, <span class="number">30.0</span>, <span class="number">32.8</span>, <span class="number">34.5</span>, <span class="number">35.0</span>, </span><br><span class="line">     <span class="number">36.5</span>, <span class="number">36.0</span>, <span class="number">37.0</span>, <span class="number">37.0</span>, <span class="number">39.0</span>, <span class="number">39.0</span>, <span class="number">39.0</span>, <span class="number">40.0</span>, <span class="number">40.0</span>, <span class="number">40.0</span>, </span><br><span class="line">     <span class="number">40.0</span>, <span class="number">42.0</span>, <span class="number">43.0</span>, <span class="number">43.0</span>, <span class="number">43.5</span>, <span class="number">44.0</span>]</span><br><span class="line">     )</span><br><span class="line">perch_weight = np.array(</span><br><span class="line">    [<span class="number">5.9</span>, <span class="number">32.0</span>, <span class="number">40.0</span>, <span class="number">51.5</span>, <span class="number">70.0</span>, <span class="number">100.0</span>, <span class="number">78.0</span>, <span class="number">80.0</span>, <span class="number">85.0</span>, <span class="number">85.0</span>, </span><br><span class="line">     <span class="number">110.0</span>, <span class="number">115.0</span>, <span class="number">125.0</span>, <span class="number">130.0</span>, <span class="number">120.0</span>, <span class="number">120.0</span>, <span class="number">130.0</span>, <span class="number">135.0</span>, <span class="number">110.0</span>, </span><br><span class="line">     <span class="number">130.0</span>, <span class="number">150.0</span>, <span class="number">145.0</span>, <span class="number">150.0</span>, <span class="number">170.0</span>, <span class="number">225.0</span>, <span class="number">145.0</span>, <span class="number">188.0</span>, <span class="number">180.0</span>, </span><br><span class="line">     <span class="number">197.0</span>, <span class="number">218.0</span>, <span class="number">300.0</span>, <span class="number">260.0</span>, <span class="number">265.0</span>, <span class="number">250.0</span>, <span class="number">250.0</span>, <span class="number">300.0</span>, <span class="number">320.0</span>, </span><br><span class="line">     <span class="number">514.0</span>, <span class="number">556.0</span>, <span class="number">840.0</span>, <span class="number">685.0</span>, <span class="number">700.0</span>, <span class="number">700.0</span>, <span class="number">690.0</span>, <span class="number">900.0</span>, <span class="number">650.0</span>, </span><br><span class="line">     <span class="number">820.0</span>, <span class="number">850.0</span>, <span class="number">900.0</span>, <span class="number">1015.0</span>, <span class="number">820.0</span>, <span class="number">1100.0</span>, <span class="number">1000.0</span>, <span class="number">1100.0</span>, </span><br><span class="line">     <span class="number">1000.0</span>, <span class="number">1000.0</span>]</span><br><span class="line">     )</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots() <span class="comment"># 객체지향의 시작</span></span><br><span class="line">ax.scatter(perch_length, perch_weight)</span><br><span class="line">ax.set_xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/output_4_0.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">train_input, test_input, train_target, test_target = train_test_split(</span><br><span class="line">    perch_length, perch_weight, random_state=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line">train_input.shape, test_input.shape, train_target.shape, test_target.shape</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>((42,), (14,), (42,), (14,))
-</code></pre>
-<ul>
-<li>1차원 배열.. –&gt; 2차원 배열</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">train_input = train_input.reshape(-<span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line">test_input = test_input. reshape(-<span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(train_input.shape, test_input.shape)</span><br><span class="line"><span class="built_in">print</span>(train_input.ndim)</span><br></pre></td></tr></table></figure>
-
-<pre><code>(42, 1) (14, 1)
-2
-</code></pre>
-<h2 id="결정계수"><a href="#결정계수" class="headerlink" title="결정계수"></a>결정계수</h2><ul>
-<li>정확한 지표<ul>
-<li>100g !&#x3D;</li>
-</ul>
-</li>
-<li>0 ~ 1 사이의 지표</li>
-<li>1에 가까울수록, 예측 모형이 잘 맞춘다.</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsRegressor</span><br><span class="line">knr = KNeighborsRegressor()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 모형 학습</span></span><br><span class="line">knr.fit(train_input, train_target)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 테스트 세트의 점수를 확인한다.</span></span><br><span class="line"><span class="built_in">print</span>(knr.score(test_input, test_target))</span><br></pre></td></tr></table></figure>
-
-<pre><code>0.992809406101064
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_absolute_error</span><br><span class="line"></span><br><span class="line"><span class="comment"># 예측 데이터</span></span><br><span class="line">test_prediction = knr.predict(test_input)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 테스트 세트에 대한 평균 절댓값 오차를</span></span><br><span class="line">mae = mean_absolute_error(test_target, test_prediction)</span><br><span class="line"><span class="built_in">print</span>(mae)</span><br></pre></td></tr></table></figure>
-
-<pre><code>19.157142857142862
-</code></pre>
-<ul>
-<li>예측이 평균적으로 19g 정도 다르다.<ul>
-<li>확실한 건 오차가 존재한다.</li>
-<li>19g 정도가 의마하는 게 뭐냐?</li>
-</ul>
-<ul>
-<li>개선 : 17g</li>
-<li>개선 : 15g</li>
-<li>개선 : 0이</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(knr.score(train_input, train_target))</span><br></pre></td></tr></table></figure>
-
-<pre><code>0.9698823289099254
-</code></pre>
-<h2 id="과대적합-vs-과소적합"><a href="#과대적합-vs-과소적합" class="headerlink" title="과대적합 vs 과소적합"></a>과대적합 vs 과소적합</h2><ul>
-<li>매우매우 힘듬</li>
-<li>과대적합 : 훈련세트 점수 좋음, 테스트 점수 (매우) 안 좋음</li>
-<li>과소적합 : 테스트 세트의 점수가 매우 좋음</li>
-<li>결론 : 제대로 모형이 훈련이 안된 겁니다.<ul>
-<li>모형 서비스에 탑재 시킬 수 없음.</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;훈련 평가:&quot;</span>, knr.score(train_input, train_target))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;테스트 평가:&quot;</span>, knr.score(test_input, test_target))</span><br></pre></td></tr></table></figure>
-
-<pre><code>훈련 평가: 0.9698823289099254
-테스트 평가: 0.992809406101064
-</code></pre>
-<ul>
-<li>모형 개선</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 이웃의 개수를 3으로 재 지정</span></span><br><span class="line">knr.n_neighbors = <span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 모형 다시 훈련</span></span><br><span class="line">knr.fit(train_input, train_target)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;훈련 평가:&quot;</span>, knr.score(train_input, train_target))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;테스트 평가:&quot;</span>, knr.score(test_input, test_target))</span><br></pre></td></tr></table></figure>
-
-<pre><code>훈련 평가: 0.96164569026043
-테스트 평가: 0.9737908255822255
-</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://seoseonho.github.io/2022/06/30/day_0630_ch3/day_0630_ch3/" data-id="cl50qlhwz0000b0v2cnro41m8" data-title="0630 ch03" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -7356,6 +7389,10 @@ Name: Species, dtype: int64
       <ul>
         
           <li>
+            <a href="/2022/07/22/day0721~22/">SQL연습 3~4일차</a>
+          </li>
+        
+          <li>
             <a href="/2022/07/20/day0720/">SQL연습 2일차</a>
           </li>
         
@@ -7369,10 +7406,6 @@ Name: Species, dtype: int64
         
           <li>
             <a href="/2022/07/06/day0706%20(1)/day0706%20(1)/">0706, python</a>
-          </li>
-        
-          <li>
-            <a href="/2022/07/05/day0705_ch05_3ipynb/day0705_ch05_3ipynb/">0705 ch05_3ipynb</a>
           </li>
         
       </ul>
