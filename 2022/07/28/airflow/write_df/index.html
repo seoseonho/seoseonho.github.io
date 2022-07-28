@@ -4,13 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>Archives: 2022/6 | Hexo</title>
+  <title>airflow | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://seoseonho.github.io/archives/2022/06/page/2/index.html">
+  <meta name="description" content="from faker import Fakerimport csv  def main():    output &#x3D; open(‘data.csv’, ‘w’)    fake &#x3D; Faker()    header &#x3D; [‘name’, ‘age’, ‘street’, ‘city’, ‘state’, ‘zip’, ‘lng’, ‘lat’]    mywrite">
+<meta property="og:type" content="article">
+<meta property="og:title" content="airflow">
+<meta property="og:url" content="http://seoseonho.github.io/2022/07/28/airflow/write_df/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="from faker import Fakerimport csv  def main():    output &#x3D; open(‘data.csv’, ‘w’)    fake &#x3D; Faker()    header &#x3D; [‘name’, ‘age’, ‘street’, ‘city’, ‘state’, ‘zip’, ‘lng’, ‘lat’]    mywrite">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-07-28T01:00:00.000Z">
+<meta property="article:modified_time" content="2022-07-28T08:35:51.690Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -69,83 +73,69 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/06/22/0622-2-/" class="archive-article-date">
-  <time class="dt-published" datetime="2022-06-22T00:00:00.000Z" itemprop="datePublished">Jun 22</time>
+        <section id="main"><article id="post-airflow/write_df" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/07/28/airflow/write_df/" class="article-date">
+  <time class="dt-published" datetime="2022-07-28T01:00:00.000Z" itemprop="datePublished">2022-07-28</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/06/22/0622-2-/">0622(2)</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      airflow
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/06/21/0620~0621/" class="archive-article-date">
-  <time class="dt-published" datetime="2022-06-21T00:00:00.000Z" itemprop="datePublished">Jun 21</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/06/21/0620~0621/">day0621..</a>
-    </h1>
-  
+        <p>from faker import Faker<br>import csv </p>
+<p>def main():<br>    output &#x3D; open(‘data.csv’, ‘w’)<br>    fake &#x3D; Faker()<br>    header &#x3D; [‘name’, ‘age’, ‘street’, ‘city’, ‘state’, ‘zip’, ‘lng’, ‘lat’]<br>    mywriter &#x3D; csv.writer(output)<br>    mywriter.writerow(header)</p>
+<pre><code>for r in range(1000):
+    mywriter.writerow([fake.name(),fake.random_int(min=18, max=80, step=1), fake.street_address(), fake.city(),fake.state(),fake.zipcode(),fake.longitude(),fake.latitude()])
+output.close()
+</code></pre>
+<p>if <strong>name</strong> &#x3D;&#x3D; “<strong>main</strong>“:<br>    main()</p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/06/21/0621-dplyr/" class="archive-article-date">
-  <time class="dt-published" datetime="2022-06-21T00:00:00.000Z" itemprop="datePublished">Jun 21</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/06/21/0621-dplyr/">0621 dplyr</a>
-    </h1>
-  
-
-    </header>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://seoseonho.github.io/2022/07/28/airflow/write_df/" data-id="cl64s7wh10007oov239sd9b38" data-title="airflow" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
   </div>
-</article>
   
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/archives/2022/06/">&laquo; Prev</a><a class="page-number" href="/archives/2022/06/">1</a><span class="page-number current">2</span>
-  </nav>
+<nav id="article-nav">
+  
+    <a href="/2022/07/28/airflow/write_json_df/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          airflow
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/07/22/day0721~22/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">SQL연습 3~4일차</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
 
 </section>
         

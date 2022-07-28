@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>airflow | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Licensed to the Apache Software Foundation (ASF) under oneor more contributor license agreements.  See the NOTICE filedistributed with this work for additional informationregarding copyright ownership">
+<meta property="og:type" content="article">
+<meta property="og:title" content="airflow">
+<meta property="og:url" content="http://seoseonho.github.io/2022/07/28/airflow/webserver_config/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Licensed to the Apache Software Foundation (ASF) under oneor more contributor license agreements.  See the NOTICE filedistributed with this work for additional informationregarding copyright ownership">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-07-28T01:00:00.000Z">
+<meta property="article:modified_time" content="2022-07-28T08:35:51.706Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://seoseonho.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-airflow/webserver_config" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/07/28/airflow/webserver_config/" class="article-date">
+  <time class="dt-published" datetime="2022-07-28T01:00:00.000Z" itemprop="datePublished">2022-07-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      airflow
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="Licensed-to-the-Apache-Software-Foundation-ASF-under-one"><a href="#Licensed-to-the-Apache-Software-Foundation-ASF-under-one" class="headerlink" title="Licensed to the Apache Software Foundation (ASF) under one"></a>Licensed to the Apache Software Foundation (ASF) under one</h1><h1 id="or-more-contributor-license-agreements-See-the-NOTICE-file"><a href="#or-more-contributor-license-agreements-See-the-NOTICE-file" class="headerlink" title="or more contributor license agreements.  See the NOTICE file"></a>or more contributor license agreements.  See the NOTICE file</h1><h1 id="distributed-with-this-work-for-additional-information"><a href="#distributed-with-this-work-for-additional-information" class="headerlink" title="distributed with this work for additional information"></a>distributed with this work for additional information</h1><h1 id="regarding-copyright-ownership-The-ASF-licenses-this-file"><a href="#regarding-copyright-ownership-The-ASF-licenses-this-file" class="headerlink" title="regarding copyright ownership.  The ASF licenses this file"></a>regarding copyright ownership.  The ASF licenses this file</h1><h1 id="to-you-under-the-Apache-License-Version-2-0-the"><a href="#to-you-under-the-Apache-License-Version-2-0-the" class="headerlink" title="to you under the Apache License, Version 2.0 (the"></a>to you under the Apache License, Version 2.0 (the</h1><h1 id="“License”-you-may-not-use-this-file-except-in-compliance"><a href="#“License”-you-may-not-use-this-file-except-in-compliance" class="headerlink" title="“License”); you may not use this file except in compliance"></a>“License”); you may not use this file except in compliance</h1><h1 id="with-the-License-You-may-obtain-a-copy-of-the-License-at"><a href="#with-the-License-You-may-obtain-a-copy-of-the-License-at" class="headerlink" title="with the License.  You may obtain a copy of the License at"></a>with the License.  You may obtain a copy of the License at</h1><h1 id="-1"><a href="#-1" class="headerlink" title=""></a></h1><h1 id="http-www-apache-org-licenses-LICENSE-2-0"><a href="#http-www-apache-org-licenses-LICENSE-2-0" class="headerlink" title="http://www.apache.org/licenses/LICENSE-2.0"></a><a target="_blank" rel="noopener" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></h1><h1 id="-2"><a href="#-2" class="headerlink" title=""></a></h1><h1 id="Unless-required-by-applicable-law-or-agreed-to-in-writing"><a href="#Unless-required-by-applicable-law-or-agreed-to-in-writing" class="headerlink" title="Unless required by applicable law or agreed to in writing,"></a>Unless required by applicable law or agreed to in writing,</h1><h1 id="software-distributed-under-the-License-is-distributed-on-an"><a href="#software-distributed-under-the-License-is-distributed-on-an" class="headerlink" title="software distributed under the License is distributed on an"></a>software distributed under the License is distributed on an</h1><h1 id="“AS-IS”-BASIS-WITHOUT-WARRANTIES-OR-CONDITIONS-OF-ANY"><a href="#“AS-IS”-BASIS-WITHOUT-WARRANTIES-OR-CONDITIONS-OF-ANY" class="headerlink" title="“AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY"></a>“AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</h1><h1 id="KIND-either-express-or-implied-See-the-License-for-the"><a href="#KIND-either-express-or-implied-See-the-License-for-the" class="headerlink" title="KIND, either express or implied.  See the License for the"></a>KIND, either express or implied.  See the License for the</h1><h1 id="specific-language-governing-permissions-and-limitations"><a href="#specific-language-governing-permissions-and-limitations" class="headerlink" title="specific language governing permissions and limitations"></a>specific language governing permissions and limitations</h1><h1 id="under-the-License"><a href="#under-the-License" class="headerlink" title="under the License."></a>under the License.</h1><p>“””Default configuration for the Airflow webserver”””<br>import os</p>
+<p>from airflow.<a target="_blank" rel="noopener" href="http://www.fab_security.manager/">www.fab_security.manager</a> import AUTH_DB</p>
+<h1 id="from-airflow-www-fab-security-manager-import-AUTH-LDAP"><a href="#from-airflow-www-fab-security-manager-import-AUTH-LDAP" class="headerlink" title="from airflow.www.fab_security.manager import AUTH_LDAP"></a>from airflow.<a target="_blank" rel="noopener" href="http://www.fab_security.manager/">www.fab_security.manager</a> import AUTH_LDAP</h1><h1 id="from-airflow-www-fab-security-manager-import-AUTH-OAUTH"><a href="#from-airflow-www-fab-security-manager-import-AUTH-OAUTH" class="headerlink" title="from airflow.www.fab_security.manager import AUTH_OAUTH"></a>from airflow.<a target="_blank" rel="noopener" href="http://www.fab_security.manager/">www.fab_security.manager</a> import AUTH_OAUTH</h1><h1 id="from-airflow-www-fab-security-manager-import-AUTH-OID"><a href="#from-airflow-www-fab-security-manager-import-AUTH-OID" class="headerlink" title="from airflow.www.fab_security.manager import AUTH_OID"></a>from airflow.<a target="_blank" rel="noopener" href="http://www.fab_security.manager/">www.fab_security.manager</a> import AUTH_OID</h1><h1 id="from-airflow-www-fab-security-manager-import-AUTH-REMOTE-USER"><a href="#from-airflow-www-fab-security-manager-import-AUTH-REMOTE-USER" class="headerlink" title="from airflow.www.fab_security.manager import AUTH_REMOTE_USER"></a>from airflow.<a target="_blank" rel="noopener" href="http://www.fab_security.manager/">www.fab_security.manager</a> import AUTH_REMOTE_USER</h1><p>basedir &#x3D; os.path.abspath(os.path.dirname(<strong>file</strong>))</p>
+<h1 id="Flask-WTF-flag-for-CSRF"><a href="#Flask-WTF-flag-for-CSRF" class="headerlink" title="Flask-WTF flag for CSRF"></a>Flask-WTF flag for CSRF</h1><p>WTF_CSRF_ENABLED &#x3D; True</p>
+<h1 id="—————————————————"><a href="#—————————————————" class="headerlink" title="—————————————————-"></a>—————————————————-</h1><h1 id="AUTHENTICATION-CONFIG"><a href="#AUTHENTICATION-CONFIG" class="headerlink" title="AUTHENTICATION CONFIG"></a>AUTHENTICATION CONFIG</h1><h1 id="—————————————————-1"><a href="#—————————————————-1" class="headerlink" title="—————————————————-"></a>—————————————————-</h1><h1 id="For-details-on-how-to-set-up-each-of-the-following-authentication-see"><a href="#For-details-on-how-to-set-up-each-of-the-following-authentication-see" class="headerlink" title="For details on how to set up each of the following authentication, see"></a>For details on how to set up each of the following authentication, see</h1><h1 id="http-flask-appbuilder-readthedocs-io-en-latest-security-html-authentication-methods"><a href="#http-flask-appbuilder-readthedocs-io-en-latest-security-html-authentication-methods" class="headerlink" title="http://flask-appbuilder.readthedocs.io/en/latest/security.html# authentication-methods"></a><a target="_blank" rel="noopener" href="http://flask-appbuilder.readthedocs.io/en/latest/security.html#">http://flask-appbuilder.readthedocs.io/en/latest/security.html#</a> authentication-methods</h1><h1 id="for-details"><a href="#for-details" class="headerlink" title="for details."></a>for details.</h1><h1 id="The-authentication-type"><a href="#The-authentication-type" class="headerlink" title="The authentication type"></a>The authentication type</h1><h1 id="AUTH-OID-Is-for-OpenID"><a href="#AUTH-OID-Is-for-OpenID" class="headerlink" title="AUTH_OID : Is for OpenID"></a>AUTH_OID : Is for OpenID</h1><h1 id="AUTH-DB-Is-for-database"><a href="#AUTH-DB-Is-for-database" class="headerlink" title="AUTH_DB : Is for database"></a>AUTH_DB : Is for database</h1><h1 id="AUTH-LDAP-Is-for-LDAP"><a href="#AUTH-LDAP-Is-for-LDAP" class="headerlink" title="AUTH_LDAP : Is for LDAP"></a>AUTH_LDAP : Is for LDAP</h1><h1 id="AUTH-REMOTE-USER-Is-for-using-REMOTE-USER-from-web-server"><a href="#AUTH-REMOTE-USER-Is-for-using-REMOTE-USER-from-web-server" class="headerlink" title="AUTH_REMOTE_USER : Is for using REMOTE_USER from web server"></a>AUTH_REMOTE_USER : Is for using REMOTE_USER from web server</h1><h1 id="AUTH-OAUTH-Is-for-OAuth"><a href="#AUTH-OAUTH-Is-for-OAuth" class="headerlink" title="AUTH_OAUTH : Is for OAuth"></a>AUTH_OAUTH : Is for OAuth</h1><p>AUTH_TYPE &#x3D; AUTH_DB</p>
+<h1 id="Uncomment-to-setup-Full-admin-role-name"><a href="#Uncomment-to-setup-Full-admin-role-name" class="headerlink" title="Uncomment to setup Full admin role name"></a>Uncomment to setup Full admin role name</h1><h1 id="AUTH-ROLE-ADMIN-x3D-‘Admin’"><a href="#AUTH-ROLE-ADMIN-x3D-‘Admin’" class="headerlink" title="AUTH_ROLE_ADMIN &#x3D; ‘Admin’"></a>AUTH_ROLE_ADMIN &#x3D; ‘Admin’</h1><h1 id="Uncomment-and-set-to-desired-role-to-enable-access-without-authentication"><a href="#Uncomment-and-set-to-desired-role-to-enable-access-without-authentication" class="headerlink" title="Uncomment and set to desired role to enable access without authentication"></a>Uncomment and set to desired role to enable access without authentication</h1><h1 id="AUTH-ROLE-PUBLIC-x3D-‘Viewer’"><a href="#AUTH-ROLE-PUBLIC-x3D-‘Viewer’" class="headerlink" title="AUTH_ROLE_PUBLIC &#x3D; ‘Viewer’"></a>AUTH_ROLE_PUBLIC &#x3D; ‘Viewer’</h1><h1 id="Will-allow-user-self-registration"><a href="#Will-allow-user-self-registration" class="headerlink" title="Will allow user self registration"></a>Will allow user self registration</h1><h1 id="AUTH-USER-REGISTRATION-x3D-True"><a href="#AUTH-USER-REGISTRATION-x3D-True" class="headerlink" title="AUTH_USER_REGISTRATION &#x3D; True"></a>AUTH_USER_REGISTRATION &#x3D; True</h1><h1 id="The-recaptcha-it’s-automatically-enabled-for-user-self-registration-is-active-and-the-keys-are-necessary"><a href="#The-recaptcha-it’s-automatically-enabled-for-user-self-registration-is-active-and-the-keys-are-necessary" class="headerlink" title="The recaptcha it’s automatically enabled for user self registration is active and the keys are necessary"></a>The recaptcha it’s automatically enabled for user self registration is active and the keys are necessary</h1><h1 id="RECAPTCHA-PRIVATE-KEY-x3D-PRIVATE-KEY"><a href="#RECAPTCHA-PRIVATE-KEY-x3D-PRIVATE-KEY" class="headerlink" title="RECAPTCHA_PRIVATE_KEY &#x3D; PRIVATE_KEY"></a>RECAPTCHA_PRIVATE_KEY &#x3D; PRIVATE_KEY</h1><h1 id="RECAPTCHA-PUBLIC-KEY-x3D-PUBLIC-KEY"><a href="#RECAPTCHA-PUBLIC-KEY-x3D-PUBLIC-KEY" class="headerlink" title="RECAPTCHA_PUBLIC_KEY &#x3D; PUBLIC_KEY"></a>RECAPTCHA_PUBLIC_KEY &#x3D; PUBLIC_KEY</h1><h1 id="Config-for-Flask-Mail-necessary-for-user-self-registration"><a href="#Config-for-Flask-Mail-necessary-for-user-self-registration" class="headerlink" title="Config for Flask-Mail necessary for user self registration"></a>Config for Flask-Mail necessary for user self registration</h1><h1 id="MAIL-SERVER-x3D-‘smtp-gmail-com’"><a href="#MAIL-SERVER-x3D-‘smtp-gmail-com’" class="headerlink" title="MAIL_SERVER &#x3D; ‘smtp.gmail.com’"></a>MAIL_SERVER &#x3D; ‘smtp.gmail.com’</h1><h1 id="MAIL-USE-TLS-x3D-True"><a href="#MAIL-USE-TLS-x3D-True" class="headerlink" title="MAIL_USE_TLS &#x3D; True"></a>MAIL_USE_TLS &#x3D; True</h1><h1 id="MAIL-USERNAME-x3D-‘-121-111-x75-114-x61-112-112-101-109-97-x69-108-64-x67-x6d-97-105-x6c-46-99-x6f-x6d-‘"><a href="#MAIL-USERNAME-x3D-‘-121-111-x75-114-x61-112-112-101-109-97-x69-108-64-x67-x6d-97-105-x6c-46-99-x6f-x6d-‘" class="headerlink" title="MAIL_USERNAME &#x3D; ‘&#121;&#111;&#x75;&#114;&#x61;&#112;&#112;&#101;&#109;&#97;&#x69;&#108;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#x6f;&#x6d;‘"></a>MAIL_USERNAME &#x3D; ‘<a href="mailto:&#121;&#111;&#x75;&#114;&#x61;&#112;&#112;&#101;&#109;&#97;&#x69;&#108;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#x6f;&#x6d;">&#121;&#111;&#x75;&#114;&#x61;&#112;&#112;&#101;&#109;&#97;&#x69;&#108;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#46;&#99;&#x6f;&#x6d;</a>‘</h1><h1 id="MAIL-PASSWORD-x3D-‘passwordformail’"><a href="#MAIL-PASSWORD-x3D-‘passwordformail’" class="headerlink" title="MAIL_PASSWORD &#x3D; ‘passwordformail’"></a>MAIL_PASSWORD &#x3D; ‘passwordformail’</h1><h1 id="MAIL-DEFAULT-SENDER-x3D-‘-115-101-110-100-101-114-64-x67-x6d-x61-x69-108-46-x63-x6f-109-‘"><a href="#MAIL-DEFAULT-SENDER-x3D-‘-115-101-110-100-101-114-64-x67-x6d-x61-x69-108-46-x63-x6f-109-‘" class="headerlink" title="MAIL_DEFAULT_SENDER &#x3D; ‘&#115;&#101;&#110;&#100;&#101;&#114;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#109;‘"></a>MAIL_DEFAULT_SENDER &#x3D; ‘<a href="mailto:&#115;&#101;&#110;&#100;&#101;&#114;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#109;">&#115;&#101;&#110;&#100;&#101;&#114;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#109;</a>‘</h1><h1 id="The-default-user-self-registration-role"><a href="#The-default-user-self-registration-role" class="headerlink" title="The default user self registration role"></a>The default user self registration role</h1><h1 id="AUTH-USER-REGISTRATION-ROLE-x3D-“Public”"><a href="#AUTH-USER-REGISTRATION-ROLE-x3D-“Public”" class="headerlink" title="AUTH_USER_REGISTRATION_ROLE &#x3D; “Public”"></a>AUTH_USER_REGISTRATION_ROLE &#x3D; “Public”</h1><h1 id="When-using-OAuth-Auth-uncomment-to-setup-provider-s-info"><a href="#When-using-OAuth-Auth-uncomment-to-setup-provider-s-info" class="headerlink" title="When using OAuth Auth, uncomment to setup provider(s) info"></a>When using OAuth Auth, uncomment to setup provider(s) info</h1><h1 id="Google-OAuth-example"><a href="#Google-OAuth-example" class="headerlink" title="Google OAuth example:"></a>Google OAuth example:</h1><h1 id="OAUTH-PROVIDERS-x3D"><a href="#OAUTH-PROVIDERS-x3D" class="headerlink" title="OAUTH_PROVIDERS &#x3D; [{"></a>OAUTH_PROVIDERS &#x3D; [{</h1><h1 id="‘name’-’google’"><a href="#‘name’-’google’" class="headerlink" title="‘name’:’google’,"></a>‘name’:’google’,</h1><h1 id="‘token-key’-’access-token’"><a href="#‘token-key’-’access-token’" class="headerlink" title="‘token_key’:’access_token’,"></a>‘token_key’:’access_token’,</h1><h1 id="‘icon’-’fa-google’"><a href="#‘icon’-’fa-google’" class="headerlink" title="‘icon’:’fa-google’,"></a>‘icon’:’fa-google’,</h1><h1 id="‘remote-app’"><a href="#‘remote-app’" class="headerlink" title="‘remote_app’: {"></a>‘remote_app’: {</h1><h1 id="‘api-base-url’-’https-www-googleapis-com-oauth2-v2-39"><a href="#‘api-base-url’-’https-www-googleapis-com-oauth2-v2-39" class="headerlink" title="‘api_base_url’:’https://www.googleapis.com/oauth2/v2/&#39;,"></a>‘api_base_url’:’<a target="_blank" rel="noopener" href="https://www.googleapis.com/oauth2/v2/&#39;">https://www.googleapis.com/oauth2/v2/&#39;</a>,</h1><h1 id="‘client-kwargs’"><a href="#‘client-kwargs’" class="headerlink" title="‘client_kwargs’:{"></a>‘client_kwargs’:{</h1><h1 id="‘scope’-‘email-profile’"><a href="#‘scope’-‘email-profile’" class="headerlink" title="‘scope’: ‘email profile’"></a>‘scope’: ‘email profile’</h1><h1 id="-3"><a href="#-3" class="headerlink" title="},"></a>},</h1><h1 id="‘access-token-url’-’https-accounts-google-com-o-oauth2-token-39"><a href="#‘access-token-url’-’https-accounts-google-com-o-oauth2-token-39" class="headerlink" title="‘access_token_url’:’https://accounts.google.com/o/oauth2/token&#39;,"></a>‘access_token_url’:’<a target="_blank" rel="noopener" href="https://accounts.google.com/o/oauth2/token&#39;">https://accounts.google.com/o/oauth2/token&#39;</a>,</h1><h1 id="‘authorize-url’-’https-accounts-google-com-o-oauth2-auth-39"><a href="#‘authorize-url’-’https-accounts-google-com-o-oauth2-auth-39" class="headerlink" title="‘authorize_url’:’https://accounts.google.com/o/oauth2/auth&#39;,"></a>‘authorize_url’:’<a target="_blank" rel="noopener" href="https://accounts.google.com/o/oauth2/auth&#39;">https://accounts.google.com/o/oauth2/auth&#39;</a>,</h1><h1 id="‘request-token-url’-None"><a href="#‘request-token-url’-None" class="headerlink" title="‘request_token_url’: None,"></a>‘request_token_url’: None,</h1><h1 id="‘client-id’-GOOGLE-KEY"><a href="#‘client-id’-GOOGLE-KEY" class="headerlink" title="‘client_id’: GOOGLE_KEY,"></a>‘client_id’: GOOGLE_KEY,</h1><h1 id="‘client-secret’-GOOGLE-SECRET-KEY"><a href="#‘client-secret’-GOOGLE-SECRET-KEY" class="headerlink" title="‘client_secret’: GOOGLE_SECRET_KEY,"></a>‘client_secret’: GOOGLE_SECRET_KEY,</h1><h1 id="-4"><a href="#-4" class="headerlink" title="}"></a>}</h1><h1 id="-5"><a href="#-5" class="headerlink" title="}]"></a>}]</h1><h1 id="When-using-LDAP-Auth-setup-the-ldap-server"><a href="#When-using-LDAP-Auth-setup-the-ldap-server" class="headerlink" title="When using LDAP Auth, setup the ldap server"></a>When using LDAP Auth, setup the ldap server</h1><h1 id="AUTH-LDAP-SERVER-x3D-“ldap-x2F-x2F-ldapserver-new”"><a href="#AUTH-LDAP-SERVER-x3D-“ldap-x2F-x2F-ldapserver-new”" class="headerlink" title="AUTH_LDAP_SERVER &#x3D; “ldap:&#x2F;&#x2F;ldapserver.new”"></a>AUTH_LDAP_SERVER &#x3D; “ldap:&#x2F;&#x2F;ldapserver.new”</h1><h1 id="When-using-OpenID-Auth-uncomment-to-setup-OpenID-providers"><a href="#When-using-OpenID-Auth-uncomment-to-setup-OpenID-providers" class="headerlink" title="When using OpenID Auth, uncomment to setup OpenID providers."></a>When using OpenID Auth, uncomment to setup OpenID providers.</h1><h1 id="example-for-OpenID-authentication"><a href="#example-for-OpenID-authentication" class="headerlink" title="example for OpenID authentication"></a>example for OpenID authentication</h1><h1 id="OPENID-PROVIDERS-x3D"><a href="#OPENID-PROVIDERS-x3D" class="headerlink" title="OPENID_PROVIDERS &#x3D; ["></a>OPENID_PROVIDERS &#x3D; [</h1><h1 id="‘name’-‘Yahoo’-‘url’-‘https-me-yahoo-com-39"><a href="#‘name’-‘Yahoo’-‘url’-‘https-me-yahoo-com-39" class="headerlink" title="{ ‘name’: ‘Yahoo’, ‘url’: ‘https://me.yahoo.com&#39; },"></a>{ ‘name’: ‘Yahoo’, ‘url’: ‘<a target="_blank" rel="noopener" href="https://me.yahoo.com&/#39;">https://me.yahoo.com&#39;</a> },</h1><h1 id="‘name’-‘AOL’-‘url’-‘http-openid-aol-com-‘"><a href="#‘name’-‘AOL’-‘url’-‘http-openid-aol-com-‘" class="headerlink" title="{ ‘name’: ‘AOL’, ‘url’: ‘http://openid.aol.com/‘ },"></a>{ ‘name’: ‘AOL’, ‘url’: ‘<a target="_blank" rel="noopener" href="http://openid.aol.com/">http://openid.aol.com/</a><username>‘ },</h1><h1 id="‘name’-‘Flickr’-‘url’-‘http-www-flickr-com-‘"><a href="#‘name’-‘Flickr’-‘url’-‘http-www-flickr-com-‘" class="headerlink" title="{ ‘name’: ‘Flickr’, ‘url’: ‘http://www.flickr.com/‘ },"></a>{ ‘name’: ‘Flickr’, ‘url’: ‘<a target="_blank" rel="noopener" href="http://www.flickr.com/">http://www.flickr.com/</a><username>‘ },</h1><h1 id="‘name’-‘MyOpenID’-‘url’-‘https-www-myopenid-com-39"><a href="#‘name’-‘MyOpenID’-‘url’-‘https-www-myopenid-com-39" class="headerlink" title="{ ‘name’: ‘MyOpenID’, ‘url’: ‘https://www.myopenid.com&#39; }]"></a>{ ‘name’: ‘MyOpenID’, ‘url’: ‘<a target="_blank" rel="noopener" href="https://www.myopenid.com&/#39;">https://www.myopenid.com&#39;</a> }]</h1><h1 id="—————————————————-2"><a href="#—————————————————-2" class="headerlink" title="—————————————————-"></a>—————————————————-</h1><h1 id="Theme-CONFIG"><a href="#Theme-CONFIG" class="headerlink" title="Theme CONFIG"></a>Theme CONFIG</h1><h1 id="—————————————————-3"><a href="#—————————————————-3" class="headerlink" title="—————————————————-"></a>—————————————————-</h1><h1 id="Flask-App-Builder-comes-up-with-a-number-of-predefined-themes"><a href="#Flask-App-Builder-comes-up-with-a-number-of-predefined-themes" class="headerlink" title="Flask App Builder comes up with a number of predefined themes"></a>Flask App Builder comes up with a number of predefined themes</h1><h1 id="that-you-can-use-for-Apache-Airflow"><a href="#that-you-can-use-for-Apache-Airflow" class="headerlink" title="that you can use for Apache Airflow."></a>that you can use for Apache Airflow.</h1><h1 id="http-flask-appbuilder-readthedocs-io-en-latest-customizing-html-changing-themes"><a href="#http-flask-appbuilder-readthedocs-io-en-latest-customizing-html-changing-themes" class="headerlink" title="http://flask-appbuilder.readthedocs.io/en/latest/customizing.html#changing-themes"></a><a target="_blank" rel="noopener" href="http://flask-appbuilder.readthedocs.io/en/latest/customizing.html#changing-themes">http://flask-appbuilder.readthedocs.io/en/latest/customizing.html#changing-themes</a></h1><h1 id="Please-make-sure-to-remove-“navbar-color”-configuration-from-airflow-cfg"><a href="#Please-make-sure-to-remove-“navbar-color”-configuration-from-airflow-cfg" class="headerlink" title="Please make sure to remove “navbar_color” configuration from airflow.cfg"></a>Please make sure to remove “navbar_color” configuration from airflow.cfg</h1><h1 id="in-order-to-fully-utilize-the-theme-or-use-that-property-in-conjunction-with-theme"><a href="#in-order-to-fully-utilize-the-theme-or-use-that-property-in-conjunction-with-theme" class="headerlink" title="in order to fully utilize the theme. (or use that property in conjunction with theme)"></a>in order to fully utilize the theme. (or use that property in conjunction with theme)</h1><h1 id="APP-THEME-x3D-“bootstrap-theme-css”-default-bootstrap"><a href="#APP-THEME-x3D-“bootstrap-theme-css”-default-bootstrap" class="headerlink" title="APP_THEME &#x3D; “bootstrap-theme.css”  # default bootstrap"></a>APP_THEME &#x3D; “bootstrap-theme.css”  # default bootstrap</h1><h1 id="APP-THEME-x3D-“amelia-css”"><a href="#APP-THEME-x3D-“amelia-css”" class="headerlink" title="APP_THEME &#x3D; “amelia.css”"></a>APP_THEME &#x3D; “amelia.css”</h1><h1 id="APP-THEME-x3D-“cerulean-css”"><a href="#APP-THEME-x3D-“cerulean-css”" class="headerlink" title="APP_THEME &#x3D; “cerulean.css”"></a>APP_THEME &#x3D; “cerulean.css”</h1><h1 id="APP-THEME-x3D-“cosmo-css”"><a href="#APP-THEME-x3D-“cosmo-css”" class="headerlink" title="APP_THEME &#x3D; “cosmo.css”"></a>APP_THEME &#x3D; “cosmo.css”</h1><h1 id="APP-THEME-x3D-“cyborg-css”"><a href="#APP-THEME-x3D-“cyborg-css”" class="headerlink" title="APP_THEME &#x3D; “cyborg.css”"></a>APP_THEME &#x3D; “cyborg.css”</h1><h1 id="APP-THEME-x3D-“darkly-css”"><a href="#APP-THEME-x3D-“darkly-css”" class="headerlink" title="APP_THEME &#x3D; “darkly.css”"></a>APP_THEME &#x3D; “darkly.css”</h1><h1 id="APP-THEME-x3D-“flatly-css”"><a href="#APP-THEME-x3D-“flatly-css”" class="headerlink" title="APP_THEME &#x3D; “flatly.css”"></a>APP_THEME &#x3D; “flatly.css”</h1><h1 id="APP-THEME-x3D-“journal-css”"><a href="#APP-THEME-x3D-“journal-css”" class="headerlink" title="APP_THEME &#x3D; “journal.css”"></a>APP_THEME &#x3D; “journal.css”</h1><h1 id="APP-THEME-x3D-“lumen-css”"><a href="#APP-THEME-x3D-“lumen-css”" class="headerlink" title="APP_THEME &#x3D; “lumen.css”"></a>APP_THEME &#x3D; “lumen.css”</h1><h1 id="APP-THEME-x3D-“paper-css”"><a href="#APP-THEME-x3D-“paper-css”" class="headerlink" title="APP_THEME &#x3D; “paper.css”"></a>APP_THEME &#x3D; “paper.css”</h1><h1 id="APP-THEME-x3D-“readable-css”"><a href="#APP-THEME-x3D-“readable-css”" class="headerlink" title="APP_THEME &#x3D; “readable.css”"></a>APP_THEME &#x3D; “readable.css”</h1><h1 id="APP-THEME-x3D-“sandstone-css”"><a href="#APP-THEME-x3D-“sandstone-css”" class="headerlink" title="APP_THEME &#x3D; “sandstone.css”"></a>APP_THEME &#x3D; “sandstone.css”</h1><h1 id="APP-THEME-x3D-“simplex-css”"><a href="#APP-THEME-x3D-“simplex-css”" class="headerlink" title="APP_THEME &#x3D; “simplex.css”"></a>APP_THEME &#x3D; “simplex.css”</h1><h1 id="APP-THEME-x3D-“slate-css”"><a href="#APP-THEME-x3D-“slate-css”" class="headerlink" title="APP_THEME &#x3D; “slate.css”"></a>APP_THEME &#x3D; “slate.css”</h1><h1 id="APP-THEME-x3D-“solar-css”"><a href="#APP-THEME-x3D-“solar-css”" class="headerlink" title="APP_THEME &#x3D; “solar.css”"></a>APP_THEME &#x3D; “solar.css”</h1><h1 id="APP-THEME-x3D-“spacelab-css”"><a href="#APP-THEME-x3D-“spacelab-css”" class="headerlink" title="APP_THEME &#x3D; “spacelab.css”"></a>APP_THEME &#x3D; “spacelab.css”</h1><h1 id="APP-THEME-x3D-“superhero-css”"><a href="#APP-THEME-x3D-“superhero-css”" class="headerlink" title="APP_THEME &#x3D; “superhero.css”"></a>APP_THEME &#x3D; “superhero.css”</h1><h1 id="APP-THEME-x3D-“united-css”"><a href="#APP-THEME-x3D-“united-css”" class="headerlink" title="APP_THEME &#x3D; “united.css”"></a>APP_THEME &#x3D; “united.css”</h1><h1 id="APP-THEME-x3D-“yeti-css”"><a href="#APP-THEME-x3D-“yeti-css”" class="headerlink" title="APP_THEME &#x3D; “yeti.css”"></a>APP_THEME &#x3D; “yeti.css”</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://seoseonho.github.io/2022/07/28/airflow/webserver_config/" data-id="cl64s7wgz0005oov201w2cas7" data-title="airflow" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/07/28/airflow/read_json/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          airflow
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/07/28/airflow/write_json_df/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">airflow</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/07/28/airflow/data/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/28/airflow/fromAirflow/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/28/airflow/read_df/">airflow</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/28/airflow/step1/">airflow</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/28/airflow/read_json/">airflow</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
